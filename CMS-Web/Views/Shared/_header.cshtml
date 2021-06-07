@@ -1,58 +1,41 @@
 ﻿@{ 
     var _ListCategory = Session["ListCateSession"] as List<CMS_DTO.CMSCategories.CMSCategoriesModels>;
 }
-<div class="top-header">
-    <a href="javascript:" class="btnmenu"><i></i></a>
-    <div class="container">
-        <div class="clearfix">
-            <div class="float-right d-md-none ml-2 wr-shopping-cart">
-                <a href="@Url.Action("Index","Cart")" title="Giỏ hàng" class="text-danger"><i class="fa fa-shopping-cart fa-fw align-middle" aria-hidden="true"></i>(<span class="_clsCartCount">0</span>)</a>
-            </div>
-            <div class="float-right">
-                <form class="frm-mainform float-right" id="frm-mainform" action="/tim-kiem">
-                    <input type="text" required name="kw" id="kw" placeholder="Search" value="" />
-                    <button><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container mid-nav">
-    <div class="row align-items-center">
-        <div class="col-12 col-md-2 text-md-center">
-            <a href="/" class="logo">
-                <img src="@Url.Content("~/Images/logo.png")" style="max-width: 103% !important; "/>
+    <div>
+        <div class="logo"><a href="trangchu.html">BEAUSTORY</a></div>
+        <div class="header_search">
+            <input type="text">
+            <a href="timkiemnangcao.html">
+                <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </a>
-        </div>        
-    </div>
-</div>
-<nav class="mainnav">
-    <div class="container clearfix">
-        <ul class="nav">
-            <li><a href="/">Home</a></li>
-            <li>
-                <a href="@Url.Action("Index","Shop")">Product  </a> 
-            </li>
-            <li><a href="@Url.Action("Index","Contact")">Contact</a></li>
-            <li><a href="@Url.Action("Index","About")">About</a></li>
-            <li>
-                <a href="@Url.Action("Index","Cart")" class="text-danger"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Shopping cart (<span class="_clsCartCount">0</span>)</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="mobilemenu">
-    <div class="container">  
-        <div class="row">
-            <div class="col-6">
-                <ul>
-                    <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
-                    <li><a href="@Url.Action("Index","About")">Giới thiệu</a></li>
-                    <li><a href="/#">Zumi</a></li>
-                    <li><a href="/#">Quà tết</a></li>
-                    <li><a href="@Url.Action("Index","Cart")" class="text-danger"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Giỏ hàng (<span class="_clsCartCount">0</span>)</a></li>
-                </ul>
+        </div>
+        <div class="selection">
+            <a class="selection-link" href="#" data-toggle="modal" data-target="#loginModal"><img src="/Images/ico_01.png" alt=""></a>
+            <div id="btn-giohang">
+                <img src="/Images/ico_03.png" alt="">
+                <div id="panel-giohang">
+                    <ul class="mini-product" ng-repeat="item in Products">
+                        <li>
+                            <a href="/Shop/Detail?q={{item.Alias}}" class="item">
+                                <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}">
+                                <div>
+                                    <span class="title">{{item.Name}}</span>
+                                    <p class="price">{{item.Quantity}} × {{item.Price | currency : '' : 0}} VNĐ</p>
+                                </div>
+                                <a class="del-icone remove" href="" ng-click="RemoveItemOrder($index)">Xóa</a>
+                            </a>
+                        </li>                       
+                    </ul>
+                    <div class="mini-total">
+                        <span class="subtotal-text">SUBTOTAL</span>
+                        <span class="_clsCartCount">{{getTotalQty()}}</span>
+                    </div>
+                    <button class="submit-btn"><a href="@Url.Action("CheckOut","Carts")">Đặt hàng</a></button>
+                    <button class="submit-btn cart"><a href="@Url.Action("Index","Carts")">Giỏ hàng</a></button>
+                </div>
             </div>
         </div>
+        <div class="header_bar">
+            <span></span>
+        </div>
     </div>
-</div>

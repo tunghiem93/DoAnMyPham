@@ -54,3 +54,5 @@ D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS-Entity.csproj.CopyCo
 D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS-Entity.dll
 D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS-Entity.pdb
 D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS-Entity.csprojAssemblyReference.cache
+D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS_Entity.Migrations.InnitDB.resources
+D:\Study\DoAnMonHoc\MyPham\Project\CMS-Entity\obj\Debug\CMS-Entity.csproj.GenerateResource.cache

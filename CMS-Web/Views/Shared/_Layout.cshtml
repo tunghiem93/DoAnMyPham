@@ -5,85 +5,146 @@
 @using CMS_Shared;
 
 <!DOCTYPE html>
-<html class="no-js" ng-app="appWebQuaTetViet">
+<html class="no-js" ng-app="appWebBEAUSTORYt">
 
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Project</title>   
+    <title>Project</title>
 
     <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
-    <script src="@Url.Content("~/Libraries/plugins/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.js")"></script>
     <!-- animate css -->
-    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" />
-    <!-- nivo slider css -->
-    <link href="@Url.Content("~/Content/nivo-slider.css")" rel="stylesheet" />
-    <!-- owl carousel css -->
-    <link href="@Url.Content("~/Content/owl.carousel.min.css")" rel="stylesheet" />
-    <!-- price slider css -->
-    <link href="@Url.Content("~/Content/jquery-ui.min.css")" rel="stylesheet" />
-    <!-- fontawesome css -->
-    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/layout.css")" rel="stylesheet" />
     <!-- bootstrap css -->
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-
-
-    <link href="@Url.Content("~/Content/global.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/product.dev.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/productlist.dev.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/hom.dev.css")" rel="stylesheet" />
-    <!-- responsive css -->
-    <link href="@Url.Content("~/Content/responsive.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Contact.dev.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/order.dev.css")" rel="stylesheet" />
-
+    <!-- nivo slider css -->
+    <link href="@Url.Content("~/Content/star-rating.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
-
     <!-- modernizr js -->
     <script src="@Url.Content("~/Scripts/modernizr.js")"></script>
     <script src="@Url.Content("~/Scripts/js.cookie.min.js")"></script>
     <script src="@Url.Content("~/Scripts/InitCookie.js")"></script>
-
-    <style>
-        .fb_button {
-            clear: unset;
-            float: left;
-            border-radius: 3px;
-            padding: 3px 0px;
-            margin-bottom: 0;
-            font-weight: normal;
-            text-align: left;
-            vertical-align: middle;
-            touch-action: manipulation;
-            cursor: pointer;
-            border: 1px solid transparent;
-            white-space: nowrap;
-            font-size: 14px;
-            line-height: 1.42857;
-            border-radius: 4px;
-            display: block;
-            width: 100%;
-            background-color: #4267b2;
-            margin-bottom: 13px;
-            padding-left: 7px !important;
-        }
-
-        ._5h0s {
-            padding-left: 22px !important;
-        }
-
-        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
-    </style>
-
+    <script src="@Url.Content("~/Scripts/star-rating.js")"></script>
 </head>
 
-<body>    
+<body>
     <div class="wrapper homepage">
-        <header>
+        <header id="header_nhom">
             @Html.Partial("_header")
         </header>
+        <div class="mobile_menu">
+            <div class="search">
+                <input type="text">
+                <a href="danhsachsanpham.html">
+                    <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </a>
+            </div>
+            <ul>
+                <li><a href="danhsachsanpham.html">Danh mục Sản phẩm</a></li>
+                <li><a href="danhsachsanpham.html">Khuyến Mãi</a></li>
+                <li><a href="danhsachloikhuyen.html">Lời Khuyên</a></li>
+                <li><a href="danhsachsanpham.html">Sản phẩm khác</a></li>
+                <li><a href="chitietsanpham.html">Nước Hoa</a></li>
+            </ul>
+        </div>
+        <!-- Login -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <h3>Đăng nhập tài khoản</h3>
+                    <label><input type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+                    <label><input type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
+                    <p class="text text-first">Bạn chưa có tài khoản? <a href="#" data-toggle="modal" data-target="#registerModal"><b>Đăng ký ngay</b></a></p>
+                    <p class="text">Quên mật khẩu?</p>
+                    <button>Đăng nhập</button>
+                    <p class="text">Nhắn ngay cho chúng tôi khi<br> bạn cần giúp?</p>
+                    <div class="function_social">
+                        <a href="#" class="messenger"></a>
+                        <a href="#" class="google"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Register -->
+        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <h3>Đăng ký tài khoản</h3>
+                    <label><input type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+                    <label><input type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
+                    <label><input type="password" name="" placeholder="Họ tên"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
+                    <div class="birthday">
+                        <select>
+                            <option>Ngày</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                        </select>
+                        <select>
+                            <option>Tháng</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                        <select>
+                            <option>Năm sinh</option>
+                            <option>1995</option>
+                            <option>1996</option>
+                            <option>1997</option>
+                            <option>1998</option>
+                            <option>1999</option>
+                            <option>2000</option>
+                        </select>
+                    </div>
+                    <p class="text-first">Nhập thông tin khuyến mãi qua e-mail</p>
+                    <p>Tôi đã đọc và đồng ý thực hiện mọi giao dịch mua bán theo <span class="red-color">điều kiện sử dụng và chính sách</span> của Beaustory.vn</p>
+                    <button>Đăng ký</button>
+                    <p>Bạn đã có tài khoản? <a href="#" class="green-color">ĐĂNG NHẬP</a></p>
+                    <p>Hoặc đăng nhập với:</p>
+                    <div class="function_social">
+                        <a href="#" class="google"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
             @RenderBody()
         </div>
@@ -92,46 +153,33 @@
     <div class="off-white-bg">
         @Html.Partial("_footer")
     </div>
-
-
-    <!-- Wrapper End -->
-    <!-- jquery 3.12.4 -->
-    <script src="@Url.Content("~/Scripts/jquery-1.12.4.min.js")"></script>
-    <!-- mobile menu js  -->
-    <script src="@Url.Content("~/Scripts/jquery.meanmenu.min.js")"></script>
-    <!-- scroll-up js -->
-    <script src="@Url.Content("~/Scripts/jquery.scrollUp.js")"></script>
-    <!-- owl-carousel js -->
-    <script src="@Url.Content("~/Scripts/owl.carousel.min.js")"></script>
-    <!-- slick js -->
-    <script src="@Url.Content("~/Scripts/slick.min.js")"></script>
-    <!-- wow js -->
-    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
-    <!-- price slider js -->
-    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/jquery.countdown.min.js")"></script>
-    <!-- nivo slider js -->
-    <script src="@Url.Content("~/Scripts/jquery.nivo.slider.js")"></script>
-    <!-- fancybox js -->
-    <script src="@Url.Content("~/Scripts/jquery.fancybox.min.js")"></script>
-
-    <!-- popper -->
-    <script src="@Url.Content("~/Scripts/popper.js")"></script>
-
     <!-- bootstrap -->
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
-
-    <!-- plugins -->
-    <script src="@Url.Content("~/Scripts/plugins.js")"></script>
-    <!-- main js -->
-    <script src="@Url.Content("~/Scripts/main.js")"></script>
-
     @*<script src="@Url.Content("~/Scripts/script.js")"></script>*@
     <script src="@Url.Content("~/Scripts/jquery_cookie.js")"></script>
+    <script type="text/javascript">
+        //w3schol tao slider
+        var slideIndex = 1;
+        showDivs(slideIndex);
 
-    <script src="@Url.Content("~/Scripts/popper.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/global.js")"></script>
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+        $(".header_bar").click(function () {
+            $(".mobile_menu").slideToggle();
+        });
+    </script>
     <script type="text/javascript">
         var GridView;
         function GridViewFunction() {
@@ -172,7 +220,7 @@
             return false;
         });
 
-        var app = angular.module("appWebQuaTetViet", []);
+        var app = angular.module("appWebBEAUSTORYt", []);
         app.controller("CartCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
             $scope.quantityDefault = 1;
             $rootScope.Products = getListOrder();

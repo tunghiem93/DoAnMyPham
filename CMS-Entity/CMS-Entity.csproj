@@ -94,6 +94,10 @@
     <Compile Include="Mapping\CMS_ProductMap.cs" />
     <Compile Include="Mapping\CMS_CategoriesMap.cs" />
     <Compile Include="Mapping\CMS_EmployeeMap.cs" />
+    <Compile Include="Migrations\202106071530216_InnitDB.cs" />
+    <Compile Include="Migrations\202106071530216_InnitDB.Designer.cs">
+      <DependentUpon>202106071530216_InnitDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +119,11 @@
   <ItemGroup>
     <Folder Include="bin\Debug\" />
     <Folder Include="obj\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106071530216_InnitDB.resx">
+      <DependentUpon>202106071530216_InnitDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
