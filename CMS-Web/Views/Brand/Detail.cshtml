@@ -1,0 +1,319 @@
+﻿@model CMS_DTO.CMSProduct.ProductViewModels
+@using CMS_Shared;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Chi tiết";
+    var _count = 0;
+    var cateId = Model.ListProduct.Select(o => o.CategoryId).FirstOrDefault();
+}
+
+<main class="main-content" ng-controller="CartCtrl">
+    <section id="breadcrumbs">
+        <div class="container">
+            <nav aria-label="breadcrumbs" class="breadcrumbs">
+                <h3 class="titile-collecitions">Brand</h3>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index","Home")" title="Trở lại Home">
+                            <span>Home</span>
+                        </a>
+                        <meta itemprop="position" content="1">
+                    </li>
+                    <li class="active">
+                        <span><span>Brand</span></span>
+                        <meta itemprop="position" content="2">
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <section id="columns" class="columns-container">
+        <div class="container">
+            <div class="row">
+                <div id="center_column" class="center_column col-xs-12 col-sm-8 col-md-9">
+                    <div class="content_scene_cat">
+                        <div class="content_scene_cat_bg">
+                            <div class="image">
+                                <img class="img-responsive" alt="Featured" src="@Model.BrandModel.ImageURL">
+                            </div>
+                            <div class="cat_desc">
+                                <div class="rte">
+                                    <meta charset="utf-8"><meta charset="utf-8"><span><span>@Html.Raw(Model.BrandModel.BrandName)</span>.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="page-heading product-listing cat-name">Brand</h1>
+                    <div class="category-heading clearfix">
+                        <div class="sortPagiBar clearfix row">
+                            <div class="col-md-6 col-sm-6 col-xs-4">
+                                <div class="collection-view">
+                                    <button type="button" title="Grid view" class="change-view change-view--active" data-view="grid">
+                                        <span class="icon-fallback-text">
+                                            <span class="fa fa-th-large" aria-hidden="true"></span>
+                                            <span class="fallback-text">List data</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" title="List view" class="change-view" data-view="list">
+                                        <span class="icon-fallback-text">
+                                            <span class="fa fa-list-ul" aria-hidden="true"></span>
+                                            <span class="fallback-text">Product</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-8">
+                                <div class="form-horizontal">
+                                    <label for="">Sắp xếp</label>
+                                    @Html.DropDownListFor(model => model.RangeType,
+                                    new SelectList(ViewBag.Range, "Value", "Text", Model.RangeType), null,
+                                    new
+                                    {
+                                        @class = "",
+                                        @id = "SortBy",
+                                        @style = "",
+                                        @onchange = "LoadDataFilterPrice(this)"
+                                    })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="product_list" class="product_list grid">
+                        @Html.Partial("_ListItem", Model);
+                    </div>
+                    <div class="content_sortPagiBar">
+                        <div id="pagination" class="clearfix">
+                            @if (Model.TotalPage > 0)
+                            {
+                                <ul class="pagination">
+                                    <li class="pagination_previous disabled" onclick="PrevPage();">
+                                        <span><i class="fa fa-chevron-left"></i></span>
+                                    </li>
+                                    @for (var i = 1; i <= Model.TotalPage; i++)
+                                    {
+
+                                        if (i == 1)
+                                        {
+                                            @*<li class="active"><span>1</span></li>*@
+                                            <li class="active" id="page_@i" data-page="@i" onclick="ChoosePage(@i,this)"><a style="cursor:pointer;" title="">@i</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li onclick="ChoosePage(@i,this)" id="page_@i" data-page="@i"><a style="cursor:pointer;" title="">@i</a></li>
+                                        }
+                                    }
+                                    <li class="pagination_next" onclick="NextPage()"><span><i class="fa fa-chevron-right"></i></span></li>
+                                </ul>
+                            }
+                            
+                        </div>
+                    </div>
+                </div>
+                <aside>
+                    <div id="right_column" class="right_column sidebar col-xs-12 col-sm-4 col-md-3">
+                        <div id="categories_block" class="block sidebarCategories ">
+                            <h4 class="title_block">Bộ sưu tập</h4>
+                            <div class="block_content" style="">
+                                <ul class="listSidebar list-unstyled">
+                                    @if (Model.ListCate != null && Model.ListCate.Any())
+                                    {
+                                        foreach (var item in Model.ListCate)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Detail","Collection",new { q=item.Alias})" title="@item.CategoryName">
+                                                    @string.Format("{0}", item.CategoryName.Length > 30 ? item.CategoryName.Substring(0, 30) + "..." : item.CategoryName)
+                                                    <span id="" class="apolloQty pull-right">@item.NumberOfProduct</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="shopbyvendor" class="block block_shopby ">
+                            <div class="title_block">
+                                Brand
+                            </div>
+                            <div class="block_content" style="">
+                                <ul id="ul_catalog_vendor" class="listSidebar list-unstyled">
+                                    @if (Model.ListBrand != null && Model.ListBrand.Any())
+                                    {
+                                        foreach (var item in Model.ListBrand)
+                                        {
+                                            <li data-group="BRANDS">
+                                                <a href="@Url.Action("Detail","Brand",new { q=item.Alias})" style="cursor:pointer" title="@item.BrandName">
+                                                    @string.Format("{0}", item.BrandName.Length > 30 ? item.BrandName.Substring(0, 30) + "..." : item.BrandName)
+                                                    <span id="" class="apolloQty pull-right">@item.NumberOfProduct</span>
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="products_sider_block" class="block products_block nopadding ">
+                            <h4 class="title_block">
+                                <a title="Best Sellers">Product mới nhất</a>
+                            </h4>
+                            <div class="block_content products-block" style="">
+                                <ul class="products products-block list-unstyled">
+                                    @if (Model.ListProductTopSales != null && Model.ListProductTopSales.Any())
+                                    {
+                                        foreach (var item in Model.ListProductTopSales)
+                                        {
+                                            <li class="media clearfix">
+                                                <div class="product-block">
+                                                    <div class="product-container media">
+                                                        <a class="products-block-image img pull-left" href="@Url.Action("Detail","Shop",new { q=item.Alias})" title="@item.ProductName">
+                                                            <img class="replace-2x img-responsive" src="@item.ImageURL" alt="@item.ProductName">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <div class="product-content">
+                                                                <h5 class="name media-heading">
+                                                                    <a class="product-name" href="@Url.Action("Detail","Shop",new { q=item.Alias})" title="Clock Wooden">@string.Format("{0}", item.ProductName.Length > 20 ? item.ProductName.Substring(0, 20) + "..." : item.ProductName)</a>
+                                                                </h5>
+                                                                <div class="content_price price">
+                                                                    @if (item.ProductExtraPrice > 0 && item.ProductExtraPrice < item.ProductPrice)
+                                                                    {
+                                                                        <span class="old-price product-price"><span class="money">@item.ProductPrice.ToString("#,00") VNĐ</span></span><br />
+                                                                        <span class="price product-price sale-price">
+                                                                            <span class="money">@item.ProductExtraPrice.ToString("#,00") VNĐ</span>
+                                                                        </span><br />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span class="price product-price ">
+                                                                            <span class="money">@item.ProductPrice.ToString("#,00") VNĐ</span>
+                                                                        </span>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    function ChoosePage(pageIndex, that)
+    {
+        $("[id=pagination]").find("li").removeClass("active");
+        $(that).addClass("active");
+        if (pageIndex != 1)
+        {
+            $(".pagination_previous").removeClass("disabled");
+        }
+        else {
+            $(".pagination_previous").addClass("disabled");
+        }
+
+        if (pageIndex == '@Model.TotalPage')
+            $(".pagination_next").addClass("disabled");
+        else
+            $(".pagination_next").removeClass("disabled");
+
+        LoadDataPagging(pageIndex);
+    }
+
+    function PrevPage() {
+        var pageIndex = 1;
+        $("#pagination li").each(function (index) {
+            if ($(this).hasClass("active"))
+            {
+                var PageIndex = parseInt($(this).attr("data-page"));
+                $("[id=pagination]").find("li").removeClass("active");
+                if (PageIndex > 1)
+                {
+                    pageIndex = PageIndex - 1;
+                    $('[id=page_' + (PageIndex - 1) + ']').addClass("active");
+                }
+                else
+                    $('[id=page_1]').addClass("active");
+                if ((PageIndex - 1) == 1)
+                {
+                    $(".pagination_previous").addClass("disabled");
+                }
+
+                return false;
+            }
+        });
+        LoadDataPagging(pageIndex);
+    }
+
+    function NextPage() {
+        $(".pagination_previous").removeClass("disabled");
+        var totalPage = '@Model.TotalPage';
+        var pageIndex = '@Model.TotalPage';
+        $("#pagination li").each(function (index) {
+            if ($(this).hasClass("active")) {
+                var PageIndex = parseInt($(this).attr("data-page"));
+                $("[id=pagination]").find("li").removeClass("active");
+                if (PageIndex > totalPage) {
+                    $('[id=page_' + totalPage + ']').addClass("active");
+                }
+                else {
+                    pageIndex = parseInt(PageIndex) + 1;
+                    $('[id=page_' + pageIndex + ']').addClass("active");
+                }
+
+                if ((PageIndex + 1) == '@Model.TotalPage') {
+                    $(".pagination_next").addClass("disabled");
+                }
+                return false;
+            }
+        });
+        LoadDataPagging(pageIndex);
+    }
+
+    function LoadDataPagging(pageIndex)
+    {
+         $.ajax({
+            url: "@Url.Action("LoadDataPagging", "Collection")",
+            type: "GET",
+            data: { pageIndex: pageIndex,cateId :'@cateId' },
+            dataType: 'html',
+            beforeSend: function () {
+                //  $('.se-pre-con').show();
+            },
+            success: function (data) {
+                $('[id=product_list]').html(data);
+            },
+            complete: function () {
+                //  $('.se-pre-con').hide();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    }
+
+    function LoadDataFilterPrice(e) {
+        var type = $(e).val();
+        $.ajax({
+            url: "@Url.Action("LoadDataFilterPrice", "Home")",
+            type: "GET",
+            data: { type: type },
+            dataType: 'html',
+            beforeSend: function () { },
+            success: function (data) {
+                $('[id=product_list]').html(data);
+            },
+            complete: function () { },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    }
+</script>

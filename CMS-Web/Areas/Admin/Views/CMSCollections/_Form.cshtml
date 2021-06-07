@@ -1,0 +1,174 @@
+﻿
+@model CMS_DTO.CMSCollection.CMSCollectionModels
+@using CMS_Shared
+@{
+    Html.EnableUnobtrusiveJavaScript(true);
+    var _ID = Model.Id;
+}
+@Html.HiddenFor(model =>model.Id)
+@Html.HiddenFor(model => model.ImageURL)
+
+<style>
+    .clsContent {
+        height: 120px !important;
+    }
+</style>
+
+<div class="row form-horizontal form-label-left" style="margin-bottom:15px;">
+    <fieldset>
+        <legend>GENERAL INFORMATION</legend>
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Hình backgound</label>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    @if (!string.IsNullOrEmpty(Model.ImageURL))
+                    {
+                        <img id="upload-preview" src="@Model.ImageURL" height="150" width="300" class="" style="border-radius:3px !important" />
+                    }
+                    else
+                    {
+                        <img id="upload-preview" class="" src="@Commons.Image600_400" height="150" width="300" style="border-radius:3px !important" />
+                    }
+                </div>
+                <div class="col-md-1 col-sm-3 col-xs-12" style="line-height:55px;">
+                    <div class="upload-btn-wrapper" style="cursor:pointer;">
+                        <button class="btn btn-default" type="button" onclick="showPictureUpload();" style="margin-top:-6%;margin-left:50px">Select image (600px-400px)</button>
+                        @Html.TextBoxFor(model => model.PictureUpload, new { @type = "file", @onchange = "PreviewImage(this,\"upload-preview\")", @accept = "*.jpg", @class = "hidden", @id = "urlImage" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PictureUpload, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Last name</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.CollectionName, new { @class = "form-control", @placeholder = "Last name", @autocomplete = "off", @onKeyup = "change_alias(this.value)" })
+                    @Html.ValidationMessageFor(model => model.CollectionName, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Alias</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                    @Html.ValidationMessageFor(model => model.Alias, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Link</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @placeholder = "Link" })
+                    @Html.ValidationMessageFor(model => model.Link, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight">Category Link</label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    @Html.DropDownListFor(model => model.TypeLink,
+                        new SelectList(ViewBag.Link, "Value", "Text", Model.TypeLink),"Please choose Category Link",
+                        new
+                        {
+                            @class = "form-control select2_multiple",
+                            @id = "TypeLinkDdl",
+                            @style = "width:100%;"
+                        })
+                    @Html.ValidationMessageFor(model => model.TypeLink, null, new { @class = "label label-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Status</label>
+                <div class="col-md-1 col-sm-1 col-xs-12">
+                    <label>@Html.CheckBoxFor(model => model.IsActive, new { @class = "icheck" })</label>
+                </div>
+            </div>
+
+            <!--Description-->
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Description</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control ckeditor", placeholder = "Description" })
+                    @Html.ValidationMessageFor(model => model.Description, null, new { @class = "label" })
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+                <legend>HÌNH CHI TIẾT Product (600PX X 400PX)</legend>
+                <!--IMAGE-->
+                @*List Image*@
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group" style="background-color: lightgrey; border: 10px solid green; padding: 5px; margin: 5px; width: 100%; ">
+                            <div class="col-md-10 col-sm-12">
+                                <span class="fa fa-image" style="font-size: 22px; "><b>&nbsp;&nbsp; List data image</b></span>
+                            </div>
+                            <div class="col-md-2 col-sm-12">
+                                <button id="btn-add-group" class="btn btn-success btn-flat" type="button" onclick="AddImageItem('#list-image-item-product')">
+                                    <i class="fa fa-plus"></i>&nbsp;&nbsp;Add image
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tbody id="list-image-item-product">
+                                    @if (Model.ListImg != null && Model.ListImg.Count > 0)
+                                    {
+                                        foreach (var item in Model.ListImg)
+                                        {
+                                            @Html.Partial("_ImageItemCollection", item)
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+</div>
+    <script src="@Url.Content("~/Scripts/InputCustom.js")"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#TypeLinkDdl").select2({
+            placeholder: "Please choose Category Link",
+            //allowClear: true
+        });
+
+    })
+    function showPictureUpload() {
+        $('[id=urlImage]').click();
+    }
+
+    function AddImageItem(elemnetFillData) {
+        var _OffSet = $('.ng-image-product').length;
+        $.ajax({
+            url: '@Url.Action("AddImageItem", "CMSCollections")',
+            type: 'GET',
+            data: {
+                OffSet: _OffSet
+            },
+            dataType: 'html',
+            traditional: true,
+            beforeSend: function () {
+                $('.se-pre-con').show();
+            },
+            error: function (e) {
+            },
+            success: function (data) {
+                $(elemnetFillData).append(data);
+            },
+            complete: function () {
+                $('.se-pre-con').hide();
+            }
+        });
+    }
+
+    function DeleteImage(e) {
+        var tr = $(e).parents('tr:first');
+        $(tr).find('input.ImgProStatus').val(true);
+        $(tr).hide();
+        //========
+    }
+    </script>

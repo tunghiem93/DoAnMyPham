@@ -1,0 +1,72 @@
+2018-08-10 12:35:24,546- Thread:[23] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 12:35:24,836- Thread:[23] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 20:55:03,692- Thread:[19] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 20:55:03,856- Thread:[19] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 20:59:40,251- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 20:59:40,312- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:03:13,242- Thread:[15] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:03:13,310- Thread:[15] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:25:00,094- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:25:00,168- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:35:18,395- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-10 21:35:18,450- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

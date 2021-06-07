@@ -1,0 +1,142 @@
+﻿@{
+    Layout = null;
+}
+@model List<CMS_DTO.CMSCustomerInfor.CMS_CustomerInforModels >
+@*<style type="text/css">
+    #sample_3 ul {
+        width: 100% !important;
+    }
+
+        #sample_3 ul li .dtr-title {
+            width: 25% !important;
+        }
+
+        #sample_3 ul li .dtr-data {
+            width: 75% !important;
+        }
+</style>*@
+<div class="table-responsive">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box red">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs"></i>Customer request
+                </div>
+                <div class="actions">
+                    <a href="javascript:;" class="btn btn-default btn-sm" onclick='ShowView("@Url.Action("Create","CMSCustomerInfor")")'>
+                        <i class="fa fa-plus"></i> Add new
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover dt-responsive" id="sample_3">
+                    <thead>
+                        <tr>
+                            <th class="text-center"> Last name </th>
+                            <th class="text-center"> Email </th>
+                            <th class="text-center"> Phone </th>
+                            <th class="text-center"> Content</th>
+                            <th class="text-center"> Status </th>
+                            <th class="text-center"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td class="text-center">
+                                        @item.Name
+                                    </td>
+                                    <td class="text-center"> @item.Email </td>
+                                    <td class="text-center">
+                                        @item.Phone
+                                    </td>
+                                    <td class="text-center">@item.Subject</td>
+                                    <td class="text-center">
+                                        <span class="label label-sm label-success"> @item.sStatus </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:void(0)"
+                                           onclick='ShowView("@Url.Action("View","CMSCustomerInfor",new { Id=item.Id})")'
+                                           class="btn btn-primary btn-xs view details"><i class="fa fa-eye"></i>&nbsp;View</a>&nbsp;&nbsp;
+                                        <a href="javascript:void(0)"
+                                           onclick='ShowView("@Url.Action("Edit","CMSCustomerInfor",new { Id=item.Id})")'
+                                           class="btn btn-info btn-xs edit details"><i class="fa fa-edit"></i>&nbsp;Edit</a>&nbsp;&nbsp;
+                                        <a href="javascript:void(0)"
+                                           onclick='ShowView("@Url.Action("Delete","CMSCustomerInfor",new { Id=item.Id})")'
+                                           class="btn btn-danger btn-xs delete details"><i class="fa fa-trash-o"></i>&nbsp;Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    var _tableEmployee = null;
+    var _settingsOptionTableEmployee = {
+        "language": {
+            "aria": {
+                "sortAscending": ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            },
+            "emptyTable": "No data available in table",
+            "info": "Showing _START_ to _END_ of _TOTAL_ records",
+            "infoEmpty": "No records found",
+            "infoFiltered": "(filtered1 from _MAX_ total records)",
+            "lengthMenu": "Show _MENU_",
+            "search": "Search:",
+            "zeroRecords": "No matching records found",
+            "paginate": {
+                "previous": "Prev",
+                "next": "Next",
+                "last": "Last",
+                "first": "First"
+            }
+        },
+        "oLanguage": {
+
+            "sSearch": "Search:",
+            "sLengthMenu": "View _MENU_",
+            "sProcessing": "Processing...",
+            "sZeroRecords": "No matching line found",
+            "sInfo": "Watching _START_ to _END_ in total _TOTAL_ item",
+            "sInfoEmpty": "Watching 0 to 0 in total 0 item",
+            "sInfoFiltered": "(filtered from _MAX_ item)",
+            "sInfoPostFix": "",
+        },
+        "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+        "lengthMenu": [
+            [6, 15, 20, -1],
+            [6, 15, 20, "All"] // change per page values here
+        ],
+        "pageLength": 6,
+        "columnDefs": [
+            { "orderable": false, "targets": [5] },
+            { "width": "7%", "targets": [0] },
+            { "width": "7%", "targets": [1, 2] },
+            { "width": "20%", "targets": [3] },
+            { "width": "3%", "targets": [4] },
+            { "width": "10%", "targets": [5] },
+        ],
+        "order": [
+            [0, "asc"]
+        ]
+    };
+
+    $(document).ready(function () {
+        _tableEmployee = $('#sample_3').DataTable($.extend(true, {}, _settingsOptionTableEmployee));
+    })
+
+    function ShowView(url) {
+        ShowViewOrEdit(url);
+    }
+</script>

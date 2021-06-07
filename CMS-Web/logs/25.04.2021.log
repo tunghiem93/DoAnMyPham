@@ -1,0 +1,24 @@
+2021-04-25 07:03:01,989- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"null"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-04-25 07:14:00,307- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"9be102ea-a039-44c8-8946-15cb2aaf6b4d\",\"Name\":\"sp02\",\"Alias\":\"sp02\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":1000.0,\"ImageUrl\":\"http://localhost:52326/Uploads/Products/1615640520-b34350c2617e2a803f702c8c7a1f8520.jpg\",\"CreateDate\":\"2021-04-25T07:12:12\"},{\"ItemId\":\"cbe003e9-c58c-40ad-aeb7-12b9348d6a51\",\"Name\":\"sp04\",\"Alias\":\"sp04\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:52326/Uploads/Products/1615640520-b34350c2617e2a803f702c8c7a1f8520.jpg\",\"CreateDate\":\"2021-04-25T07:12:40\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-04-25 07:15:34,983- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-04-25 07:15:35,054- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4 ","EmployeeName":"Kenshin Gust","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

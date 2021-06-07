@@ -1,0 +1,180 @@
+2018-08-12 12:43:50,013- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 12:43:50,104- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 12:53:40,657- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 12:53:41,276- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 15:54:47,323- Thread:[67] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 15:54:47,405- Thread:[67] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:07:29,261- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:07:31,222- Thread:[10] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Send Mail Error
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.CommonHelper.SendContentMail(String EmailTo, String Content, String Name, String Subject, String imgUrl, String attachment) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\CommonHelper.cs:line 44","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-12 16:07:31,274- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:25:47,626- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:25:47,686- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:36:24,529- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:36:24,601- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:37:19,601- Thread:[17] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:37:19,712- Thread:[17] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Send Mail Error
+[ ************************************************************************************************ ]
+{"ClassName":"System.ArgumentNullException","Message":"Value cannot be null.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailMessage..ctor(String from, String to)\r\n   at CMS_Shared.Utilities.CommonHelper.SendContentMail(String EmailTo, String Content, String Name, String Subject, String imgUrl, String attachment) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\CommonHelper.cs:line 27","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"1\n.ctor\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailMessage\nVoid .ctor(System.String, System.String)","HResult":-2147467261,"Source":"System","WatsonBuckets":null,"ParamName":"from"}
+[ ************************************************************************************************ ]
+
+2018-08-12 16:37:19,734- Thread:[17] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:41:47,613- Thread:[13] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:41:49,359- Thread:[13] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Send Mail Error
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.CommonHelper.SendContentMail(String EmailTo, String Content, String Name, String Subject, String imgUrl, String attachment) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\CommonHelper.cs:line 45","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-12 16:41:49,496- Thread:[13] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 16:57:11,639- Thread:[13] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"null"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:02:20,541- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:02:22,219- Thread:[10] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Send Mail Error
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.CommonHelper.SendContentMail(String EmailTo, String Content, String Name, String Subject, String imgUrl, String attachment) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\CommonHelper.cs:line 45","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-12 17:02:22,252- Thread:[10] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:05:26,060- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:05:26,096- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:06:23,102- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 17:06:24,657- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Send Mail Error
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.CommonHelper.SendContentMail(String EmailTo, String Content, String Name, String Subject, String imgUrl, String attachment) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\CommonHelper.cs:line 45","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-12 17:06:24,704- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 21:03:15,048- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-12 21:03:15,335- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

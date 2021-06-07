@@ -1,0 +1,24 @@
+2018-08-24 00:03:25,502- Thread:[9] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-24 09:26:07,806- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-24 09:26:08,157- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4","EmployeeName":"Nghiem Tu","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/8dacf0d2-014d-4127-9727-809ff7c44d23.jpg","IsSupperAdmin":false,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-24 10:21:10,035- Thread:[13] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+

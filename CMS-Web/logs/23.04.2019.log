@@ -1,0 +1,54 @@
+2019-04-23 01:45:16,441- Thread:[9] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index() in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 65","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:45:47,248- Thread:[9] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index() in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 65","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:45:51,098- Thread:[8] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index() in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 65","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:47:32,956- Thread:[13] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":{},"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x) in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 68\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index() in D:\\My Outsource\\WebCar\\CMS-Web\\Controllers\\ShopController.cs:line 65","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:49:10,149- Thread:[14] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z)\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x)\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index()","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:50:32,096- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z)\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x)\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index()","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 01:50:42,031- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< Index: 
+[ ************************************************************************************************ ]
+{"ClassName":"System.NullReferenceException","Message":"Object reference not set to an instance of an object.","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_1.<Index>b__6(CMS_ImagesModels z)\r\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\r\n   at CMS_Web.Controllers.ShopController.<>c__DisplayClass7_0.<Index>b__5(CMS_ProductsModels x)\r\n   at System.Collections.Generic.List`1.ForEach(Action`1 action)\r\n   at CMS_Web.Controllers.ShopController.Index()","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\n<Index>b__6\nCMS-Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\nCMS_Web.Controllers.ShopController+<>c__DisplayClass7_1\nBoolean <Index>b__6(CMS_DTO.CMSImage.CMS_ImagesModels)","HResult":-2147467261,"Source":"CMS-Web","WatsonBuckets":null}
+[ ************************************************************************************************ ]
+
+2019-04-23 02:10:54,442- Thread:[18] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2019-04-23 02:10:54,718- Thread:[18] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"99fd230e-0132-4a51-9b52-7df31949c537","EmployeeName":"Nghiêm Xuân T?","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:52323/Uploads/Employees/8c780a5d-bcba-4d02-86be-d7dbc628df95.png","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

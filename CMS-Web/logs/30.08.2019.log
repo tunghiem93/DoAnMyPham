@@ -1,0 +1,12 @@
+2019-08-30 16:42:48,009- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2019-08-30 16:42:48,077- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4 ","EmployeeName":"Kenshin Gust","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

@@ -1,0 +1,57 @@
+﻿@model CMS_DTO.CMSCustomer.CMS_CustomerModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Tài khoản";
+}
+
+<main class="main-content">
+    <div id="register-page" class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="register-box">
+                    <h1>Tạo tài khoản</h1>
+                    @using (@Html.BeginForm("Index", "Account", FormMethod.Post, new { @id = "create_customer", @class = "form-horizontal create-form", @enctype = "multipart/form-data", }))
+                    {
+                        @Html.HiddenFor(model => model.ID)
+                        <input type="hidden" name="form_type" value="create_customer"><input type="hidden" name="utf8" value="✓">
+                        <h3 class="page-subheading">Thông tin tài khoản</h3>
+                        <label for="FirstName" class="label-register">First name</label>
+                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @id = "CustomerFirstName", @placeholder = "*First name", @autocapitalize = "words", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "label label-danger", })
+                        <label for="LastName" class="label-register">Last name</label>
+                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @id = "CustomerFirstName", @placeholder = "*Last name", @autocapitalize = "words", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "label label-danger", })
+                        <label for="Email" class="label-register">Email</label>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "CustomerEmail", @placeholder = "*Address Email", @type = "email", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @class = "label label-danger", })
+                        <label for="Phone" class="label-register">Số Phone</label>
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @id = "CustomerEmail", @placeholder = "Số Phone", })
+                        @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "label label-danger", })
+                        <label for="CreatePassword" class="label-register">Password</label>
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "txtPassword", @placeholder = "*Password", @type = "password", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.Password, null, new { @class = "label label-danger", })
+                        <label for="CreatePassword" class="label-register">Confirm Password</label>
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", @id = "txtConfirmPassword", @placeholder = "*Xác nhân Password", @type = "password", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "label label-danger", })
+                        <p>
+                            <input type="submit" value="Save thông tin" class="btn btn-outline">
+                        </p>
+                        <a class="link-back" href="@Url.Action("Index","Home")">
+                            <span>
+                                <i class="fa fa-long-arrow-left"></i>&nbsp;
+                                Quan lai Home
+                            </span>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[id=txtPassword]').val('@Model.Password')
+        $('[id=txtConfirmPassword]').val('@Model.Password')
+    });
+</script>

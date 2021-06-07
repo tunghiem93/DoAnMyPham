@@ -1,0 +1,12 @@
+2019-05-11 00:30:12,968- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2019-05-11 00:30:13,156- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"99fd230e-0132-4a51-9b52-7df31949c537","EmployeeName":"Nghiêm Xuân T?","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:52325/Uploads/Employees/8c780a5d-bcba-4d02-86be-d7dbc628df95.png","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

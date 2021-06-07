@@ -1,0 +1,72 @@
+2018-08-15 12:40:02,424- Thread:[9] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 12:40:11,170- Thread:[9] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 12:40:13,474- Thread:[9] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< SendMail : 
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.MailHelper.SendMail(String subject, String body, String emailTo) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\MailHelper.cs:line 38","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-15 12:43:03,659- Thread:[25] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 12:43:09,221- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 12:43:11,242- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< SendMail : 
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.MailHelper.SendMail(String subject, String body, String emailTo) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\MailHelper.cs:line 38","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-15 12:43:39,455- Thread:[11] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 12:43:50,240- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< SendMail : 
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.MailHelper.SendMail(String subject, String body, String emailTo) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\MailHelper.cs:line 38","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-15 12:44:23,041- Thread:[11] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< SendMail : 
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.MailHelper.SendMail(String subject, String body, String emailTo) in D:\\My Outsource\\WebSaleClocks\\CMS-Shared\\Utilities\\MailHelper.cs:line 38","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+
+2018-08-15 13:06:17,999- Thread:[45] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 13:07:15,833- Thread:[45] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> CustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+"tunx406.ktl@gmail.com"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-15 13:07:19,617- Thread:[45] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> ResponseCustomerForgotPassword
+[ ------------------------------------------------------------------------------------------------ ]
+{"result":true,"msg":""}
+[ ------------------------------------------------------------------------------------------------ ]
+

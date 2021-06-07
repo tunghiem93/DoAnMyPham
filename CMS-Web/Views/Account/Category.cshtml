@@ -1,0 +1,161 @@
+﻿@model CMS_DTO.CMSProduct.ProductViewModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Menu";
+}
+
+<!-- Start Body Content -->
+<div class="main" role="main" ng-controller="CartCtrl">
+    <div id="content" class="content full dashboard-pages">
+        <div class="container">
+            <div class="dashboard-wrapper">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 users-sidebar-wrapper">
+                        <!-- SIDEBAR -->
+                        <div class="users-sidebar tbssticky">
+                            <a href="user-dashboard.html" class="btn btn-block btn-primary add-listing-btn">Thông tin quản lý</a>
+                            <ul class="list-group">
+                                <li class="list-group-item active"> <span class="badge">3</span> <a href="@Url.Action("Category","Account")"><i class="fa fa-home"></i> Menu</a></li>
+                                @*<li class="list-group-item"> <span class="badge">5</span> <a href="@Url.Action("ManagementSearch","Account")"><i class="fa fa-folder-o"></i> Search</a></li>*@
+                                <li class="list-group-item"> <span class="badge" id="CartCount">0</span> <a href="@Url.Action("ManagementSave","Account")"><i class="fa fa-star-o"></i> Save trữ</a></li>
+                                @*<li class="list-group-item"> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-plus-square-o"></i> Tạo yêu cầu</a></li>*@
+                                @*<li class="list-group-item"> <span class="badge">2</span> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-edit"></i> Yêu cầu</a></li>*@
+                                <li class="list-group-item"> <a href="@Url.Action("ProfileAccount","Account")"><i class="fa fa-user"></i> Thông tin cá nhân</a></li>
+                                @*<li class="list-group-item"> <a href="@Url.Action("EditAccount","Account")"><i class="fa fa-cog"></i> Quản lý thông tin</a></li>*@
+                                <li class="list-group-item"> <a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                        <h2>Menu</h2>
+                        <p>Cuộc sống, là một bộ sách vô số chữ, mỗi người có cách đọc của riêng mình. Cuộc sống, là một câu hỏi có nhiều lời giải, mỗi người có đáp án của riêng mình. Cuộc sống, là một tách trà, mỗi người có cách thưởng thức của riêng mình. Những lúc không vui, hãy tự nhủ với bản thân: Rằng tất thảy của tất thảy, chính là để cuộc sống, thoải mái hơn, vui vẻ hơn, hạnh phúc hơn.</p>
+                        @*<div class="dashboard-block">
+                            <div class="dashboard-block-head">
+                                <a href="user-dashboard-saved-cars.html" class="btn btn-default btn-sm pull-right">Tất cả yêu cầu (2)</a>
+                                <h3>Yêu cầu</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered dashboard-tables saved-cars-table">
+                                    <thead>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Description </td>
+                                            <td>Price</td>
+                                            <td>Phát hành</td>
+                                            <td>Thanh toán</td>
+                                            <td>Chỉnh</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-repeat="item in Products">
+                                        <tr>
+                                            <td valign="middle"><input type="checkbox"></td>
+                                            <td>
+                                                <!-- Result -->
+                                                <a href="/Shop/Detail/{{item.Alias}}" class="car-image"><img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}"></a>
+                                                <div class="search-find-results">
+                                                    <h5><a href="/Shop/Detail/{{item.Alias}}">{{item.Name}}</a></h5>
+                                                    <ul class="inline">
+                                                        <li>{{item.Information}}</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td><span class="price">{{item.ProductPrice}}</span></td>
+                                            <td><span class="text-success">Phát hành</span><p ng-bind="item.CreateDate | item.CreateDate:'MM/dd/yyyy hh:mm'"></p></td>
+                                            <td align="center"><span class="label label-warning"></span></td>
+                                            <td align="center">
+                                                <button class="text-default" title="Ẩn" ng-click="RemoveItemOrder($index)"><i class="fa fa-archive"></i></button>
+                                                <button class="text-danger" title="Delete" ng-click="RemoveItemOrder($index)"><i class="fa fa-times"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-default btn-sm disabled">Delete lựa cFirst namen</button>
+                        </div>*@
+                        <div class="dashboard-block">
+                            <div class="dashboard-block-head">
+                                <a href="user-dashboard-saved-cars.html" class="btn btn-default btn-sm pull-right">Tất cả ( <span id="CartCount">0</span><span> )</span></a>
+                                <h3>Save trữ</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered dashboard-tables saved-cars-table">
+                                    <thead>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Description</td>
+                                            <td>Price</td>
+                                            <td>Thời gian</td>
+                                            <td>Chỉnh</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-repeat="item in Products">
+                                        <tr>
+                                            <td valign="middle"><input type="checkbox"></td>
+                                            <td>
+                                                <a href="/Shop/Detail/{{item.Alias}}" class="car-image"><img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}"></a>
+                                                <div class="search-find-results">
+                                                    <h5><a href="/Shop/Detail/{{item.Alias}}">{{item.Name}}</a></h5>
+                                                    <ul class="inline">
+                                                        <li>{{item.Information}}</li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            <td><span class="price">{{item.Price | currency : '' : 0}}</span></td>
+                                            <td><span class="text-success"></span><p ng-bind="item.CreateDate | item.CreateDate:'MM/dd/yyyy hh:mm'"></p></td>
+                                            <td align="center">
+                                                <button class="text-default" title="Ẩn" ng-click="RemoveItemOrder($index)"><i class="fa fa-archive"></i></button>
+                                                <button class="text-danger" title="Delete" ng-click="RemoveItemOrder($index)"><i class="fa fa-times"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-default btn-sm disabled">Delete lựa cFirst namen</button>
+                            <button class="btn btn-default btn-sm disabled">Lựa cFirst namen</button>
+                        </div>
+                        @*<div class="dashboard-block">
+            <div class="dashboard-block-head">
+                <a href="user-dashboard-saved-cars.html" class="btn btn-default btn-sm pull-right">Tất cả Search (5)</a>
+                <h3>Search</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered dashboard-tables saved-searches-table">
+                    <thead>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Từ Search</td>
+                            <td>Chi tiết</td>
+                            <td>Nhận thông báo</td>
+                            <td>Phát hành</td>
+                            <td>Chỉnh</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.ListProduct != null && Model.ListProduct.Any())
+                        {
+                            foreach (var item in Model.ListProduct)
+                            {
+                                <tr>
+                                    <td valign="middle"><input type="checkbox"></td>
+                                    <td>
+                                        <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="search-name">@item.ProductName</a>
+                                    </td>
+                                    <td>@item.ProductName</td>
+                                    <td><a href="#"><select class="form-control selectpicker input-sm"><option>Enable</option><option>Disable</option></select></a></td>
+                                    <td><span class="text-success">Save ngày</span> @item.CreatedDate.ToString("MM/dd/yyyy") @Html.Raw("@") @item.CreatedDate.ToString("hh:mm")</td>
+                                    <td align="center"><button class="text-danger"><i class="fa fa-times"></i></button></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-default btn-sm disabled">Delete lựa cFirst namen</button>
+        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Body Content -->

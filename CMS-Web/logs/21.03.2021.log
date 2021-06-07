@@ -1,0 +1,84 @@
+2021-03-21 00:01:55,588- Thread:[14] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 00:01:55,700- Thread:[14] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4 ","EmployeeName":"Kenshin Gust","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:34,814- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:34,905- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+null
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:38,570- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:38,578- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+null
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:44,900- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"Admin@123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:26:44,913- Thread:[22] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+null
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:27:43,239- Thread:[29] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:27:43,274- Thread:[29] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"900d2051-23b5-453d-ad0a-dbfbaf34add4 ","EmployeeName":"Kenshin Gust","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:57:16,709- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"9be102ea-a039-44c8-8946-15cb2aaf6b4d\",\"Name\":\"sp02\",\"Alias\":\"sp02\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":1000.0,\"ImageUrl\":\"http://localhost:52326/Uploads/Products/1615640520-b34350c2617e2a803f702c8c7a1f8520.jpg\",\"CreateDate\":\"2021-03-21T14:55:44\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:57:57,594- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"9be102ea-a039-44c8-8946-15cb2aaf6b4d\",\"Name\":\"sp02\",\"Alias\":\"sp02\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":1000.0,\"ImageUrl\":\"http://localhost:52326/Uploads/Products/1615640520-b34350c2617e2a803f702c8c7a1f8520.jpg\",\"CreateDate\":\"2021-03-21T14:55:44\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:58:05,361- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"9be102ea-a039-44c8-8946-15cb2aaf6b4d\",\"Name\":\"sp02\",\"Alias\":\"sp02\",\"UnitId\":\"\",\"Quantity\":1,\"Price\":1000.0,\"ImageUrl\":\"http://localhost:52326/Uploads/Products/1615640520-b34350c2617e2a803f702c8c7a1f8520.jpg\",\"CreateDate\":\"2021-03-21T14:55:44\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2021-03-21 14:58:07,581- Thread:[12] - Level:ERROR - From: NSLog.Logger.Error - Message: 
+<<< SendMail : 
+[ ************************************************************************************************ ]
+{"ClassName":"System.Net.Mail.SmtpException","Message":"The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.7.0 Authentication Required. Learn more at","Data":null,"InnerException":null,"HelpURL":null,"StackTraceString":"   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)\r\n   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, MailAddress from, Boolean allowUnicode)\r\n   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, Boolean allowUnicode, SmtpFailedRecipientException& exception)\r\n   at System.Net.Mail.SmtpClient.Send(MailMessage message)\r\n   at CMS_Shared.Utilities.MailHelper.SendMailOrder(String subject, String body, String emailTo) in D:\\Study\\DoAnMonHoc\\WebBanRauSach\\CMS-Shared\\Utilities\\MailHelper.cs:line 79","RemoteStackTraceString":null,"RemoteStackIndex":0,"ExceptionMethod":"8\nCheckResponse\nSystem, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\nSystem.Net.Mail.MailCommand\nVoid CheckResponse(System.Net.Mail.SmtpStatusCode, System.String)","HResult":-2146233088,"Source":"System","WatsonBuckets":null,"Status":530}
+[ ************************************************************************************************ ]
+

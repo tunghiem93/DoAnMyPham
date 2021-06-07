@@ -1,0 +1,39 @@
+﻿@model CMS_DTO.CMSCustomerInfor.CMS_CustomerInforModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Contact";
+}
+
+<div class="page-banner">
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+    </nav>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="wr-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.8735206274055!2d106.6419903148005!3d10.744229992343381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e639c1d0107%3A0x44479bd60cbf8b41!2zU-G7kSAxNDIsIDE0NiBQaOG6oW0gUGjDuiBUaOG7qSwgcGjGsOG7nW5nIDQsIFF14bqtbiA2LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2s!4v1615899989574!5m2!1svi!2s" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Review</h3>
+            <p>
+                If you have any questions, please send us a request, and we will get back to you as soon as possible.
+                .
+            </p>
+            @using (@Html.BeginForm("ContactInfor", "Contact", FormMethod.Post, new { @id = "frmContact", @class = "", @enctype = "multipart/form-data", }))
+            {
+                @Html.TextBoxFor(model => model.Name, new { @id = "CustomerEmail", @placeholder = "*Full name", @required = "required" })
+                @Html.TextBoxFor(model => model.Phone, new { @id = "CustomerEmail", @placeholder = "*Phone", @required = "required" })
+                @Html.TextBoxFor(model => model.Email, new { @id = "CustomerEmail", @placeholder = "*Email", @type = "email", @required = "required" })
+                @Html.TextAreaFor(model => model.Message, new { @id = "CustomerEmail", @placeholder = "*Message" })
+                <div><input type="submit" class="btn btn-primary btn-lg" value="Send request"></div>
+            }
+        </div>
+    </div>
+</div>
+

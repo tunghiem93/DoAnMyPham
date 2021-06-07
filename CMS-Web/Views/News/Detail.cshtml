@@ -1,0 +1,74 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var _ListSlider = Session["SliderSession"] as List<CMS_DTO.CMSSession.SliderSession>;
+}
+
+@model  CMS_DTO.CMSNews.CMS_NewsViewModel
+@using CMS_Shared;
+<div>
+    <div class="page-banner">
+        <nav aria-label="breadcrumb" role="navigation">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                @if (Model.News != null && Model.News.Type == (int)Commons.ETypeNews.ThiTruong)
+                {
+                    <li class="breadcrumb-item"><a href="@Url.Action("Tin_Thi_Truong", "News")">Tin thị trường</a></li>
+                }
+                else
+                {
+                    <li class="breadcrumb-item"><a href="@Url.Action("Tin_Khuyen_Mai", "News")">Tin khuyến mãi</a></li>
+                }
+
+                <li class="breadcrumb-item active" aria-current="page">
+                    @if (Model.News != null)
+                    {
+                        @Model.News.Title
+                    }
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container my-5 ofl">
+        <div class="row mt-2">
+            @if (Model.News != null)
+            {
+                <div class="col-md-8 wow slideInLeft">
+                    <h1 class="h3">@Model.News.Title </h1>
+                    <p><small><i class="fa fa-calendar"></i> @Model.News.CreatedDate.ToString("dd/MM/yyyy")</small></p>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">@Model.News.Short_Description</p>
+                    </blockquote>
+                    <div class="newsdetailcontent">
+                        <p>@Model.News.Description</p>
+                    </div>
+                    <div class="fb-comments" data-width="100%" data-href="" data-numposts="5"></div>
+                </div>
+            }
+
+            <div class="col-md-4 wow slideInRight">
+                @if (Model.ListNewsNew != null && Model.ListNewsNew.Any())
+                {
+                <div class="latestnews">
+                    <h3>Tin View nhiều</h3>
+                    @foreach (var item in Model.ListNewsNew)
+                    {
+                        <div class="clearfix mb-3">
+                            <div class="wrlnl">
+                                <a href="@Url.Action("Detail","News", new {q = item.Alias })"><img src="@item.ImageURL" alt="@item.Title" width="70" height="70" /></a>
+                            </div>
+                            <div class="wrlnr">
+                                <h4>
+                                    <a href="@Url.Action("Detail","News", new {q = item.Alias })">
+                                        @item.Title
+                                    </a>
+                                </h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

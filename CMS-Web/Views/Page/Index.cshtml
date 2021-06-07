@@ -1,0 +1,27 @@
+﻿@model CMS_DTO.CMSPage.CMS_PageModes
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Hướng dẫn mua hàng - Bảo hành";
+}
+
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-area ptb-60 ptb-sm-30">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                <li class="active">Hướng dẫn mua hàng || Bảo hành</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
+<!-- Breadcrumb End -->
+<!-- About Main Area Start -->
+<div class="about-main-area" style="margin-bottom: 50px !important;">
+    <div class="container">
+        <div class="row">
+            <div>@Html.Raw(Model.Description)</div>
+        </div>
+    </div>
+</div>

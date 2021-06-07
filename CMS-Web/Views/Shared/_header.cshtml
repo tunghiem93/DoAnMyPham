@@ -1,0 +1,58 @@
+﻿@{ 
+    var _ListCategory = Session["ListCateSession"] as List<CMS_DTO.CMSCategories.CMSCategoriesModels>;
+}
+<div class="top-header">
+    <a href="javascript:" class="btnmenu"><i></i></a>
+    <div class="container">
+        <div class="clearfix">
+            <div class="float-right d-md-none ml-2 wr-shopping-cart">
+                <a href="@Url.Action("Index","Cart")" title="Giỏ hàng" class="text-danger"><i class="fa fa-shopping-cart fa-fw align-middle" aria-hidden="true"></i>(<span class="_clsCartCount">0</span>)</a>
+            </div>
+            <div class="float-right">
+                <form class="frm-mainform float-right" id="frm-mainform" action="/tim-kiem">
+                    <input type="text" required name="kw" id="kw" placeholder="Search" value="" />
+                    <button><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mid-nav">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-2 text-md-center">
+            <a href="/" class="logo">
+                <img src="@Url.Content("~/Images/logo.png")" style="max-width: 103% !important; "/>
+            </a>
+        </div>        
+    </div>
+</div>
+<nav class="mainnav">
+    <div class="container clearfix">
+        <ul class="nav">
+            <li><a href="/">Home</a></li>
+            <li>
+                <a href="@Url.Action("Index","Shop")">Product  </a> 
+            </li>
+            <li><a href="@Url.Action("Index","Contact")">Contact</a></li>
+            <li><a href="@Url.Action("Index","About")">About</a></li>
+            <li>
+                <a href="@Url.Action("Index","Cart")" class="text-danger"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Shopping cart (<span class="_clsCartCount">0</span>)</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="mobilemenu">
+    <div class="container">  
+        <div class="row">
+            <div class="col-6">
+                <ul>
+                    <li><a href="@Url.Action("Index","Contact")">Liên hệ</a></li>
+                    <li><a href="@Url.Action("Index","About")">Giới thiệu</a></li>
+                    <li><a href="/#">Zumi</a></li>
+                    <li><a href="/#">Quà tết</a></li>
+                    <li><a href="@Url.Action("Index","Cart")" class="text-danger"><i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i>Giỏ hàng (<span class="_clsCartCount">0</span>)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

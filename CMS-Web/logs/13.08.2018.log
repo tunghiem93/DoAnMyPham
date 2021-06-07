@@ -1,0 +1,54 @@
+2018-08-13 09:43:29,353- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"null"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:43:33,570- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"null"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:53:54,828- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:53:55,188- Thread:[21] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:57:04,929- Thread:[8] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:57:10,921- Thread:[4] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:57:29,474- Thread:[21] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 09:57:29,999- Thread:[26] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-13 10:19:09,238- Thread:[29] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> List Order Cookie
+[ ------------------------------------------------------------------------------------------------ ]
+"[{\"ItemId\":\"e5abaaf6-d196-47ee-af02-8d86e65c01b2\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":30000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/f0c958c9-86cc-46ca-b834-d444cfc55ec9.jpg\"},{\"ItemId\":\"b24d8b17-8a57-43ae-9949-7ccc0e42da37\",\"UnitId\":\"\",\"Quantity\":2,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/dd86d26f-2967-4cdc-bb11-979196463fdf.jpg\"},{\"ItemId\":\"b9b4af23-87c9-455b-becb-aa42b8dad6cc\",\"UnitId\":\"\",\"Quantity\":4,\"Price\":120000.0,\"ImageUrl\":\"http://localhost:53321/Uploads/Products/936f800e-0b37-4d6c-b29d-44b33dc1e0af.jpg\"}]"
+[ ------------------------------------------------------------------------------------------------ ]
+

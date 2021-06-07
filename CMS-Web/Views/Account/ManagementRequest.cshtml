@@ -1,0 +1,85 @@
+﻿@model CMS_DTO.CMSProduct.ProductViewModels
+
+@{
+    ViewBag.Title = "Yêu cầu";
+}
+
+    <!-- Start Body Content -->
+    <div class="main" role="main">
+        <div id="content" class="content full dashboard-pages">
+            <div class="container">
+                <div class="dashboard-wrapper">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4 users-sidebar-wrapper">
+                            <!-- SIDEBAR -->
+                            <div class="users-sidebar tbssticky">
+                                <a href="user-dashboard.html" class="btn btn-block btn-primary add-listing-btn">Thông tin quản lý</a>
+                                <ul class="list-group">
+                                    <li class="list-group-item active"> <span class="badge">5</span> <a href="@Url.Action("Category","Account")"><i class="fa fa-home"></i> Menu</a></li>
+                                    <li class="list-group-item"> <span class="badge">5</span> <a href="@Url.Action("ManagementSearch","Account")"><i class="fa fa-folder-o"></i> Search</a></li>
+                                    <li class="list-group-item"> <span class="badge">12</span> <a href="@Url.Action("ManagementSave","Account")"><i class="fa fa-star-o"></i> Save trữ</a></li>
+                                    <li class="list-group-item"> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-plus-square-o"></i> Tạo yêu cầu</a></li>
+                                    <li class="list-group-item"> <span class="badge">2</span> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-edit"></i> Yêu cầu</a></li>
+                                    <li class="list-group-item"> <a href="@Url.Action("DetailAccount","Account")"><i class="fa fa-user"></i> Thông tin cá nhân</a></li>
+                                    <li class="list-group-item"> <a href="@Url.Action("EditAccount","Account")"><i class="fa fa-cog"></i> Quản lý thông tin</a></li>
+                                    <li class="list-group-item"> <a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-sm-8">
+                            <h2>Yêu cầu</h2>
+                            <div class="dashboard-block">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered dashboard-tables saved-cars-table">
+                                        <thead>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Description </td>
+                                                <td>Price</td>
+                                                <td>Phát hành</td>
+                                                <td>Thanh toán</td>
+                                                <td>Chỉnh</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.ListProduct != null && Model.ListProduct.Any())
+                                            {
+                                                foreach (var item in Model.ListProduct)
+                                                {
+                                                    <tr>
+                                                        <td valign="middle"><input type="checkbox"></td>
+                                                        <td>
+                                                            <!-- Result -->
+                                                            <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="car-image"><img src="@item.ImageURL" alt=""></a>
+                                                            <div class="search-find-results">
+                                                                <h5><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">@item.ProductName</a></h5>
+                                                                <ul class="inline">
+                                                                    <li>2 door Coupe</li>
+                                                                    <li>6 cyl, 3.0 L Petrol</li>
+                                                                    <li>6 speed Automatic</li>
+                                                                    <li>Rear Wheel Drive</li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                        <td><span class="price">@item.ProductPrice</span></td>
+                                                        <td><span class="text-success">Phát hành</span> @item.CreatedDate.ToString("MM/dd/yyyy") @Html.Raw("@") @item.CreatedDate.ToString("hh:mm")</td>
+                                                        <td align="center"><span class="label label-warning">Pending payment</span></td>
+                                                        <td align="center">
+                                                            <button class="text-default" title="Archive"><i class="fa fa-archive"></i></button>
+                                                            <button class="text-danger" title="Delete"><i class="fa fa-times"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button class="btn btn-default btn-sm disabled">Delete lựa cFirst namen</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Body Content -->

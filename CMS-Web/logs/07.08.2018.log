@@ -1,0 +1,24 @@
+2018-08-07 12:51:54,777- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-07 12:51:55,258- Thread:[12] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-07 12:56:25,610- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Start
+[ ------------------------------------------------------------------------------------------------ ]
+{"Email":"Admin@gmail.com","Password":"123","RememberMe":false,"ReturnUrl":null,"LanguageId":null}
+[ ------------------------------------------------------------------------------------------------ ]
+
+2018-08-07 12:56:25,686- Thread:[7] - Level:INFO  - From: NSLog.Logger.Info - Message: 
+>>> Employee Login Done
+[ ------------------------------------------------------------------------------------------------ ]
+{"EmployeeID":"b2434522-0212-4e82-bea5-68dcceaf233d","EmployeeName":"Kenshin Admin","EmployeeEmail":"admin@gmail.com","EmployeeImageURL":"http://localhost:53321/Uploads/Employees/9fa3d940-40c3-4453-9510-fb1e6d7a80cf.jpg","IsSupperAdmin":true,"RoleID":null,"RoleName":null}
+[ ------------------------------------------------------------------------------------------------ ]
+

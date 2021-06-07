@@ -1,0 +1,117 @@
+﻿@model CMS_DTO.CMSCustomer.ClientLoginModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Đăng nhập";
+}
+<!-- Breadcrumb Start -->
+<div class="breadcrumb-area ptb-60 ptb-sm-30">
+    <div class="container">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li class="active"><a href="#">Đăng nhập</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Container End -->
+</div>
+<!-- Breadcrumb End -->
+<!-- LogIn Page Start -->
+<div class="log-in pb-60">
+    <div class="container">
+        <div class="row">
+            <!-- New Customer Start -->
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="new-customer">
+                        <h3>Thành viên mới</h3>
+                        <p class="mtb-10"><strong>Đăng ký</strong></p>
+                        <p>Tạo tài khoản mới bằng việc đăng ký và nhấn nút tạo tài khoản để trở thành thành viên của chúng tôi!</p>
+                        <a class="customer-btn" href="@Url.Action("SignUp", "Login")">Đăng ký</a>
+                    </div>
+                </div>
+            </div>
+            <!-- New Customer End -->
+            <!-- Returning Customer Start -->
+            <div class="col-sm-6">
+                <div class="well">
+                    <div class="return-customer">
+                        <h3 class="mb-10">Customer đăng nhập</h3>
+                        <p class="mb-10"><strong>Thành viên</strong></p>
+                        @using (@Html.BeginForm("SignIn", "Login", FormMethod.Post, new { @class = "form-horizontal create-form", @enctype = "multipart/form-data", }))
+                        {
+                            <div class="form-group">
+                                <label class="control-label">Address Email...</label>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "CustomerEmail", @placeholder = "*Address Email", @type = "email", @required = "required" })
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Password</label>
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", @id = "password", @placeholder = "*Password", @type = "password", @required = "required" })
+                            </div>
+                            <div>
+                                <a href="@Url.Action("ForgetPassword", "Login")">Quên Password?</a>
+                            </div>
+                            <input type="submit" value="Đăng nhập" class="return-customer-btn">
+                            <div class="form-group">
+                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "label label-danger", })
+                            </div>                            
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Returning Customer End -->
+        </div>
+        <!-- Row End -->
+    </div>
+    <!-- Container End -->
+</div>
+<!-- LogIn Page End -->
+
+<script type="text/javascript">
+
+    $('#idRecoverPassword').click(function () {
+        debugger;
+        $('#idCustomerLoginForm').hide();
+        $('#idRecoverPasswordForm').show();
+    });
+
+    $('#idHideRecoverPasswordLink').click(function () {
+        $('#idRecoverPasswordForm').hide();
+        $('#idCustomerLoginForm').show();
+    });
+
+    function ResetPassword() {
+        var Email = $('[id=RecoverEmail]').val();
+        if (Email.length == 0)
+        {
+            $('[id=lblError]').text("Vui lòng nhập Address E-mail");
+        }
+        else {
+            var result = RegeViewail(Email);
+            if (!result)
+                $('[id=lblError]').text("Address E-mail không đúng");
+            else
+                $('[id=lblError]').text("");
+
+            $.ajax({
+                url: "@Url.Action("ForgetPassword", "Login")",
+                type: "GET",
+                data: { Email: Email },
+                dataType: 'json',
+                beforeSend: function () {
+                  //  $('.se-pre-con').show();
+                },
+                success: function (data) {
+                    $('[id=lblError]').text(data.message);
+                },
+                complete: function () {
+                  //  $('.se-pre-con').hide();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                }
+            });
+        }
+    }
+</script>
+
+

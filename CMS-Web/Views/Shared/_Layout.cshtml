@@ -1,0 +1,319 @@
+﻿@{
+    string controller = (string)ViewContext.RouteData.Values["controller"];
+    string action = (string)ViewContext.RouteData.Values["action"];
+}
+@using CMS_Shared;
+
+<!DOCTYPE html>
+<html class="no-js" ng-app="appWebQuaTetViet">
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Project</title>   
+
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Libraries/plugins/jquery.min.js")"></script>
+    <!-- animate css -->
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" />
+    <!-- nivo slider css -->
+    <link href="@Url.Content("~/Content/nivo-slider.css")" rel="stylesheet" />
+    <!-- owl carousel css -->
+    <link href="@Url.Content("~/Content/owl.carousel.min.css")" rel="stylesheet" />
+    <!-- price slider css -->
+    <link href="@Url.Content("~/Content/jquery-ui.min.css")" rel="stylesheet" />
+    <!-- fontawesome css -->
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <!-- bootstrap css -->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+
+    <link href="@Url.Content("~/Content/global.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/product.dev.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/productlist.dev.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/hom.dev.css")" rel="stylesheet" />
+    <!-- responsive css -->
+    <link href="@Url.Content("~/Content/responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Contact.dev.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/order.dev.css")" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+
+    <!-- modernizr js -->
+    <script src="@Url.Content("~/Scripts/modernizr.js")"></script>
+    <script src="@Url.Content("~/Scripts/js.cookie.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/InitCookie.js")"></script>
+
+    <style>
+        .fb_button {
+            clear: unset;
+            float: left;
+            border-radius: 3px;
+            padding: 3px 0px;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: left;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-size: 14px;
+            line-height: 1.42857;
+            border-radius: 4px;
+            display: block;
+            width: 100%;
+            background-color: #4267b2;
+            margin-bottom: 13px;
+            padding-left: 7px !important;
+        }
+
+        ._5h0s {
+            padding-left: 22px !important;
+        }
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body>    
+    <div class="wrapper homepage">
+        <header>
+            @Html.Partial("_header")
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+
+    <div class="off-white-bg">
+        @Html.Partial("_footer")
+    </div>
+
+
+    <!-- Wrapper End -->
+    <!-- jquery 3.12.4 -->
+    <script src="@Url.Content("~/Scripts/jquery-1.12.4.min.js")"></script>
+    <!-- mobile menu js  -->
+    <script src="@Url.Content("~/Scripts/jquery.meanmenu.min.js")"></script>
+    <!-- scroll-up js -->
+    <script src="@Url.Content("~/Scripts/jquery.scrollUp.js")"></script>
+    <!-- owl-carousel js -->
+    <script src="@Url.Content("~/Scripts/owl.carousel.min.js")"></script>
+    <!-- slick js -->
+    <script src="@Url.Content("~/Scripts/slick.min.js")"></script>
+    <!-- wow js -->
+    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
+    <!-- price slider js -->
+    <script src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.countdown.min.js")"></script>
+    <!-- nivo slider js -->
+    <script src="@Url.Content("~/Scripts/jquery.nivo.slider.js")"></script>
+    <!-- fancybox js -->
+    <script src="@Url.Content("~/Scripts/jquery.fancybox.min.js")"></script>
+
+    <!-- popper -->
+    <script src="@Url.Content("~/Scripts/popper.js")"></script>
+
+    <!-- bootstrap -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+
+    <!-- plugins -->
+    <script src="@Url.Content("~/Scripts/plugins.js")"></script>
+    <!-- main js -->
+    <script src="@Url.Content("~/Scripts/main.js")"></script>
+
+    @*<script src="@Url.Content("~/Scripts/script.js")"></script>*@
+    <script src="@Url.Content("~/Scripts/jquery_cookie.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/global.js")"></script>
+    <script type="text/javascript">
+        var GridView;
+        function GridViewFunction() {
+            var GridView = setTimeout(function () {
+                $("#results-holder").removeClass("results-list-view");
+                $("#results-holder").addClass("results-grid-view");
+                $("#results-list-view").removeClass("active");
+                $("#results-grid-view").addClass("active");
+                $('body,html').animate({ scrollTop: "212" }, 750, 'easeOutExpo');
+            }, 800);
+        }
+        function GridViewStopFunction() {
+            clearTimeout(GridView);
+        }
+        var ListView;
+        function ListViewFunction() {
+            var ListView = setTimeout(function () {
+                $("#results-holder").removeClass("results-grid-view");
+                $("#results-holder").addClass("results-list-view");
+                $("#results-grid-view").removeClass("active");
+                $("#results-list-view").addClass("active");
+                $("#results-holder").find(".result-item").css("height", "auto");
+                $('body,html').animate({ scrollTop: "212" }, 750, 'easeOutExpo');
+            }, 800);
+        }
+        function ListViewStopFunction() {
+            clearTimeout(ListView);
+        }
+        $("#results-grid-view").on("click", function () {
+            GridViewFunction();
+            GridViewStopFunction();
+            return false;
+        });
+
+        $("#results-list-view").on("click", function () {
+            ListViewFunction();
+            ListViewStopFunction();
+            return false;
+        });
+
+        var app = angular.module("appWebQuaTetViet", []);
+        app.controller("CartCtrl", ["$scope", "$rootScope", function ($scope, $rootScope) {
+            $scope.quantityDefault = 1;
+            $rootScope.Products = getListOrder();
+            /* add cart */
+            $scope.AddToCart = function (ItemId, UnitId, Qty, Price, ImageUrl, Name, Alias) {
+                var _Order = {
+                    ItemId: ItemId,
+                    UnitId: UnitId,
+                    Quantity: Qty,
+                    Price: Price,
+                    Name: Name,
+                    Alias: Alias,
+                    ImageUrl: ImageUrl,
+                    CreateDate: '@DateTime.Now',
+                };
+                CreateOrUpdateOrder(_Order);
+                $rootScope.Products = getListOrder();
+                $scope.setTotals($rootScope.Products);
+                //$('[id=AjaxifyModal]').removeClass("hidden");
+                $(window).scrollTop(0);
+            }
+            /* close modal */
+            $scope.CloseCart = function () {
+                $('[id=AjaxifyModal]').addClass("hidden");
+            }
+
+            /* update qty of order by order id */
+            $scope.UpdateQtyOrder = function ($index) {
+                UpdateQuantity($rootScope.Products[$index].ItemId, $rootScope.Products[$index].Quantity);
+                var Orders = getListOrder();
+                $scope.setTotals(Orders);
+            }
+            /* count total bill of order */
+            $scope.setTotals = function (Orders) {
+                var _OrderTotal = 0;
+                angular.forEach(Orders, function (item, index) {
+                    _OrderTotal += item.Quantity * item.Price;
+                });
+                $rootScope.OrderTotal = _OrderTotal;
+            }
+
+            $scope.QtyAdjust = function ($index, type) {
+                if (type == 0) {
+                    $rootScope.Products[$index].Quantity -= 1;
+                    if (parseInt($rootScope.Products[$index].Quantity) < 1)
+                        $rootScope.Products[$index].Quantity = 1;
+                }
+                else {
+                    $rootScope.Products[$index].Quantity += 1;
+                }
+                UpdateQuantity($rootScope.Products[$index].ItemId, $rootScope.Products[$index].Quantity);
+                var Orders = getListOrder();
+                $scope.setTotals(Orders);
+            }
+
+            $scope.QtyAdjustNoOrder = function (type) {
+                if (type == 0) {
+
+                    $scope.Qty = $scope.Qty - 1;
+                    if (parseInt($scope.Qty) < 1)
+                        $scope.Qty = 1;
+                }
+                else {
+                    $scope.Qty = $scope.Qty + 1;
+                }
+            }
+
+            $scope.ngChangeQty = function () {
+                if (parseInt($scope.Qty) < 1)
+                    $scope.Qty = 1;
+            }
+
+            $scope.ngBlur = function () {
+                if ($scope.Qty.length == 0)
+                    $scope.Qty = 1;
+            }
+            $scope.ngBlurModal = function ($index) {
+                if ($rootScope.Products[$index].Quantity.length == 0) {
+                    $rootScope.Products[$index].Quantity = 1;
+                    UpdateQuantity($rootScope.Products[$index].ItemId, $rootScope.Products[$index].Quantity);
+                    var Orders = getListOrder();
+                    $scope.setTotals(Orders);
+                }
+
+            }
+
+            $scope.RemoveItemOrder = function ($index) {
+                RemoveOrderByItemId($rootScope.Products[$index].ItemId);
+                var Orders = getListOrder();
+                $rootScope.Products = Orders;
+                $scope.setTotals(Orders);
+            }
+
+            $scope.getTotal = function () {
+                var total = 0;
+                if ($rootScope.Products != null) {
+                    for (var i = 0; i < $rootScope.Products.length; i++) {
+                        var product = $rootScope.Products[i];
+                        total += (product.Price * product.Quantity);
+                    }
+                }
+                return total;
+            }
+        }]);
+
+        $(document).ready(function () {
+            getListOrder();
+            $('.mainnav ul.nav > li:first-child').addClass('active');
+            new WOW().init();
+        });
+    </script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script>
+        function UserLogin() {
+            var _email = $("#idusername").val();
+            var _password = $("#idpassword").val();
+            var model = { Email: _email, Password: _password }
+            if (_email != null && _email.length > 0 && _password != null && _password.length > 0) {
+                $.ajax({
+                    url: "@Url.Action("SignIn", "Login")",
+                    type: "GET",
+                    data: model,
+                    dataType: 'json',
+                    beforeSend: function () {
+                        //$('.se-pre-con').show();
+                    },
+                    success: function (data) {
+                        if (data.Success == false) {
+                            $('[id=idusernameeror]').show();
+                        }
+                    },
+                    complete: function () {
+                        //  $('.se-pre-con').hide();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    }
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
+

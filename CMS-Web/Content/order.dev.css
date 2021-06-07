@@ -1,0 +1,64 @@
+﻿h3.pr-name{
+    font-size:14px;
+}
+.cart-q {
+    width: 40px;
+    text-align: center;
+}
+.cartitem{
+    border-bottom:solid 1px #e5e5e5;
+}
+.cartitem:last-of-type{
+    border:none;
+}
+#wrcart img{
+    max-width:100%;
+}
+#wrcart .cartitem a{
+    color:#323438;
+}
+#wrcart .cartitem a:hover{
+    color:#ff6a00;
+}
+.addtocart:hover{
+    color:#fff;
+}
+.wr-order input,.wr-order textarea{
+    border-radius:0;
+}
+.wr-order input:focus,.wr-order textarea:focus{
+    outline:solid 1px #000;
+    border-color:transparent;
+}
+
+.btn-order{
+    background: #bd8e26;
+    color: #fff;
+    width: 250px;
+    height: 42px;
+    margin:2em auto;
+    border: none;
+    display: block;
+    text-align: center;
+    line-height: 42px;
+}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+@media (min-width: 768px){
+    .col-md-8 {
+    -ms-flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+}
+.col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+}

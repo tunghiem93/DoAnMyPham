@@ -1,0 +1,214 @@
+﻿@model CMS_DTO.CMSCustomer.CMS_CustomerModels
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+}
+
+<!-- Start Body Content -->
+<div class="main" role="main">
+    <div id="content" class="content full dashboard-pages">
+        <div class="container">
+            <div class="dashboard-wrapper">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4">
+                        <!-- SIDEBAR -->
+                        <div class="users-sidebar tbssticky">
+                            <a href="user-dashboard.html" class="btn btn-block btn-primary add-listing-btn">Thông tin quản lý</a>
+                            <ul class="list-group">
+                                <li class="list-group-item active"> <span class="badge">3</span> <a href="@Url.Action("Category","Account")"><i class="fa fa-home"></i> Menu</a></li>
+                                @*<li class="list-group-item"> <span class="badge">5</span> <a href="@Url.Action("ManagementSearch","Account")"><i class="fa fa-folder-o"></i> Search</a></li>*@
+                                <li class="list-group-item"> <span class="badge" id="CartCount">0</span> <a href="@Url.Action("ManagementSave","Account")"><i class="fa fa-star-o"></i> Save trữ</a></li>
+                                @*<li class="list-group-item"> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-plus-square-o"></i> Tạo yêu cầu</a></li>*@
+                                @*<li class="list-group-item"> <span class="badge">2</span> <a href="@Url.Action("ManagementRequest","Account")"><i class="fa fa-edit"></i> Yêu cầu</a></li>*@
+                                <li class="list-group-item"> <a href="@Url.Action("ProfileAccount","Account")"><i class="fa fa-user"></i> Thông tin cá nhân</a></li>
+                                @*<li class="list-group-item"> <a href="@Url.Action("EditAccount","Account")"><i class="fa fa-cog"></i> Quản lý thông tin</a></li>*@
+                                <li class="list-group-item"> <a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                        <h2>Thông tin cá nhân</h2>
+                        <div class="dashboard-block">
+                            <div class="tabs profile-tabs">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"> <a data-toggle="tab" href="#personalinfo" aria-controls="personalinfo" role="tab">Thông tin</a></li>
+                                    <li> <a data-toggle="tab" href="#billinginfo" aria-controls="billinginfo" role="tab">Thông tin thanh toán</a></li>
+                                    <li> <a data-toggle="tab" href="#changepassword" aria-controls="changepassword" role="tab">Thay đổi Password</a></li>
+                                </ul>
+                                @using (@Html.BeginForm("ProfileAccount", "Account", FormMethod.Post, new { @class = "form-horizontal create-form", @enctype = "multipart/form-data", }))
+                                {
+                                    <div class="tab-content">
+                                        <!-- PROFIE PERSONAL INFO -->
+                                        <div id="personalinfo" class="tab-pane fade active in">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Last name đệm*</label>
+                                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "Last name đệm", @required = true, @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Last name</label>
+                                                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Last name", @required = true, @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Email*</label>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "mail@example.com", @required = true, @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Số Phone</label>
+                                                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "000000000", @type = "number" })
+                                                            @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+
+                                                    <h3>Câu hỏi bảo mật</h3>
+                                                    <div class="lighter"><p>Vui lòng lựa cFirst namen một câu hỏi và trả lời câu hỏi đó của bạn để tăng sự bảo mật tài khoản của bạn!</p></div>
+                                                    <label>Câu hỏi thường gặp</label>
+                                                    <select name="@Model.AnswerType" class="form-control selectpicker">
+                                                        @if (ViewBag.LstAnswer != null && ViewBag.LstAnswer.Count > 0)
+                                                        {
+                                                            foreach (var itemP in ViewBag.LstAnswer)
+                                                            {
+                                                                <option value="@itemP.Value" selected>@itemP.Text</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                    <label>Trả lời</label>
+                                                    @Html.TextBoxFor(model => model.AnwersSecurity, new { @class = "form-control", @placeholder = "Đáp án", @type = "text" })
+                                                    @Html.ValidationMessageFor(model => model.AnwersSecurity, null, new { @class = "label label-danger" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- PROFIE BILLING INFO -->
+                                        <div id="billinginfo" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>City</label>
+                                                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", @placeholder = "Thành phố", @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.City, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Zip*</label>
+                                                            @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", @placeholder = "Zip code", @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.AnwersSecurity, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label>Address</label>
+                                                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Address", @type = "text" })
+                                                            @Html.ValidationMessageFor(model => model.Address, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>State*</label>
+                                                        <select name="State" class="form-control selectpicker" required>
+                                                            <option selected>Select</option>
+                                                            <option value="AL">Alabama</option>
+                                                            <option value="AK">Alaska</option>
+                                                            <option value="AZ">Arizona</option>
+                                                            <option value="AR">Arkansas</option>
+                                                            <option value="CA">California</option>
+                                                            <option value="CO">Colorado</option>
+                                                            <option value="CT">Connecticut</option>
+                                                            <option value="DE">Delaware</option>
+                                                            <option value="DC">District Of Columbia</option>
+                                                            <option value="FL">Florida</option>
+                                                            <option value="GA">Georgia</option>
+                                                            <option value="HI">Hawaii</option>
+                                                            <option value="ID">Idaho</option>
+                                                            <option value="IL">Illinois</option>
+                                                            <option value="IN">Indiana</option>
+                                                            <option value="IA">Iowa</option>
+                                                            <option value="KS">Kansas</option>
+                                                            <option value="KY">Kentucky</option>
+                                                            <option value="LA">Louisiana</option>
+                                                            <option value="ME">Maine</option>
+                                                            <option value="MD">Maryland</option>
+                                                            <option value="MA">Massachusetts</option>
+                                                            <option value="MI">Michigan</option>
+                                                            <option value="MN">Minnesota</option>
+                                                            <option value="MS">Mississippi</option>
+                                                            <option value="MO">Missouri</option>
+                                                            <option value="MT">Montana</option>
+                                                            <option value="NE">Nebraska</option>
+                                                            <option value="NV">Nevada</option>
+                                                            <option value="NH">New Hampshire</option>
+                                                            <option value="NJ">New Jersey</option>
+                                                            <option value="NM">New Mexico</option>
+                                                            <option value="NY">New York</option>
+                                                            <option value="NC">North Carolina</option>
+                                                            <option value="ND">North Dakota</option>
+                                                            <option value="OH">Ohio</option>
+                                                            <option value="OK">Oklahoma</option>
+                                                            <option value="OR">Oregon</option>
+                                                            <option value="PA">Pennsylvania</option>
+                                                            <option value="RI">Rhode Island</option>
+                                                            <option value="SC">South Carolina</option>
+                                                            <option value="SD">South Dakota</option>
+                                                            <option value="TN">Tennessee</option>
+                                                            <option value="TX">Texas</option>
+                                                            <option value="UT">Utah</option>
+                                                            <option value="VT">Vermont</option>
+                                                            <option value="VA">Virginia</option>
+                                                            <option value="WA">Washington</option>
+                                                            <option value="WV">West Virginia</option>
+                                                            <option value="WI">Wisconsin</option>
+                                                            <option value="WY">Wyoming</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>&nbsp;</label>
+                                                        <input type="text" class="form-control" disabled value="US">
+                                                    </div>
+                                                </div>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- PROFIE CHANGE PASSWORD -->
+                                        <div id="changepassword" class="tab-pane fade">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Password cũ</label>
+                                                            @Html.TextBoxFor(model => model.OldPassword, new { @class = "form-control", @placeholder = "Password cũ", @type = "password" })
+                                                            @Html.ValidationMessageFor(model => model.AnwersSecurity, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label>Password mới</label>
+                                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password mới", @type = "password" })
+                                                            @Html.ValidationMessageFor(model => model.AnwersSecurity, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label>Xác nhận Password</label>
+                                                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", @placeholder = "Xác nhận Password", @type = "password" })
+                                                            @Html.ValidationMessageFor(model => model.AnwersSecurity, null, new { @class = "label label-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-info">Edit</button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Body Content -->

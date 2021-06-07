@@ -1,0 +1,78 @@
+﻿
+@model CMS_DTO.CMSBanner.CMSBannerModels
+@using CMS_Shared
+@{
+    Html.EnableUnobtrusiveJavaScript(true);
+    var _ID = Model.Id;
+}
+@Html.HiddenFor(model =>model.Id)
+@Html.HiddenFor(model => model.ImageURL)
+
+<style>
+    .clsContent {
+        height: 120px !important;
+    }
+</style>
+
+<div class="row form-horizontal form-label-left" style="margin-bottom:15px;">
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">image</label>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            @if (!string.IsNullOrEmpty(Model.ImageURL))
+            {
+                <img id="upload-preview" src="@Model.ImageURL" height="205" width="350" class="" style="border-radius:3px !important" />
+            }
+            else
+            {
+                <img id="upload-preview" class="" src="@Commons.Image375_205" height="205" width="350" style="border-radius:3px !important" />
+            }
+        </div>
+        <div class="col-md-1 col-sm-3 col-xs-12" style="line-height:55px;">
+            <div class="upload-btn-wrapper" style="cursor:pointer;">
+                <button class="btn btn-default" type="button" onclick="showPictureUpload();" style="margin-top:-6%;margin-left:50px">Select image (375px-205px)</button>
+                @Html.TextBoxFor(model => model.PictureUpload, new { @type = "file", @onchange = "PreviewImage(this,\"upload-preview\")", @accept = "*.jpg", @class = "hidden", @id = "urlImage" })
+            </div>
+            @Html.ValidationMessageFor(model => model.PictureUpload, null, new { @class = "label label-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Last name</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Last name", @autocomplete = "off", @onKeyup = "change_alias(this.value)" })
+            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "label label-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Alias</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Alias, new { @class = "form-control", @placeholder = "Alias" })
+            @Html.ValidationMessageFor(model => model.Alias, null, new { @class = "label label-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Đường dẫn</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.TextBoxFor(model => model.Link, new { @class = "form-control", @placeholder = "Đường dẫn", @autocomplete = "off" })
+            @Html.ValidationMessageFor(model => model.Link, null, new { @class = "label label-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Status</label>
+        <div class="col-md-1 col-sm-1 col-xs-12">
+            <label>@Html.CheckBoxFor(model => model.IsActive, new { @class = "icheck" })</label>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/InputCustom.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    })
+    function showPictureUpload() {
+        $('[id=urlImage]').click();
+    }
+</script>

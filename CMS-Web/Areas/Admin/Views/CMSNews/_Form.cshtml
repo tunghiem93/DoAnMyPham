@@ -1,0 +1,131 @@
+﻿
+@model CMS_DTO.CMSNews.CMS_NewsModels
+@using CMS_Shared
+@{
+    Html.EnableUnobtrusiveJavaScript(true);
+    var _ID = Model.Id;
+}
+@Html.HiddenFor(model => model.Id)
+@if (!string.IsNullOrEmpty(_ID))
+{
+    @Html.Hidden("ImageURL", Model.ImageURL)
+    @Html.Hidden("ImageURLAuthor", Model.ImageURLAuthor)
+}
+
+<style>
+    #cke_1_contents {
+        height: 450px !important;
+    }
+</style>
+<div class="row form-horizontal form-label-left" style="margin-bottom:15px;">
+    @*Image*@
+    <fieldset>
+        <legend>GENERAL INFORMATION</legend>
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Hình</label>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                @if (!string.IsNullOrEmpty(Model.ImageURL))
+                {
+                    <img id="upload-preview" src="@Model.ImageURL" height="100" width="200" class="" />
+                }
+                else
+                {
+                    <img id="upload-preview" class="" src="@Commons.Image1200_650" height="100" width="200" />
+                }
+            </div>
+            <div class="col-md-1 col-sm-3 col-xs-12" style="line-height:55px;">
+                <div class="upload-btn-wrapper" style="cursor:pointer;">
+                    <button class="btn btn-default" type="button" onclick="showPictureUpload();" style="margin-top:-6%;margin-left:50px">Select image</button>
+                    @Html.TextBoxFor(model => model.PictureUpload, new { @type = "file", @onchange = "PreviewImage(this,\"upload-preview\")", @accept = "*.jpg", @class = "hidden", @id = "urlImage" })
+                </div>
+                @Html.ValidationMessageFor(model => model.PictureUpload, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Title</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control", @placeholder = "Title", @autocomplete = "off", @onKeyup = "change_alias(this.value)" })
+                @Html.ValidationMessageFor(model => model.Title, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Alias</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Alias, new { @class = "form-control", @placeholder = "Alias" })
+                @Html.ValidationMessageFor(model => model.Alias, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Publisher</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Publisher, new { @class = "form-control", @placeholder = "Publisher", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Publisher, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Publisher image</label>
+            <div class="col-md-2 col-sm-2 col-xs-12">
+                @if (!string.IsNullOrEmpty(Model.ImageURLAuthor))
+                {
+                    <img id="upload-preview-author" src="@Model.ImageURLAuthor" height="100" width="100" class="" />
+                }
+                else
+                {
+                    <img id="upload-preview-author" class="" src="@Commons.Image100_100" height="100" width="100" />
+                }
+            </div>
+            <div class="col-md-1 col-sm-3 col-xs-12" style="line-height:55px;">
+                <div class="upload-btn-wrapper" style="cursor:pointer;">
+                    <button class="btn btn-default" type="button" onclick="showPictureUploadAuthor();" style="margin-top:-6%;margin-left:50px">Select image</button>
+                    @Html.TextBoxFor(model => model.PictureUploadAuthor, new { @type = "file", @onchange = "PreviewImage(this,\"upload-preview-author\")", @accept = "*.jpg", @class = "hidden", @id = "urlImageAuthor" })
+                </div>
+                @Html.ValidationMessageFor(model => model.PictureUploadAuthor, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Short Description</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                @Html.TextAreaFor(model => model.Short_Description, new { @class = "form-control", @placeholder = "Short Description", @autocomplete = "off", @style = "height: 100px;" })
+                @Html.ValidationMessageFor(model => model.Short_Description, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Content</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control ckeditor", @placeholder = "Content", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Description, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Status</label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+                <label>@Html.CheckBoxFor(model => model.IsActive, new { @class = "icheck" })</label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<script src="@Url.Content("~/Scripts/InputCustom.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CategoryDdl1").select2({
+            placeholder: "Please choose Category",
+            //allowClear: true
+        });
+
+    })
+    function showPictureUpload() {
+        $('[id=urlImage]').click();
+    }
+
+    function showPictureUploadAuthor() {
+        $('[id=urlImageAuthor]').click();
+    }
+
+</script>

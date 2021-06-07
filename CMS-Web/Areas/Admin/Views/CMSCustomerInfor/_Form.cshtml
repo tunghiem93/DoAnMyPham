@@ -1,0 +1,159 @@
+﻿
+@model CMS_DTO.CMSCustomerInfor.CMS_CustomerInforModels
+@using CMS_Shared
+@{
+    Html.EnableUnobtrusiveJavaScript(true);
+    var _ID = Model.Id;
+}
+@Html.HiddenFor(model =>model.Id)
+<div class="row form-horizontal form-label-left" style="margin-bottom:15px;">
+    @*Image*@
+    <fieldset>
+        <legend>GENERAL INFORMATION</legend>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Content required</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @placeholder = "Content required", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight">Type of request</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.ReceiveType,
+                    new SelectList(ViewBag.ListRequestInfor, "Value", "Text", Model.ReceiveType),"Please choose Category",
+                    new
+                    {
+                        @class = "form-control select2_multiple",
+                        @id = "ReceiveTypeDdl",
+                        @style = "width:100%;"
+                    })
+                @Html.ValidationMessageFor(model => model.ReceiveType, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Last name</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Last name Employee", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Email</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Address email", @autocomplete = "off", @type = "email" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Phone</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Phone", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Phone, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Price</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.PriceAmong, new { @class = "form-control", @placeholder = "Phone", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.PriceAmong, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Preferredt Date</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.PreferredtDate, new { @class = "form-control", @placeholder = "Preferredt Date", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.PreferredtDate, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Preferredt Time</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.PreferredtTime, new { @class = "form-control", @placeholder = "Preferredt Time", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.PreferredtTime, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Zip code</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control", @placeholder = "Zip code", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.ZipCode, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Mail to</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.EmailFriend, new { @class = "form-control", @placeholder = "Mail to", @autocomplete = "off", @type = "email" })
+                @Html.ValidationMessageFor(model => model.EmailFriend, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Xác nhận gửi</label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+                <label>@Html.CheckBoxFor(model => model.Checked, new { @class = "icheck" })</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">To Email</label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+                <label>@Html.CheckBoxFor(model => model.CheckedMail, new { @class = "icheck" })</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Phone</label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+                <label>@Html.CheckBoxFor(model => model.CheckedPhone, new { @class = "icheck" })</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Content</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @placeholder = "Content", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Message, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Status</label>
+            <div class="col-md-1 col-sm-1 col-xs-12">
+                <label>@Html.CheckBoxFor(model => model.IsActive, new { @class = "icheck" })</label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<script src="@Url.Content("~/Scripts/InputCustom.js")"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ReceiveTypeDdl").select2({
+            placeholder: "Please choose Category",
+            //allowClear: true
+        });
+
+        $('.datepicker1').daterangepicker({
+            singleDatePicker: true,
+            calender_style: "picker_2",
+            maxDate: new Date(),
+            //==========
+            showDropdowns: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                daysOfWeek: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+                monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12']
+            }
+        }, function (start, end, label) {
+            });
+        
+    });
+    
+</script>

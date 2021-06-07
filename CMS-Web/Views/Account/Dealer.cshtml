@@ -1,0 +1,111 @@
+﻿@model CMS_DTO.CMSProduct.ProductViewModels
+@{
+    ViewBag.Title = "Nhà phân phối";
+}
+
+<!-- Start Page header -->
+<div class="page-header prosite-header parallax" style="background-image:url(/images/header_dealer.jpg);"></div>
+<!-- Start Body Content -->
+<div class="main" role="main">
+    <div id="content" class="content full dealer-prosite">
+        <header class="dealer-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <ul class="social-icons social-icons-colored inversed rounded">
+                            <li class="facebook"><a href="https://www.facebook.com/trinhsgford/"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="https://www.facebook.com/trinhsgford/"><i class="fa fa-twitter"></i></a></li>
+                            <li class="googleplus"><a href="https://www.facebook.com/trinhsgford/"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="pinterest"><a href="https://www.facebook.com/trinhsgford/"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-4">
+                        <div class="dealer-avatar"><img src="/images/img_dealer2.png" alt=""></div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="dealer-block-add">
+                            <span> Thành lập<strong>Aug, 2013</strong></span>
+                            <span> Thành viên<strong>13</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <div class="text-align-center">
+                <h2 class="margin-0">Máy ép cám viên hiện đại</h2>
+                <p class="meta-data">Năng suất hiệu quả</p>
+                <a href="@Url.Action("Index","Home")" class="btn btn-default btn-rounded">Cửa hàng</a>
+            </div>
+            <div class="spacer-75"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="icon-box ibox-outline ibox-effect">
+                        <div class="ibox-icon">
+                            <i class="fa fa-location-arrow"></i>
+                        </div>
+                        <h3>Vững trắc niềm tin</h3>
+                        <p>Luôn là điểm đên vững niềm tin của mọi Customer! khi to với Product của chúng tôi.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box ibox-outline ibox-effect">
+                        <div class="ibox-icon">
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <h3>Chăm sóc tận tình</h3>
+                        <p>Luôn là điểm đên vững niềm tin của mọi Customer! khi to với Product của chúng tôi.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="icon-box ibox-outline ibox-effect">
+                        <div class="ibox-icon">
+                            <i class="fa fa-tag"></i>
+                        </div>
+                        <h3>Price cả hợp lý</h3>
+                        <p>Luôn là điểm đên vững niềm tin của mọi Customer! khi to với Product của chúng tôi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="spacer-75"></div>
+            <!-- Recently Listed Vehicles -->
+            <section class="listing-block recent-vehicles">
+                <div class="listing-header">
+                    <h3>Product chúng tôi</h3>
+                </div>
+                <div class="listing-container">
+                    <div class="carousel-wrapper">
+                        <div class="row">
+                            <ul class="owl-carousel carousel-fw" id="vehicle-slider" data-columns="4" data-autoplay="" data-pagination="yes" data-arrows="no" data-single-item="no" data-items-desktop="4" data-items-desktop-small="3" data-items-tablet="2" data-items-mobile="1">
+                                @if (Model.ListProduct != null && Model.ListProduct.Any())
+                                {
+                                    foreach (var item in Model.ListProduct)
+                                    {
+                                        <li class="item">
+                                            <div class="vehicle-block format-standard">
+                                                <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="media-box"><img src="@item.ImageURL" alt=""></a>
+                                                @*<span class="label label-primary vehicle-age">Mới</span>*@
+                                                <span class="label label-default vehicle-age">@item.Year</span>
+                                                <span class="label label-success premium-listing">Mr.Trình||0945897479</span>
+                                                <h5 class="vehicle-title"><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">@item.ProductName</a></h5>
+                                                <ul class="inline">
+                                                    <li>@item.Year</li>
+                                                    <li>@item.Power</li>
+                                                    <li>@item.ElectricitySupply</li>
+                                                    <li>@item.Weight</li>
+                                                    <li>@item.Size</li>
+                                                </ul>
+                                                <span class="vehicle-cost">@item.ProductPrice</span>
+                                            </div>
+                                        </li>
+                                    }
+                                }                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- End Body Content -->

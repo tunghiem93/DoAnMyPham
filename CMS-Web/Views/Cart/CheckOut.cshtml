@@ -1,0 +1,57 @@
+﻿@model CMS_DTO.CMSOrder.CMS_CheckOutModels
+
+<div class="page-banner">
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </nav>
+</div>
+<div class="container mgb20 clearfix my-4">
+    <div class="row">
+        <div class="col-md-12 ordersucess" style="display:none">
+            <p> Đơn hàng của quý khách <strong id="ordercode"></strong> thành công. Employee shop sẽ liên hệ với quý khách sau 60 phút nữa. Cảm ơn qúy khách. <a class="green" href="/">Về Home</a></p>
+        </div>
+        <div class="col-12 col-sm-10 col-md-8 offset-md-2 wr-order">
+            <form action="@Url.Action("CheckOut", "Cart")" id="order-form" method="post" enctype="multipart/form-data">
+                <div class="row form-group">
+                    <label for="CustomerName" class="col-sm-2 col-form-label">First name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Customer.FirstName, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Họ..." })
+                        @Html.ValidationMessageFor(model => model.Customer.FirstName, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="CustomerName" class="col-sm-2 col-form-label">Last name</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Customer.LastName, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Last name..." })
+                        @Html.ValidationMessageFor(model => model.Customer.LastName, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="Phone" class="col-sm-2 col-form-label">Phone</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Customer.Phone, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Số điện thoại..." })
+                        @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="Email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Customer.Email, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Email" })
+                        @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label for="ShipAddress" class="col-sm-2 col-form-label">Address</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Customer.Address, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Địa chỉ nhận hàng..." })
+                        @Html.ValidationMessageFor(model => model.Customer.Address, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+                <div class="text-center mb-4"><input type="submit" class="btn btn-primary" value="Checkout" /></div>
+            </form>
+        </div>
+    </div>
+</div>

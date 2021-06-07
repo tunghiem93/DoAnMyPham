@@ -1,0 +1,70 @@
+﻿
+<div class="page-banner">
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+    </nav>
+</div>
+<div class="container mgb20 my-4" ng-controller="CartCtrl">
+    <div id="wrcart">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="whitebg px-3 py-0 mb-3 border">
+                    <div class="row">
+                        <div class="col-md-8 py-2 br" ng-repeat="item in Products">
+                            <div class="row cartitem mb-2 py-2" data-id="125">
+                                <div class="col-3 pr-0">
+                                    <a href="gio-qua-tet-thanh-y-gq103">
+                                        <img  ng-src="{{item.ImageUrl}}"  ng-alt="{{item.Name}}" />
+                                    </a>
+                                </div>
+                                <div class="col-9">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3 class="pr-name">
+                                                <a href="/Shop/Detail/{{item.ItemId}}" ng-bind="item.Name" class="text-gray-dark"></a>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-7"><span>Quantity:</span> <input  ng-model="item.Quantity" ng-blur="ngBlurModal($index);" ng-change="UpdateQtyOrder($index);" class="rounded cart-q border" type="number" value="1" min="1" /></div>
+                                                <div class="col-md-5">
+                                                    <strong>
+                                                        <span ng-bind="item.Price *item.Quantity |currency :'': 0"></span> ₫
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <p><a class="green" href="javascript:"  ng-click="RemoveItemOrder($index)" style="color: red; font-weight: bold; ">Delete</a></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 py-3">
+                            <div class="pb-1 mb-3 bb">
+                                <p><strong>Order</strong></p>
+                                <p>Quantity: <strong><span class="_clsCartCount">0</span></strong></p>                               
+                            </div>
+                            <p>
+                                Total: <strong>
+                                    <text>{{getTotal()}} ₫</text>
+                                </strong>
+                            </p>
+                            <a href="@Url.Action("CheckOut","Cart")" class="btn btn-block btn-primary">Checkout</a>
+                            <a href="@Url.Action("Index","Shop")" class="btn btn-block btn-outline-info">Shop <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row cartempty" style="display:none;">
+        <div class="col-sm-12"><p>Cart none,<a href="/" class="green"> Home</a></p></div>
+    </div>
+</div>

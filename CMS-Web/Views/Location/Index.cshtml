@@ -1,0 +1,577 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Location";
+}
+@model CMS_DTO.CMSProduct.ProductViewModels
+@using CMS_Shared;
+@{
+    var _ListSlider = Session["SliderSession"] as List<CMS_DTO.CMSSession.SliderSession>;
+    var _count = 0;
+}
+
+<!-- Start Page header -->
+<div class="page-header parallax" style="background-image:url(/images/page_header3.jpg);">
+    <div class="container">
+        <h1 class="page-title">List data Search</h1>
+    </div>
+</div>
+<!-- Utiity Bar -->
+<div class="utility-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-8">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="active">List data Search</li>
+                </ol>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Actions bar -->
+<div class="actions-bar tsticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 search-actions">
+                <ul class="utility-icons tools-bar">
+                    <li>
+                        <a href="#"><i class="fa fa-star-o"></i></a>
+                        <div class="tool-box">
+                            <div class="tool-box-head">
+                                <a href="@Url.Action("Index","Shop")" class="basic-link pull-right">View tất cả</a>
+                                <h5>Product đã Save</h5>
+                            </div>
+                            <div class="tool-box-in">
+                                <ul class="listing tool-car-listing">
+                                    @if (ViewBag.LstOrder != null)
+                                    {
+                                        foreach (var item in ViewBag.LstOrder)
+                                        {
+                                            <li>
+                                                <div class="checkb"><input type="checkbox"></div>
+                                                <div class="imageb"><a href="vehicle-details.html"><img src="@item.ImageUrl" alt="@item.Name"></a></div>
+                                                <div class="textb">
+                                                    <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">@item.Name</a>
+                                                    <span class="price">@item.Price</span>
+                                                </div>
+                                                <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
+                                            </li>
+                                            _count++;
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tool-box-foot">
+                                <a href="#" class="btn btn-xs btn-primary pull-right">Tham gia</a>
+                                <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Đăng ký</a>
+                                <a href="#" class="btn btn-xs btn-info">Tổng số(@_count)</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-folder-o"></i></a>
+                        <div class="tool-box">
+                            <div class="tool-box-head">
+                                <a href="@Url.Action("Index","Shop")" class="basic-link pull-right">View tất cả</a>
+                                <h5>Product đã Save</h5>
+                            </div>
+                            <div class="tool-box-in">
+                                <ul class="listing tool-search-listing">
+                                    @if (ViewBag.LstOrder != null)
+                                    {
+                                        foreach (var item in ViewBag.LstOrder)
+                                        {
+                                            <li>
+                                                <div class="link"><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">@item.Name</a></div>
+                                                <div class="delete"><a href="#"><i class="icon-delete"></i></a></div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tool-box-foot">
+                                <a href="#" class="btn btn-xs btn-primary pull-right">Tham gia</a>
+                                <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Đăng ký</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-clock-o"></i></a>
+                        <div class="tool-box">
+                            <div class="tool-box-head">
+                                <h5>Search gần đây</h5>
+                            </div>
+                            <div class="tool-box-in">
+                                <ul class="listing tool-view-listing">
+                                    @if (ViewBag.LstOrder != null)
+                                    {
+                                        foreach (var item in ViewBag.LstOrder)
+                                        {
+                                            <li>
+                                                <div class="imageb"><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })"><img src="@item.ImageUrl" alt="@item.Name"></a></div>
+                                                <div class="textb">
+                                                    <a href="vehicle-details.html">@item.Name</a>
+                                                    <span class="price">@item.Price</span>
+                                                </div>
+                                                <div class="save"><a href="#"><i class="fa fa-star-o"></i></a></div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                            <div class="tool-box-foot">
+                                <a href="#" class="btn btn-xs btn-primary pull-right">Tham gia</a>
+                                <a href="#" class="pull-right tool-signin" data-toggle="modal" data-target="#loginModal">Đăng ký</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-9 col-sm-9">
+                <div class="btn-group pull-right results-sorter">
+                    <button type="button" class="btn btn-default listing-sort-btn">Sắp xếp</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Price (Thấp tới cao)</a></li>
+                        <li><a href="#">Price (Cao tới thấp)</a></li>
+                    </ul>
+                </div>
+
+                <div class="toggle-view view-count-choice pull-right">
+                    <label>View</label>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-default">10</a>
+                        <a href="#" class="btn btn-default active">20</a>
+                        <a href="#" class="btn btn-default">50</a>
+                    </div>
+                </div>
+
+                <div class="toggle-view view-format-choice pull-right">
+                    <label>View</label>
+                    <div class="btn-group">
+                        <a href="@Url.Action("Index","Shop")" class="btn btn-default active" id="results-list-view"><i class="fa fa-th-list"></i></a>
+                        <a href="@Url.Action("IndexGrid","Shop")" class="btn btn-default" id="results-grid-view"><i class="fa fa-th"></i></a>
+                    </div>
+                </div>
+                <!-- Small Screens Filters Toggle Button -->
+                <button class="btn btn-default visible-xs" id="Show-Filters">Search Filters</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Start Body Content -->
+<div class="main" role="main">
+    <div id="content" class="content full">
+        <div class="container">
+            <div class="row">
+                <!-- Search Filters -->
+                <div class="col-md-3 search-filters" id="Search-Filters">
+                    <div class="tbsticky filters-sidebar">
+                        <h3>Search</h3>
+                        <div class="accordion" id="toggleArea">
+                            <!-- Filter by Year -->
+                            <div class="accordion-group panel">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseOne">Năm<i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="form-inline">
+                                            <form method="get" action="/Shop/Search">
+                                                <div class="form-group">
+                                                    <label>Thấp nhất</label>
+                                                    <select name="_fromyear" class="form-control selectpicker">
+                                                        <option selected value="0">Tất cả</option>
+                                                        <option value="@DateTime.Now.Year">@string.Format("{0}", DateTime.Now.Year)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 1)">@string.Format("{0}", DateTime.Now.Year - 1)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 2)">@string.Format("{0}", DateTime.Now.Year - 2)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 3)">@string.Format("{0}", DateTime.Now.Year - 3)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 4)">@string.Format("{0}", DateTime.Now.Year - 4)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 5)">@string.Format("{0}", DateTime.Now.Year - 5)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 6)">@string.Format("{0}", DateTime.Now.Year - 6)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 7)">@string.Format("{0}", DateTime.Now.Year - 7)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 8)">@string.Format("{0}", DateTime.Now.Year - 8)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 9)">@string.Format("{0}", DateTime.Now.Year - 9)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 10)">Dưới @string.Format("{0}", DateTime.Now.Year - 10)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group last-child">
+                                                    <label>Cao nhất</label>
+                                                    <select name="_toyear" class="form-control selectpicker">
+                                                        <option selected value="0">Tất cả</option>
+                                                        <option value="@DateTime.Now.Year">@string.Format("{0}", DateTime.Now.Year)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 1)">@string.Format("{0}", DateTime.Now.Year - 1)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 2)">@string.Format("{0}", DateTime.Now.Year - 2)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 3)">@string.Format("{0}", DateTime.Now.Year - 3)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 4)">@string.Format("{0}", DateTime.Now.Year - 4)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 5)">@string.Format("{0}", DateTime.Now.Year - 5)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 6)">@string.Format("{0}", DateTime.Now.Year - 6)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 7)">@string.Format("{0}", DateTime.Now.Year - 7)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 8)">@string.Format("{0}", DateTime.Now.Year - 8)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 9)">@string.Format("{0}", DateTime.Now.Year - 9)</option>
+                                                        <option value="@string.Format("{0}", DateTime.Now.Year - 10)">@string.Format("{0}", DateTime.Now.Year - 10)</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-default btn-sm pull-right">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filter by Make -->
+                            <div class="accordion-group panel">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseTwo">Brand<i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <ul class="filter-options-list list-group">
+                                            @if (Model.ListBrand != null)
+                                            {
+                                                foreach (var item in Model.ListBrand)
+                                                {
+                                                    <li class="list-group-item"><span class="badge">@item.NumberOfProduct</span><a href="@Url.Action("Index", "Brands", new { q = item.Alias })">@item.BrandName</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filter by Model -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseThird">Category <i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseThird" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <ul class="filter-options-list list-group">
+                                            @if (Model.ListCate != null)
+                                            {
+                                                foreach (var item in Model.ListCate)
+                                                {
+                                                    <li class="list-group-item"><span class="badge">@item.NumberOfProduct</span><a href="@Url.Action("Index", "Categories", new { q = item.Alias })">@item.CategoryName</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filter by Body Type -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseFour">Kiểu mẫu <i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseFour" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <ul class="filter-options-list list-group">
+                                            @if (Model.ListStyles != null)
+                                            {
+                                                foreach (var item in Model.ListStyles)
+                                                {
+                                                    <li class="list-group-item"><span class="badge">@item.NumberOfProduct</span><a href="@Url.Action("Index", "Styles", new { q = item.Alias })">@item.Name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filter by Mileage -->
+                            @*<div class="accordion-group">
+                                    <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseFive">Mileage <i class="fa fa-angle-down"></i> </a> </div>
+                                    <div id="collapseFive" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label>Min Mileage</label>
+                                                    <select name="Min Mileage" class="form-control selectpicker">
+                                                        <option selected>Any</option>
+                                                        <option>10000</option>
+                                                        <option>20000</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group last-child">
+                                                    <label>Max Mileage</label>
+                                                    <select name="Max Mileage" class="form-control selectpicker">
+                                                        <option selected>Any</option>
+                                                        <option>10000</option>
+                                                        <option>20000</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-default btn-sm pull-right">Filter</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <!-- Filter by Transmission -->
+                            @*<div class="accordion-group">
+                                    <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseSix">Transmission <i class="fa fa-angle-down"></i> </a> </div>
+                                    <div id="collapseSix" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <ul class="filter-options-list list-group">
+                                                <li class="list-group-item"><span class="badge">4</span><a href="#">5 speed manual</a></li>
+                                                <li class="list-group-item"><span class="badge">23</span><a href="#">5 speed automatic</a></li>
+                                                <li class="list-group-item"><span class="badge">41</span><a href="#">6 speed manual</a></li>
+                                                <li class="list-group-item"><span class="badge">6</span><a href="#">6 speed automatic</a></li>
+                                                <li class="list-group-item"><span class="badge">54</span><a href="#">7 speed manual</a></li>
+                                                <li class="list-group-item"><span class="badge">9</span><a href="#">7 speed automatic</a></li>
+                                                <li class="list-group-item"><span class="badge">38</span><a href="#">8 speed manual</a></li>
+                                                <li class="list-group-item"><span class="badge">38</span><a href="#">8 speed automatic</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <!-- Filter by Fuel Economy -->
+                            @*<div class="accordion-group">
+                                    <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseSeven">Fuel economy <i class="fa fa-angle-down"></i> </a> </div>
+                                    <div id="collapseSeven" class="accordion-body collapse">
+                                        <div class="accordion-inner">
+                                            <ul class="filter-options-list list-group">
+                                                <li class="list-group-item"><span class="badge">4</span><a href="#">5L/100Km or less</a></li>
+                                                <li class="list-group-item"><span class="badge">23</span><a href="#">7L/100Km or less</a></li>
+                                                <li class="list-group-item"><span class="badge">41</span><a href="#">9L/100Km or less</a></li>
+                                                <li class="list-group-item"><span class="badge">6</span><a href="#">11L/100Km or less</a></li>
+                                                <li class="list-group-item"><span class="badge">54</span><a href="#">11L/100Km or less</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <!-- Filter by Price -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseEight">Price <i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseEight" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <div class="form-inline">
+                                            <form method="get" action="/Shop/Search">
+                                                <div class="form-group">
+                                                    <label>Price thấp</label>
+                                                    <select name="_fromprice" class="form-control selectpicker">
+                                                        <option selected value="0">Tất cả</option>
+                                                        <option value="1000000000">1ty</option>
+                                                        <option value="900000000">900tr</option>
+                                                        <option value="800000000">800tr</option>
+                                                        <option value="700000000">700tr</option>
+                                                        <option value="600000000">600tr</option>
+                                                        <option value="500000000">Dưới 500tr</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group last-child">
+                                                    <label>Price cao</label>
+                                                    <select name="_toprice" class="form-control selectpicker">
+                                                        <option selected value="0">Tất cả</option>
+                                                        <option value="2100000000">Trên 2ty</option>
+                                                        <option value="2000000000">2ty</option>
+                                                        <option value="1500000000">1.5ty</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-default btn-sm pull-right">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filter by Location -->
+                            <div class="accordion-group">
+                                <div class="accordion-heading togglize"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#" href="#collapseNine">Location <i class="fa fa-angle-down"></i> </a> </div>
+                                <div id="collapseNine" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <ul class="filter-options-list list-group">
+                                            @if (Model.ListLocation != null)
+                                            {
+                                                foreach (var item in Model.ListLocation)
+                                                {
+                                                    <li class="list-group-item"><span class="badge">@item.NumberOfProduct</span><a href="@Url.Action("Index", "Locations", new { q = item.Alias })">@item.Name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Toggle -->
+                        <a href="#" class="btn-default btn-sm btn"><i class="fa fa-refresh"></i> Làm mới</a>
+                        <a href="#" class="btn-primary btn-sm btn"><i class="fa fa-folder-o"></i> Search</a>
+                    </div>
+                </div>
+
+                <!-- Listing Results -->
+                <div class="col-md-9 results-container">
+                    <div class="results-container-in">
+                        <div class="waiting" style="display:none;">
+                            <div class="spinner">
+                                <div class="rect1"></div>
+                                <div class="rect2"></div>
+                                <div class="rect3"></div>
+                                <div class="rect4"></div>
+                                <div class="rect5"></div>
+                            </div>
+                        </div>
+                        <div id="results-holder" class="results-grid-view">
+                            @if (Model.ListProduct != null)
+                            {
+                                foreach (var item in Model.ListProduct)
+                                {
+                                    <div class="result-item format-standard">
+                                        <div class="result-item-image">
+                                            <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="media-box"><img src="@item.ImageURL" alt="@item.ProductName"></a>
+                                            <span class="label label-default vehicle-age">@item.Year</span>
+                                            <span class="label label-success premium-listing">@item.ProductName</span>
+                                            <div class="result-item-view-buttons">
+                                                <a href="@string.Format("{0}", !string.IsNullOrEmpty(item.LinkVideo) ? item.LinkVideo : "javascript:void(0);") item.LinkVideo" data-rel="prettyPhoto"><i class="fa fa-play"></i> View video</a>
+                                                <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })"><i class="fa fa-plus"></i> View chi tiết</a>
+                                            </div>
+                                        </div>
+                                        <div class="result-item-in">
+                                            <h4 class="result-item-title"><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">Sản xuất tại: @string.Format("{0}", !string.IsNullOrEmpty(item.Vendor) ? item.Vendor : "Đang Edit")</a></h4>
+                                            <div class="result-item-cont">
+                                                <div class="result-item-block col1">
+                                                    @if (!string.IsNullOrEmpty(item.Short_Description))
+                                                    {
+                                                        @Html.Raw(item.Short_Description.Length < 150 ? item.Short_Description : item.Short_Description.Substring(0, 150) + "...")
+                                                    }
+                                                </div>
+                                                <div class="result-item-block col2">
+                                                    <div class="result-item-pricing">
+                                                        <div class="price">
+                                                            @if (item.ProductExtraPrice > 0 && item.ProductExtraPrice < item.ProductPrice)
+                                                            {
+                                                                <span>@item.ProductExtraPrice.ToString("#,00") VNĐ </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>@item.ProductPrice.ToString("#,00") VNĐ</span>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="result-item-action-buttons">
+                                                        <a href="#" class="btn btn-default btn-sm"><i class="fa fa-star-o"></i> Save</a>
+                                                        <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="btn btn-default btn-sm">View</a><br>
+                                                        <a href="@Url.Action("Detail", "Shop", new { q = item.Alias })" class="distance-calc"><i class="fa fa-map-marker"></i> Tìm hiểu thêm</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="result-item-features">
+                                                <ul class="inline">
+                                                    <li>@item.ProductCode</li>
+                                                    <li>@item.Year</li>
+                                                    <li>@item.Make</li>
+                                                    <li>@item.StyleName</li>
+                                                    <li>@item.Power</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <!-- Result Item -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Body Content -->
+
+<script>
+    function ChoosePage(pageIndex, that)
+    {
+        $("[id=pagination]").find("li").removeClass("active");
+        $(that).addClass("active");
+            if (pageIndex != 1)
+            {
+                $(".pagination_previous").removeClass("disabled");
+            }
+            else {
+                $(".pagination_previous").addClass("disabled");
+            }
+            if (pageIndex == '@Model.TotalPage')
+                $(".pagination_next").addClass("disabled");
+            else
+                $(".pagination_next").removeClass("disabled");
+                    LoadDataPagging(pageIndex);
+                }
+
+    function PrevPage() {
+        var pageIndex = 1;
+        $("#pagination li").each(function (index) {
+            if ($(this).hasClass("active"))
+            {
+                var PageIndex = parseInt($(this).attr("data-page"));
+                $("[id=pagination]").find("li").removeClass("active");
+                if (PageIndex > 1)
+                {
+                    pageIndex = PageIndex - 1;
+                    $('[id=page_' + (PageIndex - 1) + ']').addClass("active");
+                }
+                else
+                    $('[id=page_1]').addClass("active");
+                if ((PageIndex - 1) == 1)
+                {
+                    $(".pagination_previous").addClass("disabled");
+                }
+                return false;
+            }
+        });
+        LoadDataPagging(pageIndex);
+    }
+
+    function NextPage() {
+        $(".pagination_previous").removeClass("disabled");
+        var totalPage = '@Model.TotalPage';
+        var pageIndex = '@Model.TotalPage';
+        $("#pagination li").each(function (index) {
+            if ($(this).hasClass("active")) {
+                var PageIndex = parseInt($(this).attr("data-page"));
+                $("[id=pagination]").find("li").removeClass("active");
+                if (PageIndex > totalPage) {
+                    $('[id=page_' + totalPage + ']').addClass("active");
+                }
+                else {
+                    pageIndex = parseInt(PageIndex) + 1;
+                    $('[id=page_' + pageIndex + ']').addClass("active");
+                }
+                if ((PageIndex + 1) == '@Model.TotalPage') {
+                    $(".pagination_next").addClass("disabled");
+                }
+                return false;
+            }
+        });
+        LoadDataPagging(pageIndex);
+    }
+
+    function LoadDataPagging(pageIndex)
+    {
+         $.ajax({
+            url: "@Url.Action("LoadDataPagging", "Shop")",
+            type: "GET",
+            data: { pageIndex: pageIndex },
+            dataType: 'html',
+            beforeSend: function () {
+                //  $('.se-pre-con').show();
+            },
+            success: function (data) {
+                $('[id=product_list]').html(data);
+            },
+            complete: function () {
+                //  $('.se-pre-con').hide();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    }
+
+    function LoadDataFilterPrice(e) {
+        var type = $(e).val();
+        $.ajax({
+            url: "@Url.Action("LoadDataFilterPrice", "Home")",
+            type: "GET",
+            data: { type: type },
+            dataType: 'html',
+            beforeSend: function () { },
+            success: function (data) {
+                $('[id=product_list]').html(data);
+            },
+            complete: function () { },
+            error: function (jqXHR, textStatus, errorThrown) {
+            }
+        });
+    }
+</script>
