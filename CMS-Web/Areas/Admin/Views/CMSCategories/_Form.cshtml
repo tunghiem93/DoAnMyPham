@@ -58,7 +58,20 @@
             @Html.ValidationMessageFor(model => model.Alias, null, new { @class = "label label-danger" })
         </div>
     </div>
-
+    <div class="form-group">
+        <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight">Type</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            @Html.DropDownListFor(model => model.Type,
+                new SelectList(ViewBag.CategoryType, "Value", "Text", Model.Type), "Please choose Type",
+                new
+                {
+                    @class = "form-control select2_multiple",
+                    @id = "TypeDdl",
+                    @style = "width:100%;"
+                })
+            @Html.ValidationMessageFor(model => model.Type, null, new { @class = "label label-danger" })
+        </div>
+    </div>
     <div class="form-group">
         <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Short Description</label>
         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -123,6 +136,10 @@
         $("#GroupCategoryDdl").select2({
             placeholder: "Please choose Menu",
             //allowClear: true
+        });
+        $("#TypeDdl").select2({
+            placeholder: "Please choose Type",
+            allowClear: true
         });
     })
     function showPictureUpload() {

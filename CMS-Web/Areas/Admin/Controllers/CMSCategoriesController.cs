@@ -23,6 +23,7 @@ namespace CMS_Web.Areas.Admin.Controllers
             _factory = new CMSCategoriesFactory();
             ViewBag.Category = GetListCategorySelectItem();
             ViewBag.GroupCate = getListGroupCate();
+            ViewBag.CategoryType = getListCateType();
         }
         // GET: Admin/CMSCategories
         public ActionResult Index()
@@ -100,7 +101,6 @@ namespace CMS_Web.Areas.Admin.Controllers
                         model.ListImageUrl.Add(item.ImageURL);
                     }
                 }
-                model.Type = _factory.GetList().Where(w => w.Id == model.ParentId).Select(s => s.Type).FirstOrDefault();
                 var Id = "";
                 var msg = "";
                 var result = _factory.CreateOrUpdate(model,ref Id,ref msg);
@@ -176,7 +176,6 @@ namespace CMS_Web.Areas.Admin.Controllers
                         model.ListImageUrl.Add(tempImg);
                     }
                 }
-                model.Type = _factory.GetList().Where(w => w.Id == model.ParentId).Select(s => s.Type).FirstOrDefault();
                 var Id = "";
                 var msg = "";
                 var result = _factory.CreateOrUpdate(model, ref Id, ref msg);

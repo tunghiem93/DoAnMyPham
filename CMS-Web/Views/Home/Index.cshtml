@@ -64,7 +64,7 @@
     <div class="nhom_list">
         @if (Model.ListProduct != null && Model.ListProduct.Any())
         {
-            foreach (var item in Model.ListProduct)
+            foreach (var item in Model.ListProduct.Where(w=>w.CategoryType == (int)Commons.ECateType.NuocTayTrang).Skip(0).Take(8))
             {
                 <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
                     <img src="@item.ImageURL" alt="@item.ProductName" />
@@ -88,59 +88,7 @@
     <div class="nhom_list">
         @if (Model.ListProduct != null && Model.ListProduct.Any())
         {
-            foreach (var item in Model.ListProduct)
-            {
-                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
-                    <img src="@item.ImageURL" alt="@item.ProductName" />
-                    <h3 class="title">@item.ProductName</h3>
-                    <span class="sale">@item.sPrice</span>
-                    <span class="price">@item.sPrice</span>
-                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
-                    <div class="progress">
-                        Còn lại 89%
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
-                    </div>
-                </a>
-            }
-        }        
-    </div>
-    <div class="nhom_xemthem">
-        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
-    </div>
-</section>
-<figure>
-    <img src="/Images/sss.JPG" alt="">
-</figure>
-<section>
-    <h2 class="nhom_title01"><span>Tẩy Tế Bào Chết</span></h2>
-    <div class="nhom_list">
-        @if (Model.ListProduct != null && Model.ListProduct.Any())
-        {
-            foreach (var item in Model.ListProduct)
-            {
-                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
-                    <img src="@item.ImageURL" alt="@item.ProductName" />
-                    <h3 class="title">@item.ProductName</h3>
-                    <span class="sale">@item.sPrice</span>
-                    <span class="price">@item.sPrice</span>
-                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
-                    <div class="progress">
-                        Còn lại 89%
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
-                    </div>
-                </a>
-            }
-        }        
-    </div>
-    <div class="nhom_xemthem">
-        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
-    </div>
-
-    <h2 class="nhom_title01"><span>Nước Hoa Hồng</span></h2>
-    <div class="nhom_list">
-        @if (Model.ListProduct != null && Model.ListProduct.Any())
-        {
-            foreach (var item in Model.ListProduct)
+            foreach (var item in Model.ListProduct.Where(w => w.CategoryType == (int)Commons.ECateType.SuaRuaMat).Skip(0).Take(8))
             {
                 <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
                     <img src="@item.ImageURL" alt="@item.ProductName" />
@@ -169,7 +117,7 @@
     <div class="nhom_list">
         @if (Model.ListProduct != null && Model.ListProduct.Any())
         {
-            foreach (var item in Model.ListProduct)
+            foreach (var item in Model.ListProduct.Where(w => w.CategoryType == (int)Commons.ECateType.TayTeBaoChet).Skip(0).Take(8))
             {
                 <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
                     <img src="@item.ImageURL" alt="@item.ProductName" />
@@ -192,7 +140,7 @@
     <div class="nhom_list">
         @if (Model.ListProduct != null && Model.ListProduct.Any())
         {
-            foreach (var item in Model.ListProduct)
+            foreach (var item in Model.ListProduct.Where(w => w.CategoryType == (int)Commons.ECateType.NuocHoaHong).Skip(0).Take(8))
             {
                 <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
                     <img src="@item.ImageURL" alt="@item.ProductName" />
@@ -221,7 +169,7 @@
     <div class="nhom_list">
         @if (Model.ListProduct != null && Model.ListProduct.Any())
         {
-            foreach (var item in Model.ListProduct)
+            foreach (var item in Model.ListProduct.Where(w => w.CategoryType == (int)Commons.ECateType.KemChongNang).Skip(0).Take(8))
             {
                 <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
                     <img src="@item.ImageURL" alt="@item.ProductName" />

@@ -60,6 +60,14 @@ namespace CMS_Shared
         public const string PasswordChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         #region Enum
+        public enum ECateType
+        {
+            NuocTayTrang = 0,
+            SuaRuaMat = 1,
+            TayTeBaoChet = 2,
+            NuocHoaHong = 3,
+            KemChongNang = 4,
+        }
         public enum ESizeType
         {
             XS = 0,

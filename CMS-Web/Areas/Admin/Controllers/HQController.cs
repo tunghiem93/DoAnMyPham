@@ -161,5 +161,17 @@ namespace CMS_Web.Areas.Admin.Controllers
             };
             return _lst;
         }
+
+        public List<SelectListItem> getListCateType()
+        {
+            var _lstType = new List<SelectListItem>() {
+                new SelectListItem() { Text = "Nước tẩy trang", Value = Commons.ECateType.NuocTayTrang.ToString("d") },
+                new SelectListItem() { Text = "Sữa rửa mặt", Value = Commons.ECateType.SuaRuaMat.ToString("d") },
+                new SelectListItem() { Text = "Tẩy tế bào chết", Value = Commons.ECateType.TayTeBaoChet.ToString("d") },
+                new SelectListItem() { Text = "Nước hoa hồng", Value = Commons.ECateType.NuocHoaHong.ToString("d") },
+                new SelectListItem() { Text = "Kem chống nắng", Value = Commons.ECateType.KemChongNang.ToString("d") },
+            };
+            return _lstType;
+        }
     }
 }
