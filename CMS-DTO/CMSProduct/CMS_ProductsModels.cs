@@ -30,10 +30,10 @@ namespace CMS_DTO.CMSProduct
         public string CategoryId { get; set; }
         public string CategoryName { get; set; }
         public int CategoryType { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn thương hiệu")]
+        //[Required(ErrorMessage = "Vui lòng chọn thương hiệu")]
         public string BrandId { get; set; }
         public string BrandName { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn khu vực")]
+        //[Required(ErrorMessage = "Vui lòng chọn khu vực")]
         public string LocationId { get; set; }
         public string LocationName { get; set; }
         public string StyleId { get; set; }
