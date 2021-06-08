@@ -395,7 +395,7 @@ namespace CMS_Shared.CMSProducts
             return result;
         }
 
-        public List<CMS_ProductsModels> GetListProductByCategory(string alias, out int totalRecord, out int totalPage, int pageNo = 1 , int pageSize = 1, string a = "", string pr = "")
+        public List<CMS_ProductsModels> GetListProductByCategory(string alias, out int totalRecord, out int totalPage, int pageNo = 1 , int pageSize = 1, string a = "", int sortBy = 1)
         {
             try
             {
@@ -407,33 +407,30 @@ namespace CMS_Shared.CMSProducts
                         Category_Name = c.CategoryName,
                         Alias = c.Alias
                     });
-                    
-                    if(!string.IsNullOrEmpty(alias) && alias.Equals("ruou-ngoai"))
-                    {
-                        var _Alias = new List<string> { "hennessy", "chivas", "johnnier-walker", "macalla", "vodka", "vang" };
-                        entity = entity.Where(x => _Alias.Contains(x.Alias));
-                    }
-                    else if(!string.IsNullOrEmpty(alias) && alias.Equals("qua-tet"))
-                    {
-                        var _Alias2 = new List<string> { "hop-qua-tet", "gio-qua-tet", "tui-qua-tet", "hop-qua-cao-cap" };
-                        entity = entity.Where(x => _Alias2.Contains(x.Alias));
-                    }
-                    else if(!string.IsNullOrEmpty(alias))
+                   
+                    if(!string.IsNullOrEmpty(alias))
                     {
                         entity = entity.Where(x => x.Alias.Equals(alias));
                     }
 
                     totalRecord = entity.Count();
                     totalPage = (int)Math.Ceiling(totalRecord / (double)pageSize);
-                    if (!string.IsNullOrEmpty(pr) && pr.ToLower() == "asc")
+
+                    if(sortBy == 1)
                     {
-                        entity = entity.OrderBy(x => x.p.ProductPrice);
-                    } else if (!string.IsNullOrEmpty(pr) && pr.ToLower() == "desc")
+                        entity = entity.OrderByDescending(z => z.p.CreatedDate);
+                    }
+                    else if(sortBy == 2)
                     {
-                        entity = entity.OrderByDescending(x => x.p.ProductPrice);
-                    } else
+                        entity = entity.OrderBy(z => z.p.CreatedDate);
+                    }
+                    else if(sortBy == 3)
                     {
-                        entity = entity.OrderByDescending(x => x.p.CreatedDate);
+                        entity = entity.OrderBy(z => z.p.ProductPrice);
+                    }
+                    else
+                    {
+                        entity = entity.OrderByDescending(z => z.p.ProductPrice);
                     }
 
                     entity = entity.Skip((pageNo - 1) * pageSize).Take(pageSize);

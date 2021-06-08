@@ -44,7 +44,7 @@ namespace CMS_DTO.CMSProduct
         public string CurrentCateAlias { get; set; }
         public string CurrentCategoryName { get; set; }
         public string CurrentSortNew { get; set; }
-        public string CurrentSortPrice { get; set; }
+        public int CurrentSortBy { get; set; }
         public string Key { get; set; }
         public bool IsOrther { get; set; }
         public ProductViewModels()

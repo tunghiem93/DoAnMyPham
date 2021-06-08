@@ -33,11 +33,11 @@
                 <option value="16">Show : 16</option>
                 <option value="28">Show : 28</option>
             </select>
-            <select>
-                <option selected="">Sort By: Newest Items</option>
-                <option>Sort By: Latest Items</option>
-                <option>Sort By: Lowest Price</option>
-                <option>Sort By: Highest Price</option>
+            <select class="sortBy" onchange="changeSortBy(this)">
+                <option value="1">Sort By: Newest Items</option>
+                <option value="2">Sort By: Latest Items</option>
+                <option value="3">Sort By: Lowest Price</option>
+                <option value="4">Sort By: Highest Price</option>
             </select>
         </div>
         @if (Model != null && Model.ListProduct != null && Model.ListProduct.Any())
@@ -67,7 +67,7 @@
                     }
                     else
                     {
-                        <a href="@Url.Action("Index", "Shop", new { page = i })">@i</a>
+                        <a href="@Url.Action("Index", "Shop", new { page = i, pageSize = Model.PageSize, sortBy = Model.CurrentSortBy })">@i</a>
                     }
 
                 }
@@ -80,14 +80,27 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('.pageSize').val('@Model.PageSize')
+        $('.sortBy').val('@Model.CurrentSortBy')
     })
     function changeItemOfPage(that) {
        var pageSize = $(that).val()
-        var url = "@Url.Action("Index", "Shop")";
+        var url = "@Url.Action("Index", "Shop", new { sortBy = Model.CurrentSortBy })";
         if (url.indexOf('?') > -1) {
             url += '&pageSize=' + pageSize
         } else {
             url += '?pageSize=' + pageSize
+        }
+        window.location.href = url;
+    }
+
+    function changeSortBy(that) {
+        var sortBy = $(that).val()
+        var url = "@Url.Action("Index", "Shop", new { page = Model.CurrentPage,pageSize = Model.PageSize })"
+        url = url.replace("&amp;", "&")
+        if (url.indexOf('?') > -1) {
+            url += '&sortBy=' + sortBy
+        } else {
+            url += '?sortBy=' + sortBy
         }
         window.location.href = url;
     }

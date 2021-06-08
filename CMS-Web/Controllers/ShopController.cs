@@ -34,8 +34,9 @@ namespace CMS_Web.Controllers
             //ViewBag.Range = GetListRangeSelectItem();
         }
         // GET: Shop
-        public ActionResult Index(string q = "", int  page = 1, string a = "", string pr = "", int pageSize = 8)
+        public ActionResult Index(string q = "", int  page = 1, string a = "",int pageSize = 8, int sortBy = 1)
         {
+            //var test = HttpServerUtility.UrlEncode("");
             try
             {
                 ProductViewModels model = new ProductViewModels();
@@ -53,7 +54,7 @@ namespace CMS_Web.Controllers
                 
                 //Product
                 int totalRecord, totalPage;
-                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, pageSize, a, pr);
+                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, pageSize, a, sortBy);
                 var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())
                 {
@@ -71,7 +72,7 @@ namespace CMS_Web.Controllers
                 model.TotalPage = totalPage;
                 model.CurrentPage = page;
                 model.CurrentSortNew = a;
-                model.CurrentSortPrice = pr;
+                model.CurrentSortBy = sortBy;
                 model.PageSize = pageSize;
                 return View(model);
             }
@@ -351,51 +352,6 @@ namespace CMS_Web.Controllers
                 NSLog.Logger.Error("LoadDataPagging :", ex);
             }
             return PartialView("_ListItem", model);
-        }
-
-        public ActionResult Ruou_Ngoai(int page = 1, string a = "", string pr = "")
-        {
-            try
-            {
-                ProductViewModels model = new ProductViewModels();
-                //Category
-                //model.ListCate = _facCate.GetList().OrderBy(x => x.CategoryName).ToList();
-                //if (!string.IsNullOrEmpty(q))
-                //{
-                //    var dataCurrentCate = model.ListCate.FirstOrDefault(x => x.Alias.Equals(q));
-                //    model.CurrentCateAlias = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.Alias;
-                //    model.CurrentCategoryName = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.CategoryName;
-                //}
-
-                //Product
-                int totalRecord, totalPage;
-                string q = "ruou-ngoai";
-                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, 25, a, pr);
-                var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
-                if (model.ListProduct != null && model.ListProduct.Any())
-                {
-                    model.ListProduct.ForEach(x =>
-                    {
-                        if (!string.IsNullOrEmpty(x.ImageURL))
-                            x.ImageURL = Commons._PublicImages + "Products/" + x.ImageURL;
-                        else
-                            x.ImageURL = "";
-
-                        x.sPrice = String.Format(info, "{0:C0}", x.ProductPrice);
-                    });
-                }
-                model.TotalProduct = totalRecord;
-                model.TotalPage = totalPage;
-                model.CurrentPage = page;
-                model.CurrentSortNew = a;
-                model.CurrentSortPrice = pr;
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-                NSLog.Logger.Error("Index: ", ex);
-                return RedirectToAction("Index", "NotFound");
-            }
         }
     }
 }
