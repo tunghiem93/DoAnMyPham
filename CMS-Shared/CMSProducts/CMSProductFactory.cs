@@ -28,9 +28,6 @@ namespace CMS_Shared.CMSProducts
                             {
                                 Id = _Id,
                                 CategoryId = model.CategoryId,
-                                BrandId = model.BrandId,
-                                LocationId = model.LocationId,
-                                //StyleId = model.StyleId,
                                 CreatedBy = model.CreatedBy,
                                 CreatedDate = DateTime.Now,
                                 TypeSize = model.TypeSize,
@@ -89,8 +86,6 @@ namespace CMS_Shared.CMSProducts
                                 e.TypeSize = model.TypeSize;
                                 e.TypeState = model.TypeState;
                                 e.CategoryId = model.CategoryId;
-                                e.BrandId = model.BrandId;
-                                e.LocationId = model.LocationId;
                                 //e.StyleId = model.StyleId;
                                 e.UpdatedBy = model.UpdatedBy;
                                 e.UpdatedDate = DateTime.Now;
@@ -197,8 +192,6 @@ namespace CMS_Shared.CMSProducts
                         {
                             Id = e.p.Id,
                             CategoryId = e.p.CategoryId,
-                            BrandId = e.p.BrandId,
-                            LocationId = e.p.LocationId,
                             CreatedBy = e.p.CreatedBy,
                             CreatedDate = e.p.CreatedDate,
                             Short_Description = e.p.Short_Description,
@@ -264,13 +257,10 @@ namespace CMS_Shared.CMSProducts
                 {
                     var lstResult = cxt.CMS_Products
                         .Join(cxt.CMS_Categories, p => p.CategoryId, c => c.Id, (p, c) => new { p, CategoryName = c.CategoryName, CategoryType = c.Type, CategoryAlias = c.Alias })
-                        .GroupJoin(cxt.CMS_Brands, p => p.p.BrandId, b => b.Id, (p, b) => new { p.p, p.CategoryName, p.CategoryType, b = b.FirstOrDefault(), p.CategoryAlias })
                         .Select(x => new CMS_ProductsModels
                         {
                             Id = x.p.Id,
                             CategoryId = x.p.CategoryId,
-                            BrandId = x.p.BrandId,
-                            LocationId = x.p.LocationId,
                             CreatedBy = x.p.CreatedBy,
                             CreatedDate = x.p.CreatedDate,
                             Short_Description = x.p.Short_Description,
@@ -291,7 +281,6 @@ namespace CMS_Shared.CMSProducts
                             Year = x.p.Year,
                             ImageURL = x.p.ImageURL,
                             CategoryName = string.IsNullOrEmpty(x.CategoryName) ? "" : x.CategoryName,
-                            BrandName = x.b == null ? "" : (string.IsNullOrEmpty(x.b.BrandName) ? "" : x.b.BrandName),
                             CategoryType = x.CategoryType,
                             AliasCate = x.CategoryAlias
                         }).ToList();
@@ -334,187 +323,6 @@ namespace CMS_Shared.CMSProducts
             return null;
         }
 
-        public List<CMS_ProductsModels> GetListProductCate(string alias)
-        {
-            try
-            {
-                using (var cxt = new CMS_Context())
-                {
-                    var data = cxt.CMS_Products.Join(cxt.CMS_Categories,
-                                                    p => p.CategoryId,
-                                                    c => c.Id,
-                                                    (p, c) => new { p, CategoryName = c.CategoryName, CategoryType = c.Type, AliasCate = c.Alias })
-                                               .Select(x => new CMS_ProductsModels
-                                               {
-                                                   Id = x.p.Id,
-                                                   CategoryId = x.p.CategoryId,
-                                                   BrandId = x.p.BrandId,
-                                                   LocationId = x.p.LocationId,
-                                                   CreatedBy = x.p.CreatedBy,
-                                                   CreatedDate = x.p.CreatedDate,
-                                                   Short_Description = x.p.Short_Description,
-                                                   Description = x.p.Description,
-                                                   ImageURL = x.p.ImageURL,
-                                                   IsActive = x.p.IsActive,
-                                                   ProductCode = x.p.ProductCode,
-                                                   ProductName = x.p.ProductName,
-                                                   ProductPrice = x.p.ProductPrice,
-                                                   ProductExtraPrice = (x.p.ProductExtraPrice > 0 && x.p.ProductExtraPrice < x.p.ProductPrice) ? x.p.ProductExtraPrice : x.p.ProductPrice,
-                                                   Vendor = x.p.Vendor,
-                                                   LinkVideo = x.p.LinkVideo,
-                                                   Information = x.p.Information,
-                                                   TypeSize = x.p.TypeSize,
-                                                   TypeState = x.p.TypeState,
-                                                   UpdatedBy = x.p.UpdatedBy,
-                                                   UpdatedDate = x.p.UpdatedDate,
-                                                   CategoryName = x.CategoryName,
-                                                   Alias = x.p.Alias,
-                                                   AliasCate = x.AliasCate,
-                                                   Year = x.p.Year,
-                                                   CategoryType = x.CategoryType
-                                               }).Where(w => w.AliasCate.Equals(alias)).ToList();
-                    return data;
-                }
-            }
-            catch (Exception) { }
-            return null;
-        }
-
-        public List<CMS_ProductsModels> GetListProductLocation(string alias)
-        {
-            try
-            {
-                using (var cxt = new CMS_Context())
-                {
-                    var data = cxt.CMS_Products.Join(cxt.CMS_Locations,
-                                                    p => p.CategoryId,
-                                                    c => c.Id,
-                                                    (p, lo) => new { p, LocationName = lo.Name, AliasLoca = lo.Alias })
-                                               .Select(x => new CMS_ProductsModels
-                                               {
-                                                   Id = x.p.Id,
-                                                   CategoryId = x.p.CategoryId,
-                                                   BrandId = x.p.BrandId,
-                                                   LocationId = x.p.LocationId,
-                                                   CreatedBy = x.p.CreatedBy,
-                                                   CreatedDate = x.p.CreatedDate,
-                                                   Short_Description = x.p.Short_Description,
-                                                   Description = x.p.Description,
-                                                   ImageURL = x.p.ImageURL,
-                                                   IsActive = x.p.IsActive,
-                                                   ProductCode = x.p.ProductCode,
-                                                   ProductName = x.p.ProductName,
-                                                   ProductPrice = x.p.ProductPrice,
-                                                   ProductExtraPrice = (x.p.ProductExtraPrice > 0 && x.p.ProductExtraPrice < x.p.ProductPrice) ? x.p.ProductExtraPrice : x.p.ProductPrice,
-                                                   Vendor = x.p.Vendor,
-                                                   LinkVideo = x.p.LinkVideo,
-                                                   Information = x.p.Information,
-                                                   TypeSize = x.p.TypeSize,
-                                                   TypeState = x.p.TypeState,
-                                                   UpdatedBy = x.p.UpdatedBy,
-                                                   UpdatedDate = x.p.UpdatedDate,
-                                                   LocationName = x.LocationName,
-                                                   Alias = x.p.Alias,
-                                                   AliasLoca = x.AliasLoca,
-                                                   Year = x.p.Year,
-                                               }).Where(w => w.AliasLoca.Equals(alias)).ToList();
-                    return data;
-                }
-            }
-            catch (Exception) { }
-            return null;
-        }
-
-        public List<CMS_ProductsModels> GetListProductBrand(string alias)
-        {
-            try
-            {
-                using (var cxt = new CMS_Context())
-                {
-                    var data = cxt.CMS_Products.Join(cxt.CMS_Brands,
-                                                    p => p.BrandId,
-                                                    b => b.Id,
-                                                    (p, b) => new { p, BrandName = b.BrandName, AliasBrand = b.Alias })
-                                               .Select(x => new CMS_ProductsModels
-                                               {
-                                                   Id = x.p.Id,
-                                                   CategoryId = x.p.CategoryId,
-                                                   BrandId = x.p.BrandId,
-                                                   LocationId = x.p.LocationId,
-                                                   CreatedBy = x.p.CreatedBy,
-                                                   CreatedDate = x.p.CreatedDate,
-                                                   Short_Description = x.p.Short_Description,
-                                                   Description = x.p.Description,
-                                                   ImageURL = x.p.ImageURL,
-                                                   IsActive = x.p.IsActive,
-                                                   ProductCode = x.p.ProductCode,
-                                                   ProductName = x.p.ProductName,
-                                                   ProductPrice = x.p.ProductPrice,
-                                                   ProductExtraPrice = (x.p.ProductExtraPrice > 0 && x.p.ProductExtraPrice < x.p.ProductPrice) ? x.p.ProductExtraPrice : x.p.ProductPrice,
-                                                   Vendor = x.p.Vendor,
-                                                   LinkVideo = x.p.LinkVideo,
-                                                   Information = x.p.Information,
-                                                   TypeSize = x.p.TypeSize,
-                                                   TypeState = x.p.TypeState,
-                                                   UpdatedBy = x.p.UpdatedBy,
-                                                   UpdatedDate = x.p.UpdatedDate,
-                                                   BrandName = x.BrandName,
-                                                   Alias = x.p.Alias,
-                                                   AliasBrand = x.AliasBrand,
-                                                   Year = x.p.Year,
-                                               }).Where(w => w.AliasBrand.Equals(alias)).ToList();
-                    return data;
-                }
-            }
-            catch (Exception) { }
-            return null;
-        }
-
-        //public List<CMS_ProductsModels> GetListProductStyle(string alias)
-        //{
-        //    try
-        //    {
-        //        using (var cxt = new CMS_Context())
-        //        {
-        //            var data = cxt.CMS_Products.Join(cxt.CMS_Styles,
-        //                                            p => p.StyleId,
-        //                                            s => s.Id,
-        //                                            (p, s) => new { p, StyleName = s.Name, AliasStyle = s.Alias })
-        //                                       .Select(x => new CMS_ProductsModels
-        //                                       {
-        //                                           Id = x.p.Id,
-        //                                           CategoryId = x.p.CategoryId,
-        //                                           BrandId = x.p.BrandId,
-        //                                           LocationId = x.p.LocationId,
-        //                                           StyleId = x.p.StyleId,
-        //                                           CreatedBy = x.p.CreatedBy,
-        //                                           CreatedDate = x.p.CreatedDate,
-        //                                           Short_Description = x.p.Short_Description,
-        //                                           Description = x.p.Description,
-        //                                           ImageURL = x.p.ImageURL,
-        //                                           IsActive = x.p.IsActive,
-        //                                           ProductCode = x.p.ProductCode,
-        //                                           ProductName = x.p.ProductName,
-        //                                           ProductPrice = x.p.ProductPrice,
-        //                                           ProductExtraPrice = (x.p.ProductExtraPrice > 0 && x.p.ProductExtraPrice < x.p.ProductPrice) ? x.p.ProductExtraPrice : x.p.ProductPrice,
-        //                                           Vendor = x.p.Vendor,
-        //                                           LinkVideo = x.p.LinkVideo,
-        //                                           Information = x.p.Information,
-        //                                           TypeSize = x.p.TypeSize,
-        //                                           TypeState = x.p.TypeState,
-        //                                           UpdatedBy = x.p.UpdatedBy,
-        //                                           UpdatedDate = x.p.UpdatedDate,
-        //                                           StyleName = x.StyleName,
-        //                                           Alias = x.p.Alias,
-        //                                           AliasStyle = x.AliasStyle,
-        //                                           Year = x.p.Year,
-        //                                       }).Where(w => w.AliasStyle.Equals(alias)).ToList();
-        //            return data;
-        //        }
-        //    }
-        //    catch (Exception) { }
-        //    return null;
-        //}
 
         public List<CMS_ImagesModels> GetListImage()
         {
@@ -633,8 +441,6 @@ namespace CMS_Shared.CMSProducts
                                     {
                                         Id = x.p.Id,
                                         CategoryId = x.p.CategoryId,
-                                        BrandId = x.p.BrandId,
-                                        LocationId = x.p.LocationId,
                                         CreatedBy = x.p.CreatedBy,
                                         CreatedDate = x.p.CreatedDate,
                                         Short_Description = x.p.Short_Description,
@@ -677,8 +483,6 @@ namespace CMS_Shared.CMSProducts
                                                 {
                                                     Id = x.p.Id,
                                                     CategoryId = x.p.CategoryId,
-                                                    BrandId = x.p.BrandId,
-                                                    LocationId = x.p.LocationId,
                                                     CreatedBy = x.p.CreatedBy,
                                                     CreatedDate = x.p.CreatedDate,
                                                     Short_Description = x.p.Short_Description,

@@ -171,7 +171,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                 }
                 if (!string.IsNullOrEmpty(model.ImageURL))
                 {
-                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image600_400, "");
+                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image300_300, "");
                     temp = model.ImageURL;
                 }
                 if (model.PictureUpload != null && model.PictureUpload.ContentLength > 0)
@@ -192,7 +192,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                     {
                         if (!string.IsNullOrEmpty(item.ImageURL) && item.PictureUpload == null)
                         {
-                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image600_400, "");
+                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image300_300, "");
                             ListNotChangeImg.Add(item.ImageURL);
                         }
                     }
@@ -204,7 +204,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                     {
                         if (!string.IsNullOrEmpty(item.ImageURL))
                         {
-                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image600_400, "");
+                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image300_300, "");
                             ListNotChangeImg.Add(item.ImageURL);
                         }
 
@@ -220,7 +220,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                     {
                         if (!string.IsNullOrEmpty(item.ImageURL))
                         {
-                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image600_400, "");
+                            item.ImageURL = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Collections/", "").Replace(Commons.Image300_300, "");
                             model.ListImageUrl.Add(item.ImageURL);
                         }
                     }
@@ -236,7 +236,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         //Delete image on forder
                         foreach (var item in ListNotChangeImg)
                         {
-                            if (!item.Equals(Commons.Image600_400))
+                            if (!item.Equals(Commons.Image300_300))
                             {
                                 var filePath = Server.MapPath("~/Uploads/Collections/" + item);
                                 if (System.IO.File.Exists(filePath))
@@ -319,7 +319,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                     {
                         foreach (var item in model.ListImg)
                         {
-                            var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Colections/", "").Replace(Commons.Image600_400, "");
+                            var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Colections/", "").Replace(Commons.Image300_300, "");
                             // delete image for folder
                             if (System.IO.File.Exists(Server.MapPath("~/Uploads/Colections/" + tempImg)))
                             {

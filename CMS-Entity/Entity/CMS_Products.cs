@@ -21,15 +21,11 @@ namespace CMS_Entity.Entity
         public decimal ProductPrice { get; set; }
         public decimal ProductExtraPrice { get; set; }
         public string CategoryId { get; set; }
-        public string BrandId { get; set; }
-        public string LocationId { get; set; }
         public string ImageURL { get; set; }
         public string Alias { get; set; }
         public int Year { get; set; }
 
         public virtual CMS_Categories Category { get; set; }
-        public virtual CMS_Brands Brand { get; set; }
-        public virtual CMS_Locations Locations { get; set; }
         public virtual List<CMS_Images> Images { get; set; }
     }
 }

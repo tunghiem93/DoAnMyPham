@@ -132,7 +132,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                 }
                 if (!string.IsNullOrEmpty(model.ImageURL))
                 {
-                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Employees/", "").Replace(Commons.Image600_400, "");
+                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Employees/", "").Replace(Commons.Image300_300, "");
                     temp = model.ImageURL;
                 }
 
@@ -209,7 +209,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                 var result = _factory.Delete(model.Id, ref msg);
                 if (result)
                 {
-                    var tempImg = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Employees/", "").Replace(Commons.Image600_400, "");
+                    var tempImg = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Employees/", "").Replace(Commons.Image300_300, "");
                     // delete image for folder
                     if (System.IO.File.Exists(Server.MapPath("~/Uploads/Employees/" + tempImg)))
                     {

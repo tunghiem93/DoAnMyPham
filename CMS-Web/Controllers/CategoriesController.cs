@@ -36,7 +36,7 @@ namespace CMS_Web.Controllers
             {
                 if (_alias.Length > 1)
                 {
-                    model.ListProduct = _fac.GetListProductCate(_alias).OrderByDescending(x => x.CreatedDate).ToList();
+                    //model.ListProduct = _fac.GetListProductByCategory().OrderByDescending(x => x.CreatedDate).ToList();
                     if (model.ListProduct != null && model.ListProduct.Any())
                     {
                         model.ListProduct.ForEach(x =>

@@ -76,7 +76,7 @@ namespace CMS_Web.Controllers
                     //    model.TotalPage = Convert.ToInt32(TotalProduct / PageSize) + 1;
 
                     //model.ListProduct = model.ListProduct.Skip(0).Take(PageSize).ToList();
-                    model.ListProductTopSales = tempProduct.Skip(0).Take(8).ToList();
+                    model.ListProductTopSales = model.ListProduct.Skip(0).Take(8).ToList();
                 }
                 model.ListGroupCate = _facCate.GetList().Where(w=>string.IsNullOrEmpty(w.ParentId)).OrderByDescending(x => x.CreatedDate).ToList();
                 if (model.ListGroupCate != null && model.ListGroupCate.Any())

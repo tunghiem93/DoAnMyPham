@@ -115,7 +115,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                             ms.Write(lstImgByte[item.OffSet], 0, lstImgByte[item.OffSet].Length);
                             System.Drawing.Image imageTmp = System.Drawing.Image.FromStream(ms, true);
 
-                            ImageHelper.Me.SaveCroppedImage(imageTmp, path, item.ImageURL, ref photoByte, 400, Commons.WidthCate, Commons.HeightCate);
+                            ImageHelper.Me.SaveCroppedImage(imageTmp, path, item.ImageURL, ref photoByte, 300, Commons.WidthCate, Commons.HeightCate);
                         }
                     }
                     return RedirectToAction("Index");
@@ -153,7 +153,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                 }
                 if (!string.IsNullOrEmpty(model.ImageURL))
                 {
-                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image600_400, "");
+                    model.ImageURL = model.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image300_300, "");
                     temp = model.ImageURL;
                 }
 
@@ -172,7 +172,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         model.ListImageUrl.Add(item.ImageURL);
                     }else
                     {
-                        var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image600_400, "");
+                        var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image300_300, "");
                         model.ListImageUrl.Add(tempImg);
                     }
                 }
@@ -190,7 +190,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                             ms.Write(lstImgByte[item.OffSet], 0, lstImgByte[item.OffSet].Length);
                             System.Drawing.Image imageTmp = System.Drawing.Image.FromStream(ms, true);
 
-                            ImageHelper.Me.SaveCroppedImage(imageTmp, path, item.ImageURL, ref photoByte, 400, Commons.WidthCate, Commons.HeightCate);
+                            ImageHelper.Me.SaveCroppedImage(imageTmp, path, item.ImageURL, ref photoByte, 300, Commons.WidthCate, Commons.HeightCate);
                         }
                     }
                     return RedirectToAction("Index");
@@ -240,7 +240,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                     {
                         foreach (var item in model.ListImg)
                         {
-                            var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image600_400, "");
+                            var tempImg = item.ImageURL.Replace(Commons._PublicImages, "").Replace("Categories/", "").Replace(Commons.Image300_300, "");
                             // delete image for folder
                             if (System.IO.File.Exists(Server.MapPath("~/Uploads/Categories/" + tempImg)))
                             {

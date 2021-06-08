@@ -257,7 +257,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         //Delete image on forder
                         foreach (var item in ListNotChangeImg)
                         {
-                            if (!item.Equals(Commons.Image600_400))
+                            if (!item.Equals(Commons.Image300_300))
                             {
                                 var filePath = Server.MapPath("~/Uploads/Products/" + item);
                                 if (System.IO.File.Exists(filePath))

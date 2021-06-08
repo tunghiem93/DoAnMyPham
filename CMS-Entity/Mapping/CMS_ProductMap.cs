@@ -29,14 +29,10 @@ namespace CMS_Entity.Mapping
             this.Property(x => x.UpdatedBy).HasMaxLength(60).HasColumnType("varchar").IsOptional();
             this.Property(x => x.CreatedBy).HasMaxLength(60).HasColumnType("varchar").IsOptional();
             this.Property(x => x.CategoryId).HasMaxLength(60).HasColumnType("varchar").IsOptional();
-            this.Property(x => x.BrandId).HasMaxLength(60).HasColumnType("varchar").IsOptional();
-            this.Property(x => x.LocationId).HasMaxLength(60).HasColumnType("varchar").IsOptional();
             this.Property(x => x.ImageURL).HasMaxLength(60).HasColumnType("varchar").IsOptional();
             this.Property(x => x.Year).HasColumnType("int").IsOptional();
 
             this.HasRequired(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
-            this.HasRequired(x => x.Brand).WithMany(x => x.Products).HasForeignKey(x => x.BrandId);
-            this.HasRequired(x => x.Locations).WithMany(x => x.Products).HasForeignKey(x => x.LocationId);
 
         }
     }

@@ -151,17 +151,6 @@ namespace CMS_Shared.CMSBrands
                         ImageURL = x.ImageURL
                     }).ToList();
 
-                    /* count number of product */
-                    var lstNumOfProduct = cxt.CMS_Products.GroupBy(o => o.BrandId).Select(o => new
-                    {
-                        ID = o.Key,
-                        Count = o.Count(),
-                    }).ToList();
-                    data.ForEach(o =>
-                    {
-                        o.NumberOfProduct = lstNumOfProduct.Where(c => c.ID == o.Id).Select(c => c.Count).FirstOrDefault();
-                    });
-
                     /* response data */
                     return data;
                 }
