@@ -40,6 +40,7 @@ namespace CMS_DTO.CMSProduct
         public bool IsAddMore { get; set; }
         public int TotalPage { get; set; }
         public int CurrentPage { get; set; }
+        public int PageSize { get; set; }
         public string CurrentCateAlias { get; set; }
         public string CurrentCategoryName { get; set; }
         public string CurrentSortNew { get; set; }

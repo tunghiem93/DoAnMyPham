@@ -34,7 +34,7 @@ namespace CMS_Web.Controllers
             //ViewBag.Range = GetListRangeSelectItem();
         }
         // GET: Shop
-        public ActionResult Index(string q = "", int  page = 1, string a = "", string pr = "")
+        public ActionResult Index(string q = "", int  page = 1, string a = "", string pr = "", int pageSize = 8)
         {
             try
             {
@@ -49,12 +49,11 @@ namespace CMS_Web.Controllers
                         model.CurrentCateAlias = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.Alias;
                         model.CurrentCategoryName = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.CategoryName;
                     }
-
                 }
                 
                 //Product
                 int totalRecord, totalPage;
-                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, 25 , a, pr);
+                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, pageSize, a, pr);
                 var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())
                 {
@@ -73,6 +72,7 @@ namespace CMS_Web.Controllers
                 model.CurrentPage = page;
                 model.CurrentSortNew = a;
                 model.CurrentSortPrice = pr;
+                model.PageSize = pageSize;
                 return View(model);
             }
             catch (Exception ex)
