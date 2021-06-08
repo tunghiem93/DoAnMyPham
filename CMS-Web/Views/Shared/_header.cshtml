@@ -1,41 +1,41 @@
 ﻿@{ 
     var _ListCategory = Session["ListCateSession"] as List<CMS_DTO.CMSCategories.CMSCategoriesModels>;
 }
-    <div>
-        <div class="logo"><a href="trangchu.html">BEAUSTORY</a></div>
-        <div class="header_search">
-            <input type="text">
-            <a href="timkiemnangcao.html">
-                <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-            </a>
-        </div>
-        <div class="selection">
-            <a class="selection-link" href="#" data-toggle="modal" data-target="#loginModal"><img src="/Images/ico_01.png" alt=""></a>
-            <div id="btn-giohang">
-                <img src="/Images/ico_03.png" alt="">
-                <div id="panel-giohang">
-                    <ul class="mini-product" ng-repeat="item in Products">
-                        <li>
-                            <a href="/Shop/Detail?q={{item.Alias}}" class="item">
-                                <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}">
-                                <div>
-                                    <span class="title">{{item.Name}}</span>
-                                    <p class="price">{{item.Quantity}} × {{item.Price | currency : '' : 0}} VNĐ</p>
-                                </div>
-                                <a class="del-icone remove" href="" ng-click="RemoveItemOrder($index)">Xóa</a>
-                            </a>
-                        </li>                       
-                    </ul>
-                    <div class="mini-total">
-                        <span class="subtotal-text">SUBTOTAL</span>
-                        <span class="_clsCartCount">{{getTotalQty()}}</span>
-                    </div>
-                    <button class="submit-btn"><a href="@Url.Action("CheckOut","Carts")">Đặt hàng</a></button>
-                    <button class="submit-btn cart"><a href="@Url.Action("Index","Carts")">Giỏ hàng</a></button>
+<div ng-controller="CartCtrl">
+    <div class="logo"><a href="trangchu.html">BEAUSTORY</a></div>
+    <div class="header_search">
+        <input type="text">
+        <a href="timkiemnangcao.html">
+            <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </a>
+    </div>
+    <div class="selection">
+        <a class="selection-link" href="#" data-toggle="modal" data-target="#loginModal"><img src="/Images/ico_01.png" alt=""></a>
+        <div id="btn-giohang">
+            <img src="/Images/ico_03.png" alt="">
+            <div id="panel-giohang">
+                <ul class="mini-product" ng-repeat="item in Products">
+                    <li>
+                        <a href="/Shop/Detail?q={{item.Alias}}" class="item">
+                            <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}">
+                            <div>
+                                <span class="title">{{item.Name}}</span>
+                                <p class="price">{{item.Quantity}} × {{item.Price | currency : '' : 0}} VNĐ</p>
+                            </div>
+                            <a class="del-icone remove" href="" ng-click="RemoveItemOrder($index)">Xóa</a>
+                        </a>
+                    </li>                       
+                </ul>
+                <div class="mini-total">
+                    <span class="subtotal-text">SUBTOTAL</span>
+                    <span class="_clsCartCount">{{getTotalQty()}}</span>
                 </div>
+                <button class="submit-btn"><a href="@Url.Action("CheckOut","Carts")">Đặt hàng</a></button>
+                <button class="submit-btn cart"><a href="@Url.Action("Index","Carts")">Giỏ hàng</a></button>
             </div>
         </div>
-        <div class="header_bar">
-            <span></span>
-        </div>
     </div>
+    <div class="header_bar">
+        <span></span>
+    </div>
+</div>

@@ -1,57 +1,94 @@
 ﻿@model CMS_DTO.CMSOrder.CMS_CheckOutModels
 
-<div class="page-banner">
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-        </ol>
-    </nav>
-</div>
-<div class="container mgb20 clearfix my-4">
-    <div class="row">
-        <div class="col-md-12 ordersucess" style="display:none">
-            <p> Đơn hàng của quý khách <strong id="ordercode"></strong> thành công. Employee shop sẽ liên hệ với quý khách sau 60 phút nữa. Cảm ơn qúy khách. <a class="green" href="/">Về Home</a></p>
+<ul class="nhom_menu_01">
+    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+    <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
+    <li><a href="@Url.Action("Index","Advice")">Lời khuyên</a></li>
+</ul>
+<div class="row">
+    <div class="col-xs-12 col-md-8">
+        <form action="@Url.Action("CheckOut", "Cart")" id="order-form" method="post" enctype="multipart/form-data">
+            <div class="box_title01 edit-01">
+                <div>Thông tin nhận hàng</div>
+                <span class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>Bạn đã đăng nhập</span>
+            </div>
+            <div class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>Đỗ Mỹ Duyên 126/1 đường 100 bình thới, Phường 14, Quận 11, Hồ Chí Minh Điện thoại: 0703338683</div>
+            <input type="text" class="input1" placeholder="+ Thêm địa chỉ khác">
+            <span class="note-01">Ghi chú</span>
+            <input type="text" class="input2" placeholder="Nhập ghi chú (nếu có)">
+            <div>
+                <div class="box_title01">Vận chuyển & thanh toán</div>
+                <div class="border-01 padding">
+                    <span class="note-02">Hình thức vận chuyển</span>
+                    <label><input type="radio" name="exampleRadios" value="option1">Giao hàng trong 48 giờ: 0 đ</label>
+                    <label><input type="radio" name="exampleRadios" value="option1">[NowFree] Giao hàng nhanh trong 2 giờ: 0 đ (Nhận hàng trước 18h hôm nay)</label>
+                    <span class="note-02">Phương thức thanh toán</span>
+                    <label><input type="radio" name="exampleRadios" value="option1">Thanh toán tiền khi nhận hàng (COD)</label>
+                    <label><input type="radio" name="exampleRadios" value="option1">Thanh toán trực tuyến (Internet Banking, VNPAY-QR, Ví điện tử VNPAY, Visa - Miễn phí thanh toán) (Xem thêm)</label>
+                </div>
+                <div class="box_title01">
+                    <label><input type="checkbox" name="exampleRadios" value="option1">Thông tin xuất hóa đơn</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-12 col-md-4" ng-controller="CartCtrl">
+        <div>
+            <div class="box_title01 edit-01 edit-02">
+                <div>Đơn hàng</div>
+                <div>Sửa</div>
+            </div>
+            <div class="border-02">
+                <div class="box-01" ng-repeat="item in Products">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <div class="product">
+                                <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}">
+                                <p>{{item.Name}}</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 text-right">{{item.Price | currency : '' : 0}} VNĐ</div>
+                    </div>
+                </div>
+                <div class="box-01">
+                    <div class="row">
+                        <div class="col-xs-6">Tạm tính:</div>
+                        <div class="col-xs-6 text-right">{{getTotal()}} VNĐ</div>
+                        <div class="col-xs-6">Giảm giá:</div>
+                        <div class="col-xs-6 text-right">-0 đ</div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Nhập mã giảm giá / Đổi quà" aria-describedby="basic-addon2">
+                        <span class="input-group-addon">Sử dụng</span>
+                    </div>
+                    <span>Bạn có phiếu mua hàng ?</span>
+                    <select>
+                        <option value="">Chọn loại phiếu</option>
+                        <option value="">A</option>
+                        <option value="">B</option>
+                        <option value="">C</option>
+                    </select>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Nhập mã Voucher" aria-describedby="basic-addon2">
+                        <span class="input-group-addon">Sử dụng</span>
+                    </div>
+                </div>
+                <div class="box-01">
+                    <div class="row">
+                        <div class="col-xs-6">Phí vận chuyển</div>
+                        <div class="col-xs-6 text-right">0 đ</div>
+                    </div>
+                </div>
+                <div class="box-01">
+                    <div class="row">
+                        <div class="col-xs-6">Thành tiền <br>(Đã bao gồm VAT)</div>
+                        <div class="col-xs-6 text-right color-red">{{getTotal()}} VNĐ</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-sm-10 col-md-8 offset-md-2 wr-order">
-            <form action="@Url.Action("CheckOut", "Cart")" id="order-form" method="post" enctype="multipart/form-data">
-                <div class="row form-group">
-                    <label for="CustomerName" class="col-sm-2 col-form-label">First name</label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(model => model.Customer.FirstName, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Họ..." })
-                        @Html.ValidationMessageFor(model => model.Customer.FirstName, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label for="CustomerName" class="col-sm-2 col-form-label">Last name</label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(model => model.Customer.LastName, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Last name..." })
-                        @Html.ValidationMessageFor(model => model.Customer.LastName, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label for="Phone" class="col-sm-2 col-form-label">Phone</label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(model => model.Customer.Phone, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Số điện thoại..." })
-                        @Html.ValidationMessageFor(model => model.Customer.Phone, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label for="Email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(model => model.Customer.Email, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Email" })
-                        @Html.ValidationMessageFor(model => model.Customer.Email, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="row form-group">
-                    <label for="ShipAddress" class="col-sm-2 col-form-label">Address</label>
-                    <div class="col-sm-10">
-                        @Html.TextBoxFor(model => model.Customer.Address, new { @autocapitalize = "off", @spellcheck = "false", @required = "true", @class="form-control", @placeholder="Địa chỉ nhận hàng..." })
-                        @Html.ValidationMessageFor(model => model.Customer.Address, null, new { @class = "label label-danger" })
-                    </div>
-                </div>
-                <div class="text-center mb-4"><input type="submit" class="btn btn-primary" value="Checkout" /></div>
-            </form>
-        </div>
+
+        <span class="note-03">Hình thức vận chuyển</span>
+        <img src="/Images/thanhtoan.png" alt="">
     </div>
 </div>
