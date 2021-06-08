@@ -299,6 +299,6 @@ namespace CMS_Web.Controllers
                 NSLog.Logger.Error("Index: ", ex);
                 return new HttpStatusCodeResult(400, ex.Message);
             }
-        }        
+        }
     }
 }

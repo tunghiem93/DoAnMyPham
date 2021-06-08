@@ -411,5 +411,70 @@ namespace CMS_Web.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+
+        //[HttpPost]
+        [AllowAnonymous]
+        public ActionResult AjaxSignUp(CMS_CustomerModels model)
+        {
+            PropertyReject();
+            model.Password = CommonHelper.Encrypt(model.Password);
+            string msg = "";
+            string cusId = "";
+            model.FirstName = "None";
+            model.LastName = "None";
+            model.Address = "None";
+            model.UserLogin = (int)Commons.ETypeUserLogin.Normal;
+            var result = _factory.InsertOrUpdate(model, ref cusId, ref msg);
+            if (result)
+            {
+                var data = _factory.GetDetail(cusId);
+                UserSession userSession = new UserSession();
+                userSession.UserId = data.ID;
+                userSession.Email = data.Email;
+                userSession.UserName = data.Name;
+                Session.Add("UserClient", userSession);
+                string myObjectJson = JsonConvert.SerializeObject(userSession);  
+                HttpCookie cookie = new HttpCookie("UserClientCookie");
+                cookie.Expires = DateTime.Now.AddMonths(1);
+                cookie.Value = Server.UrlEncode(myObjectJson);
+                HttpContext.Response.Cookies.Add(cookie);
+                return Json(new { ok = true, url = "", users = model });
+            }
+            else
+            {
+                return Json(new { ok = false, message = "Đăng ký tài khoản không thành công!" });
+            }
+        }
+
+        //[HttpPost]
+        [AllowAnonymous]
+        public ActionResult AjaxLogin(ClientLoginModel model)
+        {
+            model.Password = CommonHelper.Encrypt(model.Password);
+            var result = _factory.Login(model);
+            if (result != null)
+            {
+                UserSession userSession = new UserSession();
+                userSession.Email = result.Email;
+                userSession.UserName = result.DisplayName;
+                userSession.IsAdminClient = result.IsAdmin;
+                userSession.FirstName = result.FirstName;
+                userSession.LastName = result.LastName;
+                userSession.Phone = result.Phone;
+                userSession.Address = result.Address;
+                userSession.UserId = result.Id;
+                Session.Add("UserClient", userSession);
+                string myObjectJson = JsonConvert.SerializeObject(userSession); 
+                HttpCookie cookie = new HttpCookie("UserClientCookie");
+                cookie.Expires = DateTime.Now.AddMonths(1);
+                cookie.Value = Server.UrlEncode(myObjectJson);
+                HttpContext.Response.Cookies.Add(cookie);
+                return Json(new { ok = true, url = "", users = model });
+            }
+            else
+            {
+                return Json(new { ok = false, message = "Thông tin tài khoản không chính xác!" });
+            }
+        }
     }
 }

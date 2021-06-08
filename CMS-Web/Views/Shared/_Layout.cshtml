@@ -19,10 +19,9 @@
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
     <!-- nivo slider css -->
     <link href="@Url.Content("~/Content/star-rating.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Libraries/plugins/bootstrap-daterangepicker/daterangepicker.min.css")" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <!-- modernizr js -->
-    <script src="@Url.Content("~/Scripts/modernizr.js")"></script>
     <script src="@Url.Content("~/Scripts/js.cookie.min.js")"></script>
     <script src="@Url.Content("~/Scripts/InitCookie.js")"></script>
     <script src="@Url.Content("~/Scripts/star-rating.js")"></script>
@@ -52,11 +51,11 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <h3>Đăng nhập tài khoản</h3>
-                <label><input type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
-                <label><input type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
+                <label><input id="user_login_email" type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+                <label><input id="user_login_pass" type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
                 <p class="text text-first">Bạn chưa có tài khoản? <a href="#" data-toggle="modal" data-target="#registerModal"><b>Đăng ký ngay</b></a></p>
                 <p class="text">Quên mật khẩu?</p>
-                <button>Đăng nhập</button>
+                <button id="btnSignIn">Đăng nhập</button>
                 <p class="text">Nhắn ngay cho chúng tôi khi<br> bạn cần giúp?</p>
                 <div class="function_social">
                     <a href="#" class="messenger"></a>
@@ -70,72 +69,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <h3>Đăng ký tài khoản</h3>
-                <label><input type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
-                <label><input type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
-                <label><input type="password" name="" placeholder="Họ tên"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
-                <div class="birthday">
-                    <select>
-                        <option>Ngày</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                    </select>
-                    <select>
-                        <option>Tháng</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                    </select>
-                    <select>
-                        <option>Năm sinh</option>
-                        <option>1995</option>
-                        <option>1996</option>
-                        <option>1997</option>
-                        <option>1998</option>
-                        <option>1999</option>
-                        <option>2000</option>
-                    </select>
+                <label><input id="user_email" type="text" name="" placeholder="Nhập email hoặc số điện thoại"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+                <label><input id="user_pass" type="password" name="" placeholder="Nhập mật khẩu từ 6 - 32 ký tự"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></label>
+                <label><input id="user_name" type="text" name="" placeholder="Họ tên"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
+                <div class="birthday row" style="padding-left: 15px; padding-right: 15px; ">
+                    <input id="user_Birthday" class="datepicker1 has-feedback-left" placeholder="BirthDate" autocomplete="off" />
                 </div>
                 <p class="text-first">Nhập thông tin khuyến mãi qua e-mail</p>
                 <p>Tôi đã đọc và đồng ý thực hiện mọi giao dịch mua bán theo <span class="red-color">điều kiện sử dụng và chính sách</span> của Beaustory.vn</p>
-                <button>Đăng ký</button>
+                <button id="btnSignUp">Đăng ký</button>
                 <p>Bạn đã có tài khoản? <a href="#" class="green-color">ĐĂNG NHẬP</a></p>
                 <p>Hoặc đăng nhập với:</p>
                 <div class="function_social">
@@ -152,8 +94,90 @@
     </div>
     <!-- bootstrap -->
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Libraries/plugins/moment/moment.min.js")"></script>
+    <script src="@Url.Content("~/Libraries/plugins/bootstrap-daterangepicker/daterangepicker.min.js")"></script>
     @*<script src="@Url.Content("~/Scripts/script.js")"></script>*@
     <script src="@Url.Content("~/Scripts/jquery_cookie.js")"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datepicker1').daterangepicker({
+                singleDatePicker: true,
+                calender_style: "picker_2",
+                maxDate: new Date(),
+                //==========
+                showDropdowns: true,
+                locale: {
+                    format: 'DD/MM/YYYY',
+                    daysOfWeek: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+                    monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12']
+                }
+            }, function (start, end, label) {
+            });
+        });
+
+        $('#btnSignUp').click(function () {
+            var _userName = $('#user_name').val();
+            var _email = $('#user_email').val();
+            var _password = $('#user_pass').val();
+            var _birthday = $('#user_Birthday').val();
+            if (_userName.length > 0 && _email.length > 0 && _password.length > 0 && _birthday.length > 0) {
+                $.ajax({
+                    url: '@Url.Action("AjaxSignUp", "Login")',
+                    type: "post",
+                    data: { Email: _email, Password: _password, Name: _userName, BirthDate: _birthday },
+                    success: function (data) {
+                        if (data.ok == false) {
+                            confirm("Đăng ký không thành công!");
+                        } else {
+                            $('.modal').modal('hide')
+                        }
+                    },
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    }
+                });
+            }
+            else {
+                confirm("Bạn chưa nhập đầy đủ thông tin!");
+            }
+        })
+
+        $('#btnSignIn').click(function () {
+            var _email = $('#user_login_email').val();
+            var _password = $('#user_login_pass').val();
+            if (_email.length > 0 && _password.length > 0) {
+                $.ajax({
+                    beforeSend: function () {
+                    },
+                    url: '@Url.Action("AjaxLogin", "Login")',
+                    type: "post",
+                    data: { Email: _email, Password: _password },
+                    success: function (data) {
+                        if (data.ok == false) {
+                            confirm("Đăng nhập không thành công!");
+                        } else {
+                            if (data.url.length > 0) {
+                                window.location.href = data.url
+                            } else {
+                                $('#LoginModal').modal('hide');
+                                window.location.reload();
+                            }
+                        }
+                    },
+                    complete: function () {
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    }
+                });
+            }
+            else {
+                confirm("Bạn chưa nhập đầy đủ thông tin!");
+            }
+        })
+    </script>
     <script type="text/javascript">
         //w3schol tao slider
         var slideIndex = 1;
@@ -326,7 +350,7 @@
         $(document).ready(function () {
             getListOrder();
             $('.mainnav ul.nav > li:first-child').addClass('active');
-            new WOW().init();
+            //new WOW().init();
         });
     </script>
     <script src="https://apis.google.com/js/api:client.js"></script>

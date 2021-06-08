@@ -1032,13 +1032,13 @@ figure {
   display: block;
   width: 60px;
   height: 60px;
-  background: url("../img/messenger.png") no-repeat;
+  /*background: url("../img/messenger.png") no-repeat;*/
   background-position: center;
   background-size: 130px; }
 
 .function_social .google {
   display: block;
-  background: url("../img/google.png") no-repeat;
+  /*background: url("../img/google.png") no-repeat;*/
   height: 72px;
   width: 211px;
   background-position: 0px -35px;
