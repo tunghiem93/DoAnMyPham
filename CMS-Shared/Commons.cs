@@ -17,6 +17,7 @@ namespace CMS_Shared
         public const string Image300_300 = "http://placehold.it/300x300";
         public const string Image600_400 = "http://placehold.it/600x400";
         public const string Image470_366 = "http://placehold.it/470x366";
+        public const string Image2000_2000 = "http://placehold.it/2000x2000";
         public const string Image220_220 = "http://placehold.it/220x220";
         public const string Image170_170 = "http://placehold.it/170x170";
         public const string Image480_480 = "http://placehold.it/480x480";
