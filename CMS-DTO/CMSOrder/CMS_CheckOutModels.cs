@@ -32,6 +32,7 @@ namespace CMS_DTO.CMSOrder
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Làm ơn nhập tên!")]
         public string LastName { get; set; }
+        public string FullName { get; set; }
         public string Company { get; set; }
         [Required(ErrorMessage = "Làm ơn nhập tên thành phố")]
         public string City { get; set; }

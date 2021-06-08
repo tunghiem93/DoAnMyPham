@@ -62,6 +62,7 @@ namespace CMS_Web.Controllers
                     var CusInfo = Session["UserClient"] as UserSession;
                     model.Customer.FirstName = CusInfo.FirstName;
                     model.Customer.LastName = CusInfo.LastName;
+                    model.Customer.FullName = CusInfo.UserName;
                     model.Customer.Phone = CusInfo.Phone;
                     model.Customer.Email = CusInfo.Email;
                     model.Customer.Address = CusInfo.Address;
