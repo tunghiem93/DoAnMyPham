@@ -1,4 +1,7 @@
-﻿<div ng-controller="CartCtrl">
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-controller="CartCtrl">
     <ul class="nhom_menu_01">
         <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
         <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
@@ -52,6 +55,6 @@
             </div>
             <div class="col-xs-5 text-right">{{getTotal()}} VNĐ</div>
         </div>
-        <a href="@Url.Action("CheckOut","Card")"><button>Tiến hành đặt hàng</button></a>
+        <a href="@Url.Action("CheckOut","Cart")"><button>Tiến hành đặt hàng</button></a>
     </div>
 </div>

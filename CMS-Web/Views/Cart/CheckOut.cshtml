@@ -1,5 +1,7 @@
 ﻿@model CMS_DTO.CMSOrder.CMS_CheckOutModels
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <ul class="nhom_menu_01">
     <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
     <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
@@ -62,12 +64,12 @@
                         <span class="input-group-addon">Sử dụng</span>
                     </div>
                     <span>Bạn có phiếu mua hàng ?</span>
-                    <select>
+                    @*<select>
                         <option value="">Chọn loại phiếu</option>
                         <option value="">A</option>
                         <option value="">B</option>
                         <option value="">C</option>
-                    </select>
+                    </select>*@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Nhập mã Voucher" aria-describedby="basic-addon2">
                         <span class="input-group-addon">Sử dụng</span>

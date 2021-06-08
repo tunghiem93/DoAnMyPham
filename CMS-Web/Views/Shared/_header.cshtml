@@ -2,7 +2,7 @@
     var _ListCategory = Session["ListCateSession"] as List<CMS_DTO.CMSCategories.CMSCategoriesModels>;
 }
 <div ng-controller="CartCtrl">
-    <div class="logo"><a href="trangchu.html">BEAUSTORY</a></div>
+    <div class="logo"><a href="@Url.Action("Index","Home")">BEAUSTORY</a></div>
     <div class="header_search">
         <input type="text">
         <a href="timkiemnangcao.html">
@@ -27,11 +27,11 @@
                     </li>                       
                 </ul>
                 <div class="mini-total">
-                    <span class="subtotal-text">SUBTOTAL</span>
+                    <span class="subtotal-text">Tổng: </span>
                     <span class="_clsCartCount">{{getTotalQty()}}</span>
                 </div>
-                <button class="submit-btn"><a href="@Url.Action("CheckOut","Carts")">Đặt hàng</a></button>
-                <button class="submit-btn cart"><a href="@Url.Action("Index","Carts")">Giỏ hàng</a></button>
+                <button class="submit-btn"><a href="@Url.Action("CheckOut","Cart")">Đặt hàng</a></button>
+                <button class="submit-btn cart"><a href="@Url.Action("Index","Cart")">Giỏ hàng</a></button>
             </div>
         </div>
     </div>
