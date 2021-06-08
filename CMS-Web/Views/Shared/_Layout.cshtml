@@ -225,6 +225,9 @@
             $rootScope.Products = getListOrder();
             /* add cart */
             $scope.AddToCart = function (ItemId, Qty, Price, ImageUrl, Name, Alias) {
+                var qty = $('#amout-number').val();
+                qty = parseInt(qty) + parseInt(Qty);
+                $('#amout-number').val(qty);
                 var _Order = {
                     ItemId: ItemId,
                     Quantity: Qty,

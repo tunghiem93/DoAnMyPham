@@ -201,5 +201,19 @@ namespace CMS_Shared.Utilities
             catch (Exception ex) { };
             return ret;
         }
+
+        public string CouponGenerator(int length)
+        {
+            var sb = new StringBuilder();
+            for (var i = 0; i < length; i++)
+            {
+                var ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * _random.NextDouble() + 65)));
+
+                sb.Append(ch);
+            }
+
+            return sb.ToString();
+        }
+        private static readonly Random _random = new Random();
     }
 }

@@ -14,8 +14,8 @@
         <div id="btn-giohang">
             <img src="/Images/ico_03.png" alt="">
             <div id="panel-giohang">
-                <ul class="mini-product" ng-repeat="item in Products">
-                    <li>
+                <ul class="mini-product">
+                    <li ng-repeat="item in Products">
                         <a href="/Shop/Detail?q={{item.Alias}}" class="item">
                             <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}">
                             <div>
@@ -27,8 +27,8 @@
                     </li>                       
                 </ul>
                 <div class="mini-total">
-                    <span class="subtotal-text">Tổng: </span>
-                    <span class="_clsCartCount">{{getTotalQty()}}</span>
+                    <span class="subtotal-text">Thành tiền: </span>
+                    <span class="">{{getTotal() | currency : '' : 0}} VNĐ</span>
                 </div>
                 <button class="submit-btn"><a href="@Url.Action("CheckOut","Cart")">Đặt hàng</a></button>
                 <button class="submit-btn cart"><a href="@Url.Action("Index","Cart")">Giỏ hàng</a></button>

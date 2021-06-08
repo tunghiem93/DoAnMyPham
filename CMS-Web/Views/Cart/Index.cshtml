@@ -46,14 +46,14 @@
             <div class="col-xs-7">
                 Tạm tính :
             </div>
-            <div class="col-xs-5 text-right">{{getTotal()}} VNĐ</div>
+            <div class="col-xs-5 text-right">{{getTotal() | currency : '' : 0}} VNĐ</div>
         </div>
         <hr />
         <div class="row">
             <div class="col-xs-7">
                 Thành tiền
             </div>
-            <div class="col-xs-5 text-right">{{getTotal()}} VNĐ</div>
+            <div class="col-xs-5 text-right">{{getTotal() | currency : '' : 0}} VNĐ</div>
         </div>
         <a href="@Url.Action("CheckOut","Cart")"><button>Tiến hành đặt hàng</button></a>
     </div>

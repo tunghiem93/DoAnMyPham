@@ -55,14 +55,15 @@
                 <div class="box-01">
                     <div class="row">
                         <div class="col-xs-6">Tạm tính:</div>
-                        <div class="col-xs-6 text-right">{{getTotal()}} VNĐ</div>
+                        <div class="col-xs-6 text-right"><span class="totalPay">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
                         <div class="col-xs-6">Giảm giá:</div>
                         <div class="col-xs-6 text-right">-0 đ</div>
                     </div>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nhập mã giảm giá / Đổi quà" aria-describedby="basic-addon2">
-                        <span class="input-group-addon">Sử dụng</span>
+                        <input id="idDiscount" type="text" class="form-control" placeholder="Nhập mã giảm giá" aria-describedby="basic-addon2">
+                        <a onclick="ApprovelDisount()" class="input-group-addon">Sử dụng</a>
                     </div>
+                    <label style="display: none" class="error-discount text-danger">Mã giảm giá không đúng!<br /></label>
                     <span>Bạn có phiếu mua hàng ?</span>
                     @*<select>
                         <option value="">Chọn loại phiếu</option>
@@ -70,10 +71,10 @@
                         <option value="">B</option>
                         <option value="">C</option>
                     </select>*@
-                    <div class="input-group">
+                    @*<div class="input-group">
                         <input type="text" class="form-control" placeholder="Nhập mã Voucher" aria-describedby="basic-addon2">
                         <span class="input-group-addon">Sử dụng</span>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="box-01">
                     <div class="row">
@@ -84,8 +85,9 @@
                 <div class="box-01">
                     <div class="row">
                         <div class="col-xs-6">Thành tiền <br>(Đã bao gồm VAT)</div>
-                        <div class="col-xs-6 text-right color-red">{{getTotal()}} VNĐ</div>
+                        <div class="col-xs-6 text-right color-red"><span class="totalPay">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
                     </div>
+                    <button class="dathang">ĐẶT HÀNG</button>
                 </div>
             </div>
         </div>
@@ -94,3 +96,30 @@
         <img src="/Images/thanhtoan.png" alt="">
     </div>
 </div>
+<script>
+
+    function ApprovelDisount() {
+        var _dis = $('#idDiscount').val();
+        if (_dis.length > 0) {
+            $.ajax({
+                    beforeSend: function () {
+                    },
+                    url: '@Url.Action("CheckDiscount", "Cart")',
+                    type: "get",
+                    data: { Discount: _dis },
+                    success: function (data) {
+                        if (data.ok == false) {
+                            $('.error-discount').attr("display", "block");
+                        } else {
+                            $('.error-discount').attr("display", "none");
+                            $('.totalPay').val(data.Total).trigger('change');
+                        }
+                    },
+                    complete: function () {
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                    }
+                });
+        }
+    }
+</script>

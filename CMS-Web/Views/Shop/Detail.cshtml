@@ -5,7 +5,7 @@
 @model CMS_DTO.CMSProduct.ProductViewModels
 <script src="~/Content/jquery.ez-plus.js"></script>
 <script src="~/Content/web.js"></script>
-<main class="nhom_container">
+<main class="nhom_container" ng-controller="CartCtrl">
     <h1>@Model.ProductModel.ProductName</h1>
     <div class="nhom_product">
         <div class="nhom_gallery">
@@ -38,11 +38,12 @@
             <span class="price">@Model.ProductModel.sPrice</span>
             <span class="price_sale">@Model.ProductModel.sPrice</span>
             <p class="capacity">DUNG TÍCH: 500ML</p>
-            <div class="amount">
-                SỐ LƯỢNG:
-                <span id="amount-plus">+</span>
+            <div class="amount" style="display: inline-flex">
+                <p>SỐ LƯỢNG:</p>
+                <a ng-click="AddToCart('@Model.ProductModel.Id', -1, '@Model.ProductModel.ProductPrice', '@Model.ProductModel.ImageURL', '@Model.ProductModel.ProductName');"><span id="amount-minis">-</span></a>
                 <input type="text" id="amout-number" value="0">
-                <span id="amount-minis">-</span>
+                <a ng-click="AddToCart('@Model.ProductModel.Id', 1, '@Model.ProductModel.ProductPrice', '@Model.ProductModel.ImageURL', '@Model.ProductModel.ProductName');"><span id="amount-plus">+</span></a>
+
             </div>
         </div>
     </div>
