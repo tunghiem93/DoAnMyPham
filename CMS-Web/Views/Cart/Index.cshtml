@@ -1,4 +1,60 @@
 ﻿
+<ul class="nhom_menu_01">
+    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+    <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
+    <li><a href="@Url.Action("Index","Advice")">Lời khuyên</a></li>
+</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Giỏ hàng (1 sản phẩm)</th>
+            <th>Giá mua</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div>
+                    <div class="row grid-demo">
+                        <div class="giosanpham">
+                            <div class="col-sm-2 col-md-2">
+                                <img src="img/avatar-sp-web11-recovered-recovered-recovered-22052020104857 1.png" alt="">
+                            </div>
+                            <div class="col-sm-10 col-md-10">
+                                <h3 class="title">Bông tẩy trang Ipek Cotton Pads</h3>
+                                <a href="#"><h3>Xóa</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>40,000 đ</td>
+            <td>
+                <input onchange="changeValue(this.value)" id="soluong" type="number" />
+            </td>
+            <td>40,000 đ</td>
+        </tr>
+    </tbody>
+</table>
+<div class="table-width-01">
+    <div class="row">
+        <div class="col-xs-7">
+            Tạm tính :
+        </div>
+        <div class="col-xs-5 text-right">40.000 đ</div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-7">
+            Thành tiền
+        </div>
+        <div class="col-xs-5 text-right">40.000 đ</div>
+    </div>
+    <a href="thanhtoan.html"><button>Tiến hành đặt hàng</button></a>
+</div>
+
 <div class="page-banner">
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
@@ -17,7 +73,7 @@
                             <div class="row cartitem mb-2 py-2" data-id="125">
                                 <div class="col-3 pr-0">
                                     <a href="gio-qua-tet-thanh-y-gq103">
-                                        <img  ng-src="{{item.ImageUrl}}"  ng-alt="{{item.Name}}" />
+                                        <img ng-src="{{item.ImageUrl}}" ng-alt="{{item.Name}}" />
                                     </a>
                                 </div>
                                 <div class="col-9">
@@ -29,7 +85,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <div class="col-md-7"><span>Quantity:</span> <input  ng-model="item.Quantity" ng-blur="ngBlurModal($index);" ng-change="UpdateQtyOrder($index);" class="rounded cart-q border" type="number" value="1" min="1" /></div>
+                                                <div class="col-md-7"><span>Quantity:</span> <input ng-model="item.Quantity" ng-blur="ngBlurModal($index);" ng-change="UpdateQtyOrder($index);" class="rounded cart-q border" type="number" value="1" min="1" /></div>
                                                 <div class="col-md-5">
                                                     <strong>
                                                         <span ng-bind="item.Price *item.Quantity |currency :'': 0"></span> ₫
@@ -38,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <p><a class="green" href="javascript:"  ng-click="RemoveItemOrder($index)" style="color: red; font-weight: bold; ">Delete</a></p>
+                                            <p><a class="green" href="javascript:" ng-click="RemoveItemOrder($index)" style="color: red; font-weight: bold; ">Delete</a></p>
 
                                         </div>
                                     </div>
@@ -48,7 +104,7 @@
                         <div class="col-md-4 py-3">
                             <div class="pb-1 mb-3 bb">
                                 <p><strong>Order</strong></p>
-                                <p>Quantity: <strong><span class="_clsCartCount">0</span></strong></p>                               
+                                <p>Quantity: <strong><span class="_clsCartCount">0</span></strong></p>
                             </div>
                             <p>
                                 Total: <strong>

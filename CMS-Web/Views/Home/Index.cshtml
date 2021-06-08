@@ -6,122 +6,261 @@
     var _ListSlider = Session["SliderSession"] as List<CMS_DTO.CMSSession.SliderSession>;
     var _ListCategory = Session["ListCateSession"] as List<CMS_DTO.CMSCategories.CMSCategoriesModels>;
 }
-<style>
-    .carousel-control-next-icon, .carousel-control-prev-icon {
-        width: 50px !important;
-        height: 50px !important;
-    }
-</style>
-<div>
-    <div id="carouselHomeBanner" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="@Url.Content("~/Uploads/Banners/cung-cap-rau-sach.jpg")" alt="Qu&#224; Tết 2020, Hộp Qu&#224; Tết, Giỏ Qu&#224; Tết Đẹp">
-            </div>
-        </div>        
-    </div>
 
-    <div class="wr-home-product">
-        <div class="container">
-            <div class="top-line"></div>
-            <div class="heading-title">
-                <h3>
-                    List Product
-                </h3>
-            </div>
-            <div class="row wr-product-list" id="tab-product">
-                @if (Model.ListProduct != null && Model.ListProduct.Any())
-                {
-                    foreach (var item in Model.ListProduct)
-                    {
-                        <div class="col-md-3 rainbow_0 wow fadeInUp">
-                            <div class="productitem">
-                                <div>
-                                    <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
-                                        <img src="@item.ImageURL" alt="@item.ProductName" />
-                                    </a>
-                                </div>
-
-                                <div class="productitem-detail">
-                                    <h2><a href="@Url.Action("Detail", "Shop", new { q = item.Alias })">@item.ProductName</a></h2>
-
-                                    <div class="box-price">@item.sPrice</div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    @if (Model.ListProduct != null && Model.ListProduct.Any())
-                    {
-                        var _previous_disabled = Model.CurrentPage == 1 ? "disabled" : "";
-                        var _next_disabled = Model.CurrentPage == Model.TotalPage ? "disabled" : "";
-                        var hash = "#tab-product";
-                        var pre_page = Model.CurrentPage - 1;
-                        var next_page = Model.CurrentPage + 1;
-                        <ul class="pagination pagination-lg d-inline-flex">
-                            <li class="page-item @_previous_disabled">
-                                <a class="page-link" href="/Home/Index?page=@pre_page@hash" tabindex="-1">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            @for (int i = 1; i <= Model.TotalPage; i++)
-                            {
-                                if (i == Model.CurrentPage)
-                                {
-                                    <li class="page-item hidden-sm-down active">
-                                        <a class="page-link" href="#">@Model.CurrentPage <span class="sr-only">(current)</span></a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="page-item hidden-sm-down">
-                                        <a class="page-link" href="/Home/Index?page=@i@hash">@i</a>
-                                    </li>
-                                }
-                            }
-                            <li class="page-item @_next_disabled">
-                                <a class="page-link" href="/Home/Index?page=@next_page@hash">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    }
+<div class="nhom_group">
+    <ul class="nhom_menu">
+        <li><a href="danhsachsanpham.html">Danh mục Sản phẩm</a></li>
+        <li><a href="danhsachsanpham.html">Khuyến Mãi</a></li>
+        <li><a href="danhsachloikhuyen.html">Lời Khuyên</a></li>
+        <li><a href="danhsachsanpham.html">Sản phẩm khác</a></li>
+        <li><a href="chitietsanpham.html">Nước Hoa</a></li>
+    </ul>
+    <div class="nhom_banner">
+        <div class="banner_left">
+            <div class="banner_slider">
+                <div class="w3-content w3-display-container">
+                    <img class="mySlides" src="img/bn_01.png">
+                    <img class="mySlides" src="img/bn_02.png">
+                    <img class="mySlides" src="img/bn_03.png">
+                    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
                 </div>
             </div>
         </div>
+        <div class="banner_right">
+            <figure><img src="img/bn_02.png" alt=""></figure>
+            <figure><img src="img/bn_03.png" alt=""></figure>
+        </div>
+    </div>
+</div>
+<div class="nhom_box">
+    <h2 class="nhom_title04"><span>BÁN CHẠY</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProductTopSales != null && Model.ListProductTopSales.Any())
+        {
+            foreach (var item in Model.ListProductTopSales)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>                
+            }
+        }        
+    </div>
+    <a href="@Url.Action("Index", "Shop")" class="nhom_readmore">XEM THÊM</a>
+</div>
+<figure>
+    <img src="/Images/image_5.png" alt="">
+</figure>
+<section>
+    <h2 class="nhom_title01"><span>Nước Tẩy Trang</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
     </div>
 
-    
-
-    @*<div class="container wr-home-hot-news">
-        <div class="home-title">
-            <h2>News</h2>
-        </div>
-        <div class="row">
-            @if (Model.ListNews != null && Model.ListNews.Any())
+    <h2 class="nhom_title01"><span>Sữa Rửa Măt</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
             {
-                foreach (var item in Model.ListNews)
-                {
-                    <div class="col-md-4 rainbow_0 wow fadeInUp">
-                        <div class="news-item">
-                            <a href="@Url.Action("Detail", "News", new { q = item.Alias })">
-                                <img src="" />
-                                <img src="@Url.Content("~/Uploads/News/94cf5e0d-b799-4521-aba7-9627fc5c7ed8.jpg")" alt="@item.Title" />
-                            </a>
-                            <div class="news-item-detail">
-                                <h3><a href="@Url.Action("Detail", "News", new { q = item.Alias })">@item.Title</a></h3>
-                                <p>@string.Format("{0}", @item.Short_Description.Length > 100 ? (@item.Short_Description.Substring(0, 100) + "...") : @item.Short_Description)</p>
-                            </div>
-                        </div>
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
                     </div>
-                }
+                </a>
             }
-        </div>
-    </div>*@
-</div>
-  
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+</section>
+<figure>
+    <img src="/Images/sss.JPG" alt="">
+</figure>
+<section>
+    <h2 class="nhom_title01"><span>Tẩy Tế Bào Chết</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+
+    <h2 class="nhom_title01"><span>Nước Hoa Hồng</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+</section>
+
+<figure>
+    <img src="/Images/hinh_02.JPG" alt="">
+</figure>
+<section>
+    <h2 class="nhom_title01"><span>Tẩy Tế Bào Chết</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+    <h2 class="nhom_title01"><span>Nước Hoa Hồng</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+</section>
+
+<figure>
+    <img src="/Images/hinh_03.JPG" alt="">
+</figure>
+<section>
+    <h2 class="nhom_title01"><span>Kem Chống Nắng</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+    <h2 class="nhom_title01"><span>Sản Phẩm Khác</span></h2>
+    <div class="nhom_list">
+        @if (Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            foreach (var item in Model.ListProduct)
+            {
+                <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                    <img src="@item.ImageURL" alt="@item.ProductName" />
+                    <h3 class="title">@item.ProductName</h3>
+                    <span class="sale">@item.sPrice</span>
+                    <span class="price">@item.sPrice</span>
+                    <input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">
+                    <div class="progress">
+                        Còn lại 89%
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                    </div>
+                </a>
+            }
+        }        
+    </div>
+    <div class="nhom_xemthem">
+        <a href="@Url.Action("Index", "Shop")">Xem thêm</a>
+    </div>
+</section>

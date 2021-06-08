@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CMS_DTO.CMSPage;
+using CMS_Shared;
+using CMS_Shared.CMSPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,9 +9,13 @@ using System.Web.Mvc;
 
 namespace CMS_Web.Controllers
 {
-    public class QuotationController : HQController
+    public class AdviceController : HQController
     {
-        // GET: Quotation
+
+        public AdviceController()
+        {
+        }
+        // GET: AboutUs
         public ActionResult Index()
         {
             return View();
