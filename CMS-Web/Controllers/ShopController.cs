@@ -36,7 +36,6 @@ namespace CMS_Web.Controllers
         // GET: Shop
         public ActionResult Index(string q = "", int  page = 1, string a = "",int pageSize = 8, int sortBy = 1)
         {
-            //var test = HttpServerUtility.UrlEncode("");
             try
             {
                 ProductViewModels model = new ProductViewModels();

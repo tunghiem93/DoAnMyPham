@@ -45,15 +45,11 @@
             <div class="nhom_list">
                 @foreach (var product in Model.ListProduct)
                 {
-                    <a href="chitietsanpham.html" style="text-decoration-line:none">
+                    <a href="@Url.Action("Detail", "Shop", new { c = product.AliasCate, q = product.Alias })" style="text-decoration-line:none">
                         <img src="@Url.Content(product.ImageURL)" alt="">
                         <h3 class="title">@product.ProductName</h3>
                         <span class="sale">@product.sPrice</span>
                         <span class="price">@product.sPrice</span>
-                        <div class="progress">
-                            Còn lại 89%
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
-                        </div>
                     </a>
                 }
             </div>

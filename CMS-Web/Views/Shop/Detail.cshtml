@@ -1,140 +1,70 @@
 ﻿
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var _ListSlider = Session["SliderSession"] as List<CMS_DTO.CMSSession.SliderSession>;
 }
 @model CMS_DTO.CMSProduct.ProductViewModels
+<script src="~/Content/jquery.ez-plus.js"></script>
+<script src="~/Content/web.js"></script>
+<main class="nhom_container">
+    <h1>@Model.ProductModel.ProductName</h1>
+    <div class="nhom_product">
+        <div class="nhom_gallery">
+            <img width="100%" id="img_01"
+                 src="@Url.Content(Model.ProductModel.ImageURL)"
+                 data-zoom-image="@Url.Content(Model.ProductModel.ImageURL)" />
 
-<div class="bg" ng-controller="CartCtrl">
-    <div class="container ofl">
-        <div class="row mt-3">
-            <div class="col-md-12 wr-product-detail py-3 wow slideInRight">
-                <div class="row">
-                    <div class="col-12">
-                        <h1>@Model.ProductModel.ProductName</h1>
-                        <p class="p-brand">
-                            Brand:
-                            @if (Model.ProductModel.AliasCate == "ruou-ngoai")
-                            {
-                                <a href="@Url.Action("Ruou_Ngoai", "Shop")">@Model.ProductModel.CategoryName</a>
-                            }
-                            else
-                            {
-                                <a href="@Url.Action("Index", "Shop", new { q = Model.ProductModel.AliasCate })">@Model.ProductModel.CategoryName</a>
-                            }
-
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <div class="flex-item">
-                            <div class="swiper-container product-detail-gallery-slider">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide"><div class="swiper-zoom-container"><img src="@Model.ProductModel.ImageURL" alt="@Model.ProductModel.ProductName" /></div></div>
-                                </div>
-                            </div>
-                            <div class="swiper-container mt-4 product-detail-gallerythumb-slider">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide" style="display: inline-flex; opacity: 1 !important; ">
-                                        <div style="padding: 3px "><a href="@Model.ProductModel.ImageURL"><img src="@Model.ProductModel.ImageURL" alt="@Model.ProductModel.ProductName" /></a></div>
-                                        @if (Model.ProductModel.ListImg != null && Model.ProductModel.ListImg.Any())
-                                        {
-                                            foreach (var item in Model.ProductModel.ListImg)
-                                            {
-                                                <div style="padding: 3px "><a href="@item.ImageURL"><img src="@item.ImageURL" alt="@Model.ProductModel.ProductName" /></a></div>
-                                            }
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="pr-des">
-                            <h4>Code: <span style="color: red; ">@Model.ProductModel.ProductCode</span></h4>
-                        </div>
-                        <div class="pr-des">
-                            <h4>Product information</h4>
-                            <p>@Model.ProductModel.Information</p>
-                        </div>
-                        <div class="pr-price">
-                            <p><span>Price:</span> <strong>@Model.ProductModel.sPrice </strong></p>
-                            <div><a href="" ng-click="AddToCart('@Model.ProductModel.Id','', quantityDefault, '@Model.ProductModel.ProductPrice','@Model.ProductModel.ImageURL','@Model.ProductModel.ProductName', '@Model.ProductModel.Alias')" class="btn btn-block btn-danger buy_now addtocart">add to cart</a></div>
-                        </div>
-                        <div class="social">
-                            <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item">
-                                    <span>Share:</span>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.facebook.com/Quatetviet2020-103589471065494/?modal=admin_todo_tour">
-                                        <i class="fa fa-2x fa-facebook-square"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.facebook.com/Quatetviet2020-103589471065494/?modal=admin_todo_tour">
-                                        <i class="fa fa-2x fa-google-plus-square"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.facebook.com/Quatetviet2020-103589471065494/?modal=admin_todo_tour">
-                                        <i class="fa fa-2x fa-twitter-square"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="productdetail-tab" data-toggle="tab" href="#productdetail" role="tab" aria-controls="productdetail" aria-expanded="true">Infromation</a>
-                            </li>
-
-                        </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active py-3" id="productdetail" role="tabpanel" aria-labelledby="home-tab">@Html.Raw(Model.ProductModel.Description)</div>
-                        </div>
-                        <div class="tab-pane fade" id="comment" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="fb-comments" data-width="100%" data-href="quatet.congquynh.vn/gio-qua-tet-thanh-y-gq113-154" data-numposts="5"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row relatedproduct ">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <h4 class="my-4">Product others</h4>
-                <div class="row wr-product-list">
-                    @if (Model.ListSameProduct != null && Model.ListSameProduct.Any())
+            @if (Model.ProductModel.ListImg != null && Model.ProductModel.ListImg.Any())
+            {
+                <div id="gal1">
+                    @foreach (var img in Model.ProductModel.ListImg)
                     {
-                        foreach (var item in Model.ListSameProduct)
-                        {
-                            <div class="col-md-4 rainbow_0 wow fadeInUp">
-                                <div class="productitem">
-                                    <div>
-                                        <a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
-                                            <img src="@item.ImageURL" alt="@item.ProductName" />
-                                        </a>
-                                    </div>
-
-                                    <div class="productitem-detail">
-                                        <h2><a href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">@item.ProductName</a></h2>
-                                        <p>@item.Short_Description</p>
-                                        <div class="box-price">@item.sPrice</div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                        <a href="#" class="elevatezoom-gallery" data-update=""
+                           data-image="@Url.Content(img.ImageURL)"
+                           data-zoom-image="@Url.Content(img.ImageURL)">
+                            <img src="@Url.Content(img.ImageURL)"
+                                 width="100%" />
+                        </a>
                     }
                 </div>
+            }
+
+        </div>
+        <div class="nhom_details">
+            <p>
+                Tình trạng: Còn hàng<br>
+                Mã sản phẩm: @Model.ProductModel.ProductCode
+            </p>
+            <p>@Model.ProductModel.Short_Description</p>
+            <span class="price">@Model.ProductModel.sPrice</span>
+            <span class="price_sale">@Model.ProductModel.sPrice</span>
+            <p class="capacity">DUNG TÍCH: 500ML</p>
+            <div class="amount">
+                SỐ LƯỢNG:
+                <span id="amount-plus">+</span>
+                <input type="text" id="amout-number" value="0">
+                <span id="amount-minis">-</span>
             </div>
         </div>
     </div>
-</div>
-<script src="@Url.Content("~/Scripts/swiper.min.js")"></script>
-<script src="@Url.Content("~/Scripts/productdetail.dev.js")"></script>
+    <div>
+        <p id="textMore">@Html.Raw(Model.ProductModel.Description)</p>
+    </div>
+    @if (Model.ListSameProduct != null && Model.ListSameProduct.Any())
+    {
+        <section>
+            <h2 class="nhom_title03">Sản Phẩm Tương Tự</h2>
+            <div class="nhom_list">
+                @foreach (var item in Model.ListSameProduct)
+                {
+                    <a style="text-decoration-line:none" href="@Url.Action("Detail", "Shop", new { c = item.AliasCate, q = item.Alias })">
+                        <img src="@Url.Content(item.ImageURL)" alt="">
+                        <h3 class="title">@item.ProductName</h3>
+                        <span class="sale">@item.sPrice</span>
+                        <span class="price">@item.sPrice</span>
+                    </a>
+                }
+            </div>
+        </section>
+    }
+
+</main>
