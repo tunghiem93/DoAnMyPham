@@ -9,27 +9,27 @@
 
 <div class="nhom_group">
     <ul class="nhom_menu">
-        <li><a href="danhsachsanpham.html">Danh mục Sản phẩm</a></li>
-        <li><a href="danhsachsanpham.html">Khuyến Mãi</a></li>
-        <li><a href="danhsachloikhuyen.html">Lời Khuyên</a></li>
-        <li><a href="danhsachsanpham.html">Sản phẩm khác</a></li>
-        <li><a href="chitietsanpham.html">Nước Hoa</a></li>
+        <li><a href="@Url.Action("Index","Shop")">Danh mục Sản phẩm</a></li>
+        <li><a href="@Url.Action("Index","Home")">Khuyến Mãi</a></li>
+        <li><a href="@Url.Action("Index","Advice")">Lời Khuyên</a></li>
+        <li><a href="@Url.Action("Index","Shop")">Sản phẩm khác</a></li>
+        <li><a href="@Url.Action("Index","Shop")">Nước Hoa</a></li>
     </ul>
     <div class="nhom_banner">
         <div class="banner_left">
             <div class="banner_slider">
                 <div class="w3-content w3-display-container">
-                    <img class="mySlides" src="img/bn_01.png">
-                    <img class="mySlides" src="img/bn_02.png">
-                    <img class="mySlides" src="img/bn_03.png">
+                    <img class="mySlides" src="/Images/bn_01.png">
+                    <img class="mySlides" src="/Images/bn_02.png">
+                    <img class="mySlides" src="/Images/bn_03.png">
                     <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
                     <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
                 </div>
             </div>
         </div>
         <div class="banner_right">
-            <figure><img src="img/bn_02.png" alt=""></figure>
-            <figure><img src="img/bn_03.png" alt=""></figure>
+            <figure><img src="/Images/bn_02.png" alt=""></figure>
+            <figure><img src="/Images/bn_03.png" alt=""></figure>
         </div>
     </div>
 </div>
