@@ -87,11 +87,21 @@
                     <h3 class="title">@item.ProductName</h3>
                     <span class="sale">@item.sPrice</span>
                     <span class="price">@item.sPrice</span>
-                    @*<input value="0" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="xs" title="">*@
-                    @*<div class="progress">
-                        Còn lại 89%
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
-                    </div>*@
+                    <input value="@item.StarType" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="@item.StarType" title="">
+                    <div class="progress">
+                        @{if (item.Quantity > 0)
+                            {
+                                int _per = (item.Quantity - item.QuantitySale) * 100 / item.Quantity;
+                                <span>Còn lại @_per %</span>
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                            }
+                            else
+                            {
+                                <span>Còn lại 0 %</span>
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                            }
+                        }
+                    </div>
                 </a>
             }
         }        

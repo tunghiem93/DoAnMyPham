@@ -1,11 +1,13 @@
 ﻿using CMS_DTO.CMSOrder;
 using CMS_DTO.CMSSession;
 using CMS_Shared.CMSProducts;
+using CMS_Shared.Promotions;
 using CMS_Shared.Utilities;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,9 +16,11 @@ namespace CMS_Web.Controllers
     public class CartController : HQController
     {
         private CMSProductFactory _fac;
+        private PromotionsDAL _fapro;
         public CartController()
         {
             _fac = new CMSProductFactory();
+            _fapro = new PromotionsDAL();
         }
         // GET: Cart
         public ActionResult Index()
@@ -77,10 +81,11 @@ namespace CMS_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult CheckOut(CMS_CheckOutModels model)
+        public ActionResult Payment(CMS_CheckOutModels model)
         {
             try
             {
+                var CusInfo = Session["UserClient"] as UserSession;
                 var _Orders = GetListOrderCookie();
                 NSLog.Logger.Info("List Order Cookie", JsonConvert.SerializeObject(_Orders));
                 if (_Orders != null && _Orders.Any())
@@ -103,14 +108,21 @@ namespace CMS_Web.Controllers
                             o.TotalPrice = Convert.ToDouble(o.Price * item.Quantity);
                         });
                         model.ListItem = data;
-                        model.TotalPrice = data.Sum(o => o.TotalPrice);
                         model.SubTotalPrice = data.Sum(o => o.TotalPrice);
                     }
                     model.OrderDate = DateTime.Now;
                     model.OrderNo = CommonHelper.RandomNumberOrder();
                     string body = MailHelper.CreateBodyMail(model);
-                    var result =  MailHelper.SendMailOrder("[V/v đơn hàng " + model.OrderNo + "]", body, model.Customer.Email);
-                    if(result)
+                    var result =  MailHelper.SendMailOrder("[V/v đơn hàng " + model.OrderNo + "]", body, CusInfo.Email);
+                    if (model.ListItem != null && model.ListItem.Any())
+                    {
+                        model.ListItem.ForEach(f =>
+                        {
+                            result = _fac.AddQuantity(f.ProductID, Convert.ToInt32(f.Quantity));
+                        });
+                    }
+                    
+                    if (result)
                     {
                         HttpCookie currentUserCookie = HttpContext.Request.Cookies["cms-order"];
                         HttpContext.Response.Cookies.Remove("cms-order");
@@ -134,6 +146,15 @@ namespace CMS_Web.Controllers
                 NSLog.Logger.Error("CheckOut", ex);
             }
             return View(model);
+        }
+
+        public async Task<ActionResult> CheckDiscount(string Code)
+        {
+            var data = await _fapro.CheckDiscount(Code);
+            if (data != null && !string.IsNullOrEmpty(data.Id))
+                return Json(new { status = true, data= data.Value, message = "Mã khuyễn mãi của bạn đã được áp dụng thành công!" });
+            else
+                return Json(new { status = false, message = "Mã khuyễn mãi của bạn không tồn tại!" });            
         }
     }
 }

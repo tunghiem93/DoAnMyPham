@@ -2,6 +2,15 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (Model != null && Model.Customer != null)
+{
+    @Html.HiddenFor(model => model.Customer.Id)
+    @Html.HiddenFor(model => model.Customer.Email)
+    <input type="hidden" value="@Model.Customer.Id" />
+    <input type="hidden" value="@Model.Customer.Email" />
+    <input type="hidden" value="@Model.Customer.Name" />
+    <input type="hidden" value="@Model.Customer.Address" />
+}
 <ul class="nhom_menu_01">
     <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
     <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
@@ -9,30 +18,31 @@
 </ul>
 <div class="row">
     <div class="col-xs-12 col-md-8">
-        <form action="@Url.Action("CheckOut", "Cart")" id="order-form" method="post" enctype="multipart/form-data">
-            <div class="box_title01 edit-01">
-                <div>Thông tin nhận hàng</div>
-                <span class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>Bạn đã đăng nhập</span>
+        <div class="box_title01 edit-01">
+            <div>Thông tin nhận hàng</div>
+            <span class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>Bạn đã đăng nhập</span>
+        </div>
+        @if (Model.Customer != null && !string.IsNullOrEmpty(Model.Customer.Address))
+        {
+            <div class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>@Model.Customer.Address</div>
+        }
+        <input type="text" class="input1 address-other" placeholder="+ Thêm địa chỉ khác">
+        <span class="note-01 note-order">Ghi chú</span>
+        <input type="text" class="input2" placeholder="Nhập ghi chú (nếu có)">
+        <div>
+            <div class="box_title01">Vận chuyển & thanh toán</div>
+            <div class="border-01 padding">
+                <span class="note-02">Hình thức vận chuyển</span>
+                <label><input type="radio" name="exampleRadios" value="option1">Giao hàng trong 48 giờ: 0 đ</label>
+                <label><input type="radio" name="exampleRadios" value="option1">[NowFree] Giao hàng nhanh trong 2 giờ: 0 đ (Nhận hàng trước 18h hôm nay)</label>
+                <span class="note-02">Phương thức thanh toán</span>
+                <label><input type="radio" name="exampleRadios" value="option1">Thanh toán tiền khi nhận hàng (COD)</label>
+                <label><input type="radio" name="exampleRadios" value="option1">Thanh toán trực tuyến (Internet Banking, VNPAY-QR, Ví điện tử VNPAY, Visa - Miễn phí thanh toán) (Xem thêm)</label>
             </div>
-            <div class="text-ico-01"><i class="glyphicon glyphicon-ok-sign" aria-hidden="true"></i>Đỗ Mỹ Duyên 126/1 đường 100 bình thới, Phường 14, Quận 11, Hồ Chí Minh Điện thoại: 0703338683</div>
-            <input type="text" class="input1" placeholder="+ Thêm địa chỉ khác">
-            <span class="note-01">Ghi chú</span>
-            <input type="text" class="input2" placeholder="Nhập ghi chú (nếu có)">
-            <div>
-                <div class="box_title01">Vận chuyển & thanh toán</div>
-                <div class="border-01 padding">
-                    <span class="note-02">Hình thức vận chuyển</span>
-                    <label><input type="radio" name="exampleRadios" value="option1">Giao hàng trong 48 giờ: 0 đ</label>
-                    <label><input type="radio" name="exampleRadios" value="option1">[NowFree] Giao hàng nhanh trong 2 giờ: 0 đ (Nhận hàng trước 18h hôm nay)</label>
-                    <span class="note-02">Phương thức thanh toán</span>
-                    <label><input type="radio" name="exampleRadios" value="option1">Thanh toán tiền khi nhận hàng (COD)</label>
-                    <label><input type="radio" name="exampleRadios" value="option1">Thanh toán trực tuyến (Internet Banking, VNPAY-QR, Ví điện tử VNPAY, Visa - Miễn phí thanh toán) (Xem thêm)</label>
-                </div>
-                <div class="box_title01">
-                    <label><input type="checkbox" name="exampleRadios" value="option1">Thông tin xuất hóa đơn</label>
-                </div>
+            <div class="box_title01">
+                <label><input type="checkbox" name="exampleRadios" value="option1">Thông tin xuất hóa đơn</label>
             </div>
-        </form>
+        </div>
     </div>
     <div class="col-xs-12 col-md-4" ng-controller="CartCtrl">
         <div>
@@ -55,7 +65,7 @@
                 <div class="box-01">
                     <div class="row">
                         <div class="col-xs-6">Tạm tính:</div>
-                        <div class="col-xs-6 text-right"><span class="totalPay">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
+                        <div class="col-xs-6 text-right"><span class="totalpay">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
                         <div class="col-xs-6">Giảm giá:</div>
                         <div class="col-xs-6 text-right">-0 đ</div>
                     </div>
@@ -63,18 +73,18 @@
                         <input id="idDiscount" type="text" class="form-control" placeholder="Nhập mã giảm giá" aria-describedby="basic-addon2">
                         <a onclick="ApprovelDisount()" class="input-group-addon">Sử dụng</a>
                     </div>
-                    <label style="display: none" class="error-discount text-danger">Mã giảm giá không đúng!<br /></label>
-                    <span>Bạn có phiếu mua hàng ?</span>
-                    @*<select>
-                        <option value="">Chọn loại phiếu</option>
-                        <option value="">A</option>
-                        <option value="">B</option>
-                        <option value="">C</option>
-                    </select>*@
+                    <label style="display: none; text-align: center; " class="error-discount text-danger">Mã giảm giá không đúng!<br /></label>
+                    @*<span>Bạn có phiếu mua hàng ?</span>
+                        <select>
+                            <option value="">Chọn loại phiếu</option>
+                            <option value="">A</option>
+                            <option value="">B</option>
+                            <option value="">C</option>
+                        </select>*@
                     @*<div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nhập mã Voucher" aria-describedby="basic-addon2">
-                        <span class="input-group-addon">Sử dụng</span>
-                    </div>*@
+                            <input type="text" class="form-control" placeholder="Nhập mã Voucher" aria-describedby="basic-addon2">
+                            <span class="input-group-addon">Sử dụng</span>
+                        </div>*@
                 </div>
                 <div class="box-01">
                     <div class="row">
@@ -85,9 +95,9 @@
                 <div class="box-01">
                     <div class="row">
                         <div class="col-xs-6">Thành tiền <br>(Đã bao gồm VAT)</div>
-                        <div class="col-xs-6 text-right color-red"><span class="totalPay">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
+                        <div class="col-xs-6 text-right color-red"><span class="totalCheckOut">{{getTotal() | currency : '' : 0}}</span> VNĐ</div>
                     </div>
-                    <button class="dathang">ĐẶT HÀNG</button>
+                    <button onclick="Payment()" class="dathang">ĐẶT HÀNG</button>
                 </div>
             </div>
         </div>
@@ -97,29 +107,71 @@
     </div>
 </div>
 <script>
-
+    var _promoCode = "";
+    if ('@Model.Customer.Id' == null) {
+        confirm("Vui lòng đăng nhập trước khi thanh toán!");
+    }
     function ApprovelDisount() {
+        var _total = Number($('.totalpay').text().replace(/[^0-9.-]+/g, ""));
         var _dis = $('#idDiscount').val();
         if (_dis.length > 0) {
             $.ajax({
-                    beforeSend: function () {
-                    },
-                    url: '@Url.Action("CheckDiscount", "Cart")',
-                    type: "get",
-                    data: { Discount: _dis },
-                    success: function (data) {
-                        if (data.ok == false) {
-                            $('.error-discount').attr("display", "block");
-                        } else {
-                            $('.error-discount').attr("display", "none");
-                            $('.totalPay').val(data.Total).trigger('change');
-                        }
-                    },
-                    complete: function () {
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                beforeSend: function () {
+                },
+                url: '@Url.Action("CheckDiscount", "Cart")',
+                type: "post",
+                async: true,
+                data: { Code: _dis },
+                success: function (data) {
+                    if (data.status == false) {
+                        $('.error-discount').text(data.message);
+                        $('.error-discount').css("display", "block");
+                    } else {
+                        _promoCode = _dis;
+                        _total = (_total - (_total * data.data) / 100);
+                        $('.error-discount').css("display", "none");
+                        $('.totalCheckOut').text(_total).trigger('change');
                     }
-                });
+                },
+                complete: function () {
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                }
+            });
+        }
+    }
+
+    function Payment() {
+        var _cusId = '@Model.Customer.Id';
+        var _addressother = $('.address-other').val();
+        var _note = $('.note-order').val();
+        var _totalPrice = $('.totalCheckOut').text();
+        if (_cusId.length > 0) {
+            $.ajax({
+                beforeSend: function () {
+                },
+                url: '@Url.Action("Payment", "Cart")',
+                type: "post",
+                async: true,
+                data: { CustomerId: _cusId, TotalPrice: _totalPrice, PromotionCode: _promoCode, Address: _addressother, Note: _note },
+                success: function (data) {
+                    if (data.status == false) {
+                        $('.error-discount').text(data.message);
+                        $('.error-discount').css("display", "block");
+                    } else {
+                        _total = (_total - (_total * data.data) / 100);
+                        $('.error-discount').css("display", "none");
+                        $('.totalCheckOut').text(_total).trigger('change');
+                    }
+                },
+                complete: function () {
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                }
+            });
+        }
+        else {
+            confirm("Vui lòng đăng nhập trước khi thanh toán!")
         }
     }
 </script>

@@ -3,6 +3,7 @@ using CMS_Entity;
 using CMS_Entity.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,26 @@ namespace CMS_Shared.Promotions
             }
             catch(Exception ex) { }
             return Result;
+        }
+
+        public async Task<PromotionDTO> CheckDiscount(string code)
+        {
+            var model = new PromotionDTO();
+            try
+            {
+                using (var context = new CMS_Context())
+                {
+                    model = await context.Promotions.Where(w=>w.PromotionCode == code && w.IsActive && !w.IsDeleted).Select(z => new PromotionDTO
+                    {
+                        Id = z.Id,
+                        PromotionCode = z.PromotionCode,
+                        Value = z.Value,
+                        IsActive = z.IsActive
+                    }).FirstOrDefaultAsync();
+                }
+            }
+            catch (Exception ex) { }
+            return model;
         }
     }
 }

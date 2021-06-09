@@ -4,10 +4,12 @@
 <div ng-controller="CartCtrl">
     <div class="logo"><a href="@Url.Action("Index","Home")">BEAUSTORY</a></div>
     <div class="header_search">
-        <input type="text">
-        <a href="timkiemnangcao.html">
-            <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </a>
+        <form method="get" action="/Home/SearchKey">
+            <input type="text" value="key">
+            <a href="timkiemnangcao.html">
+                <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </a>
+        </form>
     </div>
     <div class="selection">
         <a class="selection-link" href="#" data-toggle="modal" data-target="#loginModal"><img src="/Images/ico_01.png" alt=""></a>

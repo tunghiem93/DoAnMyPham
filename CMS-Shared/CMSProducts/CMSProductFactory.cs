@@ -293,7 +293,6 @@ namespace CMS_Shared.CMSProducts
                             StarType = x.p.Star,
                             Quantity = x.p.Quantity,
                             QuantitySale = x.p.QuantitySale
-
                         }).ToList();
                     var _images = cxt.CMS_Images.Select(x => new
                     {
@@ -470,6 +469,9 @@ namespace CMS_Shared.CMSProducts
                                         Alias = x.p.Alias,
                                         AliasCate = x.Alias,
                                         Year = x.p.Year,
+                                        Quantity = x.p.Quantity,
+                                        QuantitySale =x.p.QuantitySale,
+                                        StarType = x.p.Star
                                     }).ToList();
                     return data;
                 }
@@ -547,6 +549,23 @@ namespace CMS_Shared.CMSProducts
             }
             catch (Exception ex) { }
             return null;
+        }
+
+        public bool AddQuantity(string Id, int quan)
+        {
+            var Result = false;
+            try
+            {
+                using (var context = new CMS_Context())
+                {
+                    var Entity = context.CMS_Products.Find(Id);
+                    Entity.QuantitySale = Entity.QuantitySale + quan;
+                    Entity.Quantity = Entity.Quantity - quan;
+                    Result = context.SaveChanges() > 0;
+                }
+            }
+            catch (Exception ex) { }
+            return Result;
         }
     }
 }

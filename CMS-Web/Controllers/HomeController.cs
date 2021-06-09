@@ -59,7 +59,7 @@ namespace CMS_Web.Controllers
                 model.TotalProduct = tempProduct.Count();
                 model.TotalPage = (int)Math.Ceiling(model.TotalProduct / (double)24);
                 model.CurrentPage = page;
-                model.ListProduct = _fac.GetList().Skip((page - 1) * 24).Take(24).ToList();
+                model.ListProduct = _fac.GetList().OrderByDescending(o=>o.QuantitySale).Skip((page - 1) * 24).Take(24).ToList();
                 var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())
                 {
@@ -172,26 +172,34 @@ namespace CMS_Web.Controllers
             return RedirectToAction("Index");
         }
         
-        public ActionResult SearchKey(string Key = "")
+        public ActionResult SearchKey(string key = "")
         {
             var model = new ProductViewModels();
 
             try
             {
-                model.ListProduct = _fac.GetList().Where(x => CommonHelper.RemoveUnicode(x.ProductName.ToLower()).Contains(CommonHelper.RemoveUnicode(Key.ToLower()))).OrderByDescending(x => x.CreatedDate).ToList();
+                //Category
+                model.ListCate = _facCate.GetList().OrderBy(x => x.CategoryName).ToList();
+                //if (!string.IsNullOrEmpty(Key))
+                //{
+                //    var dataCurrentCate = model.ListCate.FirstOrDefault(x => x.Alias.Equals(q));
+                //    if (dataCurrentCate != null)
+                //    {
+                //        model.CurrentCateAlias = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.Alias;
+                //        model.CurrentCategoryName = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.CategoryName;
+                //    }
+                //}
 
+                model.ListProduct = _fac.GetList().Where(x => CommonHelper.RemoveUnicode(x.ProductName.ToLower()).Contains(CommonHelper.RemoveUnicode(key.ToLower()))).OrderByDescending(x => x.CreatedDate).ToList();
+                var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())
                 {
                     model.ListProduct.ForEach(x =>
                     {
                         if (!string.IsNullOrEmpty(x.ImageURL))
                             x.ImageURL = Commons.HostImage + "Products/" + x.ImageURL;
+                        x.sPrice = String.Format(info, "{0:C0}", x.ProductPrice);
                     });
-                    model.ListCate = _facCate.GetList().OrderByDescending(x => x.CreatedDate).Skip(0).Take(15).ToList();
-                    //Category
-                    model.ListBrand = _facBrand.GetList().OrderByDescending(x => x.CreatedDate).Skip(0).Take(15).ToList();
-                    //Location
-                    model.ListLocation = _facLoca.GetList().OrderByDescending(x => x.CreatedDate).Skip(0).Take(15).ToList();
                 }
                 else
                 {

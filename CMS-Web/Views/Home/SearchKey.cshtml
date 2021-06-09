@@ -1,434 +1,118 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Shop";
+    var pageSize = 8;
 }
 @model CMS_DTO.CMSProduct.ProductViewModels
-@using CMS_Shared;
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<main id="category-products" class="nhom_container">
+    <div class="category-left">
+        <h2 class="title_01"><i class="glyphicon glyphicon-filter"></i> FILTERS</h2>
+        <div class="category-wrap">
+            <h3 class="title_02">CATEGORY</h3>
+            <div class="category-panel">
+                @if (Model != null && Model.ListCate != null && Model.ListCate.Any())
+                {
+                    <ul class="list">
+                        @foreach (var category in Model.ListCate)
+                        {
+                            <li> <a href="#">@category.CategoryName</a> </li>
+                        }
+                    </ul>
+                }
 
-<!-- Breadcrumb Start -->
-<div class="breadcrumb-area ptb-60 ptb-sm-30" ng-controller="CartCtrl">
-    <div class="container">
-        <div class="breadcrumb">
-            <ul>
-                <li><a href="@Url.Action("Index","Home")">Home</a></li>
-                <li class="active"><a href="@Url.Action("Index","Shop")">Cửa hàng</a></li>
-            </ul>
+            </div>
         </div>
     </div>
-    <!-- Container End -->
-</div>
-<!-- Breadcrumb End -->
-<!-- Shop Page Start -->
-<div class="main-shop-page pb-60">
-    <div class="container">
-        <!-- Row End -->
-        <div class="row">
-            <!-- Sidebar Shopping Option Start -->
-            <div class="col-lg-3 order-2">
-                <div class="sidebar white-bg">
-                    <div class="single-sidebar">
-                        <div class="group-title">
-                            <h2>Category</h2>
-                        </div>
-                        <ul>
-                            @if (Model.ListCate != null && Model.ListCate.Any())
-                            {
-                                foreach (var item in Model.ListCate)
-                                {
-                                    <li>
-                                        <a href="@Url.Action("Index","Categories",new { q=item.Alias})" title="@item.CategoryName">
-                                            @string.Format("{0}", item.CategoryName.Length > 30 ? item.CategoryName.Substring(0, 30) + "..." : item.CategoryName)
-                                            <span id="" class="apolloQty pull-right">&nbsp;(@item.NumberOfProduct)</span>
-                                        </a>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
-                    @*<div class="single-sidebar">
-                            <div class="group-title">
-                                <h2>color</h2>
-                            </div>
-                            <ul class="color-option">
-                                <li>
-                                    <a class="blue" href="#"></a>
-                                </li>
-                                <li>
-                                    <a class="green" href="#"></a>
-                                </li>
-                            </ul>
-                        </div>*@
-                    @*<div class="single-sidebar">
-                            <div class="group-title">
-                                <h2>price</h2>
-                            </div>
-                            <form action="#">
-                                <div id="slider-range" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                </div>
-                                <input id="amount" class="amount" readonly="" type="text">
-                            </form>
-                        </div>*@
-                    <div class="single-sidebar">
-                        <div class="group-title">
-                            <h2>Location</h2>
-                        </div>
-                        <ul class="manufactures-list">
-                            @if (Model.ListLocation != null && Model.ListLocation.Any())
-                            {
-                                foreach (var item in Model.ListLocation)
-                                {
-                                    <li>
-                                        <a href="@Url.Action("Index","Location",new { q=item.Alias})" title="@item.Name">
-                                            @string.Format("{0}", item.Name.Length > 30 ? item.Name.Substring(0, 30) + "..." : item.Name)
-                                            <span id="" class="apolloQty pull-right">&nbsp;(@item.NumberOfProduct)</span>
-                                        </a>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
-
-                    <div class="single-sidebar">
-                        <div class="group-title">
-                            <h2>Brand</h2>
-                        </div>
-                        <ul class="manufactures-list">
-                            @if (Model.ListBrand != null && Model.ListBrand.Any())
-                            {
-                                foreach (var item in Model.ListBrand)
-                                {
-                                    <li>
-                                        <a href="@Url.Action("Index","Brand",new { q=item.Alias})" title="@item.BrandName">
-                                            @string.Format("{0}", item.BrandName.Length > 30 ? item.BrandName.Substring(0, 30) + "..." : item.BrandName)
-                                            <span id="" class="apolloQty pull-right">&nbsp;(@item.NumberOfProduct)</span>
-                                        </a>
-                                    </li>
-                                }
-                            }
-                        </ul>
-                    </div>
-
-                    @*<div class="single-sidebar">
-                            <div class="group-title">
-                                <h2>Brand</h2>
-                            </div>
-                            <div class="best-seller-pro-two compare-pro best-seller-pro-two owl-carousel">
-                                <!-- Best Seller Multi Product Start -->
-                                <div class="best-seller-multi-product">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="img/products/1.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Products Name Here</a></h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <p><span class="price">$38.00</span><del class="prev-price">$40.00</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->
-                                </div>
-                                <!-- Best Seller Multi Product End -->
-                            </div>
-                        </div>*@
-
-                    @*<div class="single-sidebar">
-                            <div class="group-title">
-                                <h2>My Wish List</h2>
-                            </div>
-                            <div class="best-seller-pro-two compare-pro best-seller-pro-two owl-carousel">
-                                <!-- Best Seller Multi Product Start -->
-                                <div class="best-seller-multi-product">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html">
-                                                <img class="primary-img" src="img/products/4.jpg" alt="single-product">
-                                            </a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <h4><a href="product.html">Products Name Here</a></h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <p><span class="price">$86.00</span><del class="prev-price">90.00</del></p>
-                                        </div>
-                                        <!-- Product Content End -->
-                                    </div>
-                                    <!-- Single Product End -->
-                                </div>
-                                <!-- Best Seller Multi Product End -->
-                            </div>
-                        </div>*@
-                    <!-- Single Banner Start -->
-                    @*<div class="single-sidebar single-banner zoom pt-20">
-                            <a href="#" class="hidden-sm"><img src="img/banner/8.jpg" alt="slider-banner"></a>
-                            <a href="#" class="visible-sm"><img src="img/banner/6.jpg" alt="slider-banner"></a>
-                        </div>*@
-                    <!-- Single Banner End -->
-                </div>
-            </div>
-            <!-- Sidebar Shopping Option End -->
-            <!-- Product Categorie List Start -->
-            <div class="col-lg-9 order-lg-2">
-                <!-- Grid & List View Start -->
-                <div class="grid-list-top border-default universal-padding fix mb-30">
-                    <div class="grid-list-view f-left">
-                        <ul class="list-inline nav">
-                            <li><a class="active" data-toggle="tab" href="#grid-view" id="results-grid-view"><i class="fa fa-th"></i></a></li>
-                            <li><a data-toggle="tab" href="#list-view" id="results-list-view"><i class="fa fa-list-ul"></i></a></li>
-                            <li><span class="grid-item-list"> Tất cả Product</span></li>
-                        </ul>
-                    </div>
-                    <!-- Toolbar Short Area Start -->
-                    <div class="main-toolbar-sorter f-right">
-                        <div class="toolbar-sorter">
-                            @*<label>sort by</label>
-                                <select class="sorter" name="sorter">
-                                    <option value="Position" selected="selected">position</option>
-                                    <option value="Product Name">Product Name</option>
-                                    <option value="Price">Price</option>
-                                </select>*@
-                            <span><a href="#"><i class="fa fa-arrow-up"></i></a></span>
-                        </div>
-                    </div>
-                    <!-- Toolbar Short Area End -->
-                </div>
-                <!-- Grid & List View End -->
-                <div class="main-categorie">
-                    <!-- Grid & List Main Area End -->
-                    <div class="tab-content fix">
-                        <div id="grid-view" class="tab-pane active">
-                            <div class="row">
-                                @if (Model.ListProduct != null && Model.ListProduct.Any())
-                                {
-                                    foreach (var item in Model.ListProduct)
-                                    {
-                                        <!-- Single Product Start -->
-                                        <div class="col-lg-4 col-sm-6">
-                                            <div class="single-product">
-                                                <!-- Product Image Start -->
-                                                <div class="pro-img">
-                                                    <a href="@Url.Action("Detail","Shop",new { q= item.Alias})">
-                                                        <img class="primary-img" src="@item.ImageURL" alt="@item.ProductName">
-                                                        <img class="secondary-img" src="@item.ImageURL" alt="@item.ProductName">
-                                                    </a>
-                                                </div>
-                                                <!-- Product Image End -->
-                                                <!-- Product Content Start -->
-                                                <div class="pro-content">
-                                                    <div class="product-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                    <h4><a href="product.html">@item.ProductName</a></h4>
-                                                    <p>
-                                                        @if (item.ProductPrice == 0)
-                                                        {
-                                                            <span class="price">Price: Liên hệ</span>
-                                                        }
-                                                        else
-                                                        {
-                                                            if (item.ProductExtraPrice > 0 && item.ProductExtraPrice < item.ProductPrice)
-                                                            {
-                                                                <span class="price">Price: @item.ProductExtraPrice.ToString("00") VNĐ</span><del class="prev-price">@item.ProductPrice.ToString("00") VNĐ</del>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="price">Price: @item.ProductPrice.ToString("00") VNĐ</span>
-                                                            }
-                                                        }
-                                                    </p>
-                                                    <p class="groupListView" style="display: none">@Html.Raw(item.Short_Description)</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-secondary">
-                                                            @*<a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>*@
-                                                            <a class="add-cart" href="" ng-click="AddToCart('@item.Id','',1, '@item.ProductPrice','@item.ImageURL','@item.ProductName', '@item.Alias')" data-toggle="tooltip" title="Thêm giỏ hàng">Mua hàng</a>
-                                                            @*<a href="compare.html" data-toggle="tooltip" title="Add to Compare"><i class="fa fa-signal"></i></a>*@
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Product Content End -->
-                                            </div>
-                                        </div>
-                                        <!-- Single Product End -->
-                                    }
-                                }
-                            </div>
-                        </div>
-                        <!-- #grid view End -->
-                        <div id="list-view" class="tab-pane">
-                        </div>
-                        <!-- #list view End -->
-                    </div>
-                    <!-- Grid & List Main Area End -->
-                </div>
-                <!--Breadcrumb and Page Show Start -->
-                @*<div class="pagination-box fix">
-                        <ul class="blog-pagination ">
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                        <div class="toolbar-sorter-footer">
-                            <label>show</label>
-                            <select class="sorter" name="sorter">
-                                <option value="Position" selected="selected">12</option>
-                                <option value="Product Name">15</option>
-                                <option value="Price">30</option>
-                            </select>
-                            <span>per page</span>
-                        </div>
-                    </div>*@
-                <!--Breadcrumb and Page Show End -->
-            </div>
-            <!-- product Categorie List End -->
+    <div class="category-right">
+        <div class="category-select">
+            <select class="pageSize" onchange="changeItemOfPage(this)">
+                <option value="8">Show : 8</option>
+                <option value="12">Show : 12</option>
+                <option value="16">Show : 16</option>
+                <option value="28">Show : 28</option>
+            </select>
+            <select class="sortBy" onchange="changeSortBy(this)">
+                <option value="1">Sort By: Newest Items</option>
+                <option value="2">Sort By: Latest Items</option>
+                <option value="3">Sort By: Lowest Price</option>
+                <option value="4">Sort By: Highest Price</option>
+            </select>
         </div>
-        <!-- Row End -->
-    </div>
-    <!-- Container End -->
-</div>
-<!-- Shop Page End -->
-<!-- Brand Logo Start -->
-@*<div class="brand-area pb-60">
-            <div class="container">
-                <!-- Brand Banner Start -->
-                <div class="brand-banner owl-carousel">
-                    <div class="single-brand">
-                        <a href="#"><img class="img" src="img/brand/1.png" alt="brand-image"></a>
-                    </div>
-                </div>
-                <!-- Brand Banner End -->
+        @if (Model != null && Model.ListProduct != null && Model.ListProduct.Any())
+        {
+            <div class="nhom_list">
+                @foreach (var product in Model.ListProduct)
+                {
+                    <a href="@Url.Action("Detail", "Shop", new { c = product.AliasCate, q = product.Alias })" style="text-decoration-line:none">
+                        <img src="@Url.Content(product.ImageURL)" alt="">
+                        <h3 class="title">@product.ProductName</h3>
+                        <span class="sale">@product.sPrice</span>
+                        <span class="price">@product.sPrice</span>
+                        <input value="@product.StarType" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="@product.StarType" title="">
+                        <div class="progress">
+                            @{if (product.Quantity > 0)
+                                {
+                                    int _per = (product.Quantity - product.QuantitySale) * 100 / product.Quantity;
+                                    <span>Còn lại @_per %</span>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                }
+                                else
+                                {
+                                    <span>Còn lại 0 %</span>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                }
+                            }
+                        </div>
+                    </a>
+                }
             </div>
-    </div>*@
-<!-- Brand Logo End -->
-<!-- Start Page header -->
 
-<script>
-    function ChoosePage(pageIndex, that)
-    {
-        $("[id=pagination]").find("li").removeClass("active");
-        $(that).addClass("active");
-            if (pageIndex != 1)
-            {
-                $(".pagination_previous").removeClass("disabled");
-            }
-            else {
-                $(".pagination_previous").addClass("disabled");
-            }
-            if (pageIndex == '@Model.TotalPage')
-                $(".pagination_next").addClass("disabled");
-            else
-                $(".pagination_next").removeClass("disabled");
-                    LoadDataPagging(pageIndex);
-                }
-
-    function PrevPage() {
-        var pageIndex = 1;
-        $("#pagination li").each(function (index) {
-            if ($(this).hasClass("active"))
-            {
-                var PageIndex = parseInt($(this).attr("data-page"));
-                $("[id=pagination]").find("li").removeClass("active");
-                if (PageIndex > 1)
+            <div class="category-breadcrumb">
+                @for (var i = 1; i <= Model.TotalPage; i++)
                 {
-                    pageIndex = PageIndex - 1;
-                    $('[id=page_' + (PageIndex - 1) + ']').addClass("active");
+                    if (i == Model.CurrentPage)
+                    {
+                        <span class="active">@i</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Index", "Shop", new { page = i, pageSize = Model.PageSize, sortBy = Model.CurrentSortBy })">@i</a>
+                    }
+
                 }
-                else
-                    $('[id=page_1]').addClass("active");
-                if ((PageIndex - 1) == 1)
-                {
-                    $(".pagination_previous").addClass("disabled");
-                }
-                return false;
-            }
-        });
-        LoadDataPagging(pageIndex);
+            </div>
+        }
+    </div>
+</main>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.pageSize').val('@Model.PageSize')
+        $('.sortBy').val('@Model.CurrentSortBy')
+    })
+    function changeItemOfPage(that) {
+       var pageSize = $(that).val()
+        var url = "@Url.Action("Index", "Shop", new { sortBy = Model.CurrentSortBy })";
+        if (url.indexOf('?') > -1) {
+            url += '&pageSize=' + pageSize
+        } else {
+            url += '?pageSize=' + pageSize
+        }
+        window.location.href = url;
     }
 
-    function NextPage() {
-        $(".pagination_previous").removeClass("disabled");
-        var totalPage = '@Model.TotalPage';
-        var pageIndex = '@Model.TotalPage';
-        $("#pagination li").each(function (index) {
-            if ($(this).hasClass("active")) {
-                var PageIndex = parseInt($(this).attr("data-page"));
-                $("[id=pagination]").find("li").removeClass("active");
-                if (PageIndex > totalPage) {
-                    $('[id=page_' + totalPage + ']').addClass("active");
-                }
-                else {
-                    pageIndex = parseInt(PageIndex) + 1;
-                    $('[id=page_' + pageIndex + ']').addClass("active");
-                }
-                if ((PageIndex + 1) == '@Model.TotalPage') {
-                    $(".pagination_next").addClass("disabled");
-                }
-                return false;
-            }
-        });
-        LoadDataPagging(pageIndex);
-    }
-
-    function LoadDataPagging(pageIndex)
-    {
-         $.ajax({
-            url: "@Url.Action("LoadDataPagging", "Shop")",
-            type: "GET",
-            data: { pageIndex: pageIndex },
-            dataType: 'html',
-            beforeSend: function () {
-                //  $('.se-pre-con').show();
-            },
-            success: function (data) {
-                $('[id=product_list]').html(data);
-            },
-            complete: function () {
-                //  $('.se-pre-con').hide();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-            }
-        });
-    }
-
-    function LoadDataFilterPrice(e) {
-        var type = $(e).val();
-        $.ajax({
-            url: "@Url.Action("LoadDataFilterPrice", "Home")",
-            type: "GET",
-            data: { type: type },
-            dataType: 'html',
-            beforeSend: function () { },
-            success: function (data) {
-                $('[id=product_list]').html(data);
-            },
-            complete: function () { },
-            error: function (jqXHR, textStatus, errorThrown) {
-            }
-        });
+    function changeSortBy(that) {
+        var sortBy = $(that).val()
+        var url = "@Url.Action("Index", "Shop", new { page = Model.CurrentPage,pageSize = Model.PageSize })"
+        url = url.replace("&amp;", "&")
+        if (url.indexOf('?') > -1) {
+            url += '&sortBy=' + sortBy
+        } else {
+            url += '?sortBy=' + sortBy
+        }
+        window.location.href = url;
     }
 </script>

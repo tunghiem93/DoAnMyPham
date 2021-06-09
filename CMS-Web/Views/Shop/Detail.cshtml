@@ -12,17 +12,15 @@
             <img width="100%" id="img_01"
                  src="@Url.Content(Model.ProductModel.ImageURL)"
                  data-zoom-image="@Url.Content(Model.ProductModel.ImageURL)" />
-
             @if (Model.ProductModel.ListImg != null && Model.ProductModel.ListImg.Any())
             {
                 <div id="gal1">
                     @foreach (var img in Model.ProductModel.ListImg)
                     {
                         <a href="#" class="elevatezoom-gallery" data-update=""
-                           data-image="@Url.Content(img.ImageURL)"
-                           data-zoom-image="@Url.Content(img.ImageURL)">
-                            <img src="@Url.Content(img.ImageURL)"
-                                 width="100%" />
+                            data-image="@Url.Content(img.ImageURL)"
+                            data-zoom-image="@Url.Content(img.ImageURL)">
+                            <img src="@Url.Content(img.ImageURL)" width="100%" />
                         </a>
                     }
                 </div>
@@ -67,10 +65,24 @@
                         <h3 class="title">@item.ProductName</h3>
                         <span class="sale">@item.sPrice</span>
                         <span class="price">@item.sPrice</span>
+                        <input value="@item.StarType" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="@item.StarType" title="">
+                        <div class="progress">
+                            @{if (item.Quantity > 0)
+                                {
+                                    int _per = (item.Quantity - item.QuantitySale) * 100 / item.Quantity;
+                                    <span>Còn lại @_per %</span>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 89%;"></div>
+                                }
+                                else
+                                {
+                                    <span>Còn lại 0 %</span>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                }
+                            }
+                        </div>
                     </a>
                 }
             </div>
         </section>
     }
-
 </main>

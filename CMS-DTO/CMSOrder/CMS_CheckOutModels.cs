@@ -18,6 +18,10 @@ namespace CMS_DTO.CMSOrder
         public bool IsError { get; set; }
         public string OrderNo { get; set; }
         public DateTime OrderDate { get; set; }
+        public string CustomerId { get; set; }
+        public string PromotionCode { get; set; }
+        public string Address { get; set; }
+        public string Note { get; set; }
         public CMS_CheckOutModels()
         {
             ListItem = new List<CMS_ItemModels>();
