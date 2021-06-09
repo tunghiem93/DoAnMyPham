@@ -34,7 +34,7 @@ namespace CMS_Web.Controllers
             //ViewBag.Range = GetListRangeSelectItem();
         }
         // GET: Shop
-        public ActionResult Index(string q = "", int  page = 1, string a = "",int pageSize = 8, int sortBy = 1)
+        public ActionResult Index(string q = "", int  page = 1, string a = "",int pageSize = 8, int sortBy = 1, decimal min = 0, decimal max = 0 )
         {
             try
             {
@@ -53,7 +53,7 @@ namespace CMS_Web.Controllers
                 
                 //Product
                 int totalRecord, totalPage;
-                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, pageSize, a, sortBy);
+                model.ListProduct = _fac.GetListProductByCategory(q, out totalRecord, out totalPage, page, pageSize, a, sortBy, min, max);
                 var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())
                 {
@@ -73,6 +73,11 @@ namespace CMS_Web.Controllers
                 model.CurrentSortNew = a;
                 model.CurrentSortBy = sortBy;
                 model.PageSize = pageSize;
+                model.Star1 = _fac.GetTotalProductByStar(1);
+                model.Star2 = _fac.GetTotalProductByStar(2);
+                model.Star3 = _fac.GetTotalProductByStar(3);
+                model.Star4 = _fac.GetTotalProductByStar(4);
+                model.Star5 = _fac.GetTotalProductByStar(5);
                 return View(model);
             }
             catch (Exception ex)

@@ -47,6 +47,11 @@ namespace CMS_DTO.CMSProduct
         public int CurrentSortBy { get; set; }
         public string Key { get; set; }
         public bool IsOrther { get; set; }
+        public int Star1 { get; set; }
+        public int Star2 { get; set; }
+        public int Star3 { get; set; }
+        public int Star4 { get; set; }
+        public int Star5 { get; set; }
         public ProductViewModels()
         {
             ProductModel = new CMS_ProductsModels();

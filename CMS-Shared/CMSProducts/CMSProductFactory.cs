@@ -376,6 +376,14 @@ namespace CMS_Shared.CMSProducts
             return null;
         }
 
+        public int GetTotalProductByStar(int Star = 1)
+        {
+            using (var cxt = new CMS_Context())
+            {
+                return cxt.CMS_Products.Where(z => z.Star == Star).Count();
+            }
+        }
+
         public bool DeleteImage(string Id, ref string msg)
         {
             var result = true;
@@ -405,7 +413,7 @@ namespace CMS_Shared.CMSProducts
             return result;
         }
 
-        public List<CMS_ProductsModels> GetListProductByCategory(string alias, out int totalRecord, out int totalPage, int pageNo = 1 , int pageSize = 1, string a = "", int sortBy = 1)
+        public List<CMS_ProductsModels> GetListProductByCategory(string alias, out int totalRecord, out int totalPage, int pageNo = 1 , int pageSize = 1, string a = "", int sortBy = 1, decimal min = 0, decimal max = 0)
         {
             try
             {
@@ -421,6 +429,14 @@ namespace CMS_Shared.CMSProducts
                     if(!string.IsNullOrEmpty(alias))
                     {
                         entity = entity.Where(x => x.Alias.Equals(alias));
+                    }
+                    if(min > 0)
+                    {
+                        entity = entity.Where(z => z.p.ProductPrice >= min);
+                    }
+                    if(max > 0)
+                    {
+                        entity = entity.Where(z => z.p.ProductPrice <= max);
                     }
 
                     totalRecord = entity.Count();

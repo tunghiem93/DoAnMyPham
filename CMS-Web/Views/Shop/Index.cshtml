@@ -22,11 +22,48 @@
                     <ul class="list">
                         @foreach (var category in Model.ListCate)
                         {
-                            <li> <a href="#">@category.CategoryName</a> </li>
+                            <li> <a href="@Url.Action("Index", "Shop", new { q = category.Alias, pageSize = Model.PageSize, sortBy = Model.CurrentSortBy })">@category.CategoryName</a> </li>
                         }
                     </ul>
                 }
 
+            </div>
+        </div>
+
+        <div class="category-wrap">
+            <h3 class="title_02">RATING</h3>
+            <div class="category-panel">
+                <div class="nhom_comment">
+                    <input value="5" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm" title="">
+                    <span>(@Model.Star5)</span>
+                </div>
+                <div class="nhom_comment">
+                    <input value="4" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm" title="">
+                    <span>(@Model.Star4)</span>
+                </div>
+                <div class="nhom_comment">
+                    <input value="3" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm" title="">
+                    <span>(@Model.Star3)</span>
+                </div>
+                <div class="nhom_comment">
+                    <input value="2" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm" title="">
+                    <span>(@Model.Star2)</span>
+                </div>
+                <div class="nhom_comment">
+                    <input value="1" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm" title="">
+                    <span>(@Model.Star1)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-wrap">
+            <h3 class="title_02">PRICE</h3>
+            <div class="category-panel">
+                <div class="slider-price">
+                    <input  type="number" class="min" min="0" placeholder="MIN" />
+                    <input type="number" class="max" min="0" placeholder="MAX" />
+                    <button type="submit" class="btnSearchPrice">Tìm</button>
+                </div>
             </div>
         </div>
     </div>
@@ -120,4 +157,19 @@
         }
         window.location.href = url;
     }
+
+
+    $('.btnSearchPrice').click(function () {
+        var min = $('.min').val()
+        var max = $('.max').val()
+
+        var url = "@Url.Action("Index", "Shop", new { q = Model.CurrentCateAlias, sortBy = Model.CurrentSortBy })";
+        url = url.replace("&amp;", "&")
+        if (url.indexOf('?') > -1) {
+            url += '&min=' + min + '&max=' + max
+        } else {
+            url += '?min=' + min + '&max=' + max
+        }
+        window.location.href = url;
+    })
 </script>
