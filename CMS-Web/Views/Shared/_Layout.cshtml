@@ -2,7 +2,6 @@
     string controller = (string)ViewContext.RouteData.Values["controller"];
     string action = (string)ViewContext.RouteData.Values["action"];
 }
-@using CMS_Shared;
 
 <!DOCTYPE html>
 <html class="no-js" ng-app="appWebBEAUSTORYt">
@@ -25,6 +24,10 @@
     <script src="@Url.Content("~/Scripts/js.cookie.min.js")"></script>
     <script src="@Url.Content("~/Scripts/InitCookie.js")"></script>
     <script src="@Url.Content("~/Scripts/star-rating.js")"></script>
+    <link href="@Url.Content("~/Content/toast/jquery.toast.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/toast/jquery.toast.js")"></script>
+    <link href="@Url.Content("~/Content/TouchSpin/jquery.bootstrap-touchspin.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/TouchSpin/jquery.bootstrap-touchspin.js")"></script>
 </head>
 
 <body>
@@ -179,6 +182,40 @@
                 confirm("Bạn chưa nhập đầy đủ thông tin!");
             }
         })
+
+        function ShowToastMessage(message, type, header) {
+            $.toast({
+                text: message,
+                heading: header,
+                icon: type, // 'error','warning','success','info'
+                showHideTransition: 'fade',
+                allowToastClose: true,
+                hideAfter: 3000,
+                stack: 10,
+                position: 'top-right',
+                textAlign: 'left',
+                loader: true,
+                loaderBg: '#9EC600',
+            });
+        }
+        function ConfirmSwalMessage(title, message, btnConfirmText, btnCancelText, callback) {
+            Swal.fire({
+                title: title,
+                text: message,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: btnConfirmText,
+                cancelButtonText: btnCancelText,
+                reverseButtons: true
+            }).then((result) => {
+                console.log(result);
+                if (result.value) {
+                    callback();
+                }
+            })
+        }
     </script>
 
     <script type="text/javascript">
@@ -227,6 +264,7 @@
             $rootScope.Products = getListOrder();
             /* add cart */
             $scope.AddToCart = function (ItemId, Qty, Price, ImageUrl, Name, Alias) {
+                ShowToastMessage("Thay đổi sản phẩm thành công!", 'success', 'Thành Công');
                 var qty = $('#amout-number').val();
                 qty = parseInt(qty) + parseInt(Qty);
                 $('#amout-number').val(qty);

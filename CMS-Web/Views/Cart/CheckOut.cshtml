@@ -109,7 +109,7 @@
 <script>
     var _promoCode = "";
     if ('@Model.Customer.Id' == null) {
-        confirm("Vui lòng đăng nhập trước khi thanh toán!");
+        ShowToastMessage("Vui lòng đăng nhập trước khi thanh toán!", 'error', 'Tài khoản đăng nhập');
     }
     function ApprovelDisount() {
         var _total = Number($('.totalpay').text().replace(/[^0-9.-]+/g, ""));
@@ -156,9 +156,9 @@
                 data: { CustomerId: _cusId, TotalPrice: _totalPrice, PromotionCode: _promoCode, Address: _addressother, Note: _note },
                 success: function (data) {
                     if (data.status == false) {
-                        confirm(data.message);
+                        ShowToastMessage(data.message, 'error', 'Thất bại');
                     } else {
-                        confirm(data.message);
+                        ShowToastMessage(data.message, 'success', 'Thành Công');
                     }
                 },
                 complete: function () {
@@ -168,7 +168,7 @@
             });
         }
         else {
-            confirm("Vui lòng đăng nhập trước khi thanh toán!")
+            ShowToastMessage("Vui lòng đăng nhập trước khi thanh toán!", 'error', 'Đăng nhập');
         }
     }
 </script>

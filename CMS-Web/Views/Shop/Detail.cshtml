@@ -2,6 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 @model CMS_DTO.CMSProduct.ProductViewModels
 <script src="~/Content/jquery.ez-plus.js"></script>
 <script src="~/Content/web.js"></script>
@@ -18,8 +19,8 @@
                     @foreach (var img in Model.ProductModel.ListImg)
                     {
                         <a href="#" class="elevatezoom-gallery" data-update=""
-                            data-image="@Url.Content(img.ImageURL)"
-                            data-zoom-image="@Url.Content(img.ImageURL)">
+                           data-image="@Url.Content(img.ImageURL)"
+                           data-zoom-image="@Url.Content(img.ImageURL)">
                             <img src="@Url.Content(img.ImageURL)" width="100%" />
                         </a>
                     }
@@ -86,3 +87,5 @@
         </section>
     }
 </main>
+<script>
+</script>

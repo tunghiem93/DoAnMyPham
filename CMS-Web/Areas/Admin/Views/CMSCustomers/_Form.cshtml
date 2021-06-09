@@ -36,18 +36,10 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">First name</label>
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 fontLighter">Full name</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @placeholder = "First name Last name", @autocomplete = "off" })
-                @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = "label label-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Last name</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @placeholder = "Last name Employee", @autocomplete = "off" })
-                @Html.ValidationMessageFor(model => model.LastName, null, new { @class = "label label-danger" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Full name", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "label label-danger" })
             </div>
         </div>
 
