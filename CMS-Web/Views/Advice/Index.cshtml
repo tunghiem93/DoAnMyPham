@@ -111,24 +111,17 @@
 <div class="container">
     <h2 class="nhom_title03">BÀI VIẾT LIÊN QUAN</h2>
     <div class="row grid-demo">
-        <div class="col-md-4">
-            <a href="#">
-                <img src="/Images/Rectangle_2.png" alt="">
-                <h3 class="title">10 CÁCH TRỊ MỤN TẠI NHÀ BẠN CÓ THỂ ÁP DỤNG NGAY</h3>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#">
-                <img src="/Images/Rectangle_2.1.png" alt="">
-                <h3 class="title">10 CÁCH TRỊ MỤN TẠI NHÀ BẠN CÓ THỂ ÁP DỤNG NGAY</h3>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#">
-                <img src="/Images/Rectangle_2.2.png" alt="">
-                <h3 class="title">10 CÁCH TRỊ MỤN TẠI NHÀ BẠN CÓ THỂ ÁP DỤNG NGAY</h3>
-            </a>
-        </div>
-
+        @if (Model.ListNews != null && Model.ListNews.Any())
+        {
+            foreach (var item in Model.ListNews)
+            {
+                <div class="col-md-4">
+                    <a href="@Url.Action("Detail", "News", new { q = item.Alias })">
+                        <img src="@item.ImageURL" alt="@item.Title">
+                        <h3 class="title">@item.Title</h3>
+                    </a>
+                </div>
+            }
+        }
     </div>
 </div>

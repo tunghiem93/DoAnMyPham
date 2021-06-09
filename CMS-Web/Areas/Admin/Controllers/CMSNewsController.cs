@@ -99,7 +99,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         ms.Write(photoByte, 0, photoByte.Length);
                         System.Drawing.Image imageTmp = System.Drawing.Image.FromStream(ms, true);
 
-                        ImageHelper.Me.SaveCroppedImage(imageTmp, path, model.ImageURL, ref photoByte, 1200,Commons.WidthImageNews, Commons.HeightImageNews);
+                        ImageHelper.Me.SaveCroppedImage(imageTmp, path, model.ImageURL, ref photoByte, 1080,Commons.WidthImageNews, Commons.HeightImageNews);
                     }
                     if (!string.IsNullOrEmpty(model.ImageURLAuthor) && model.PictureByteAuthor != null)
                     {
@@ -108,7 +108,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         ms.Write(photoByteAuthor, 0, photoByteAuthor.Length);
                         System.Drawing.Image imageTmpAuthor = System.Drawing.Image.FromStream(ms, true);
 
-                        ImageHelper.Me.SaveCroppedImage(imageTmpAuthor, path, model.ImageURLAuthor, ref photoByteAuthor, 100, Commons.WidthImageAuthor, Commons.HeightImageAuthor);
+                        ImageHelper.Me.SaveCroppedImage(imageTmpAuthor, path, model.ImageURLAuthor, ref photoByteAuthor, 1080, Commons.WidthImageAuthor, Commons.HeightImageAuthor);
                     }
                     return RedirectToAction("Index");
                 }
@@ -198,7 +198,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         MemoryStream ms = new MemoryStream(photoByte, 0, photoByte.Length);
                         ms.Write(photoByte, 0, photoByte.Length);
                         System.Drawing.Image imageTmp = System.Drawing.Image.FromStream(ms, true);
-                        ImageHelper.Me.SaveCroppedImage(imageTmp, path, model.ImageURL, ref photoByte, 1200, Commons.WidthImageNews, Commons.HeightImageNews);
+                        ImageHelper.Me.SaveCroppedImage(imageTmp, path, model.ImageURL, ref photoByte, 1080, Commons.WidthImageNews, Commons.HeightImageNews);
                     }
                     //Author
                     if (!string.IsNullOrEmpty(model.ImageURLAuthor) && model.PictureByteAuthor != null)
@@ -216,7 +216,7 @@ namespace CMS_Web.Areas.Admin.Controllers
                         MemoryStream ms = new MemoryStream(photoByteAuthor, 0, photoByteAuthor.Length);
                         ms.Write(photoByteAuthor, 0, photoByteAuthor.Length);
                         System.Drawing.Image imageTmpAuthor = System.Drawing.Image.FromStream(ms, true);
-                        ImageHelper.Me.SaveCroppedImage(imageTmpAuthor, path, model.ImageURLAuthor, ref photoByteAuthor, 100, Commons.WidthImageAuthor, Commons.HeightImageAuthor);
+                        ImageHelper.Me.SaveCroppedImage(imageTmpAuthor, path, model.ImageURLAuthor, ref photoByteAuthor, 1080, Commons.WidthImageAuthor, Commons.HeightImageAuthor);
                     }
                     return RedirectToAction("Index");
                 }
