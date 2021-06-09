@@ -422,6 +422,7 @@ namespace CMS_Web.Controllers
             string cusId = "";
             model.FirstName = "None";
             model.LastName = "None";
+            model.Name = model.Name;
             model.Address = "None";
             model.UserLogin = (int)Commons.ETypeUserLogin.Normal;
             var result = _factory.InsertOrUpdate(model, ref cusId, ref msg);

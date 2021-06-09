@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+@model List<CMS_DTO.CMSProduct.CMS_ProductsModels>
+<div class="table-responsive">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box red">
+            <div class="portlet-body">
+                <table class="table table-content table-bordered">
+                    <thead style="background-color: #5cb85c">
+                        <tr>
+                            <th class="text-center">
+                                Product code
+                            </th>
+                            <th class="text-center"> Product name </th>
+                            <th class="text-center"> Category </th>
+                            <th class="text-center"> Star </th>
+                            <th class="text-center"> Qty sale </th>
+                            <th class="text-center"> Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td class="text-center">
+                                        @item.ProductCode
+                                    </td>
+                                    <td> @item.ProductName </td>
+                                    <td>
+                                        @item.CategoryName
+                                    </td>
+                                    <td class="text-center">
+                                        @item.StarType <span class="fa fa-star"></span>
+                                    </td>
+                                    <td class="text-center">
+                                        @item.QuantitySale
+                                    </td>
+                                    <td class="text-center">
+                                        @string.Format("{0}",item.ProductPrice.ToString("#,0.00"))
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>

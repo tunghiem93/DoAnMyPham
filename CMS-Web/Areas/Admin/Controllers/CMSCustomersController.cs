@@ -33,8 +33,6 @@ namespace CMS_Web.Areas.Admin.Controllers
             model.ForEach(x =>
             {
                 x.sStatus = x.IsActive ? "Active" : "Not activated";
-                //if (!string.IsNullOrEmpty(x.ImageURL))
-                //    x.ImageURL = Commons.HostImage + "Customers/" + x.ImageURL;
             });
             return PartialView("_ListData", model);
         }

@@ -24,6 +24,9 @@ namespace CMS_Entity.Entity
         public string ImageURL { get; set; }
         public string Alias { get; set; }
         public int Year { get; set; }
+        public int Star { get; set; }
+        public int Quantity { get; set; }
+        public int QuantitySale { get; set; }
 
         public virtual CMS_Categories Category { get; set; }
         public virtual List<CMS_Images> Images { get; set; }

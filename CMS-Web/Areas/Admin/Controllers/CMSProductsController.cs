@@ -25,8 +25,7 @@ namespace CMS_Web.Areas.Admin.Controllers
             ViewBag.Brand = GetListBrandSelectItem();
             ViewBag.Location = GetListLocationSelectItem();
             ViewBag.State = getListState();
-            //ViewBag.Size = getListSize();
-            //ViewBag.Style = GetListStyle();
+            ViewBag.Star = getListStar();
         }
         // GET: Admin/CMSProduct
         public ActionResult Index()

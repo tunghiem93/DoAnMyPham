@@ -20,8 +20,6 @@ namespace CMS_Entity.Mapping
             this.Property(x => x.Alias).HasMaxLength(250).HasColumnType("nvarchar").IsOptional();
             this.Property(x => x.Address).HasMaxLength(250).HasColumnType("nvarchar").IsRequired();
             this.Property(x => x.CreatedBy).HasColumnType("varchar").HasMaxLength(60).IsOptional();
-            this.Property(x => x.FirstName).HasMaxLength(50).HasColumnType("nvarchar").IsRequired();
-            this.Property(x => x.LastName).HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
             this.Property(x => x.Password).HasMaxLength(250).HasColumnType("varchar").IsRequired();
             this.Property(x => x.Phone).HasColumnType("varchar").HasMaxLength(15).IsOptional();
             this.Property(x => x.Street).HasMaxLength(250).HasColumnType("nvarchar").IsOptional();

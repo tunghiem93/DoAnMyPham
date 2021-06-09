@@ -78,6 +78,14 @@ namespace CMS_Shared
             L = 3,
             XL = 4,
         }
+        public enum EStarType
+        {
+            Star1 = 1,
+            Star2 = 2,
+            Star3 = 3,
+            Star4 = 4,
+            Star5 = 5,
+        }
 
         public enum EStateType
         {

@@ -46,12 +46,11 @@ namespace CMS_Shared.CMSCustomers
                                     CreatedDate = DateTime.Now,
                                     Description = model.Description,
                                     Email = model.Email,
-                                    FirstName = model.FirstName,
                                     Gender = model.Gender,
                                     ImageURL = model.ImageURL,
                                     IsActive = model.IsActive,
                                     Status = (int)Commons.EStatus.Actived,
-                                    LastName = model.LastName,
+                                    Name = model.Name,
                                     MaritalStatus = model.MaritalStatus,
                                     Password = model.Password,
                                     Phone = model.Phone,
@@ -76,13 +75,12 @@ namespace CMS_Shared.CMSCustomers
                                     e.CompanyName = model.CompanyName;
                                     e.Country = model.Country;
                                     e.UpdatedBy = model.UpdatedBy;
-                                    e.FirstName = model.FirstName;
                                     e.Description = model.Description;
                                     e.Email = model.Email;
                                     e.Gender = model.Gender;
                                     e.ImageURL = model.ImageURL;
                                     e.IsActive = model.IsActive;
-                                    e.LastName = model.LastName;
+                                    e.Name = model.Name;
                                     e.MaritalStatus = model.MaritalStatus;
                                     e.Password = model.Password;
                                     e.Phone = model.Phone;
@@ -160,12 +158,11 @@ namespace CMS_Shared.CMSCustomers
                                                     CreatedDate = x.CreatedDate,
                                                     Description = x.Description,
                                                     Email = x.Email,
-                                                    FirstName = x.FirstName,
                                                     Gender = x.Gender,
                                                     ID = x.Id,
                                                     ImageURL = x.ImageURL,
                                                     IsActive = x.IsActive,
-                                                    LastName = x.LastName,
+                                                    Name = x.Name,
                                                     MaritalStatus = x.MaritalStatus,
                                                     Password = x.Password,
                                                     Phone = x.Phone,
@@ -200,12 +197,10 @@ namespace CMS_Shared.CMSCustomers
                         CreatedDate = x.CreatedDate,
                         Description = x.Description,
                         Email = x.Email,
-                        FirstName = x.FirstName,
                         Gender = x.Gender,
                         ID = x.Id,
                         ImageURL = x.ImageURL,
                         IsActive = x.IsActive,
-                        LastName = x.LastName,
                         MaritalStatus = x.MaritalStatus,
                         Password = x.Password,
                         Phone = x.Phone,
@@ -214,7 +209,8 @@ namespace CMS_Shared.CMSCustomers
                         UpdatedDate = x.UpdatedDate,
                         FbID = x.FbID, 
                         GoogleID = x.GoogleID,
-                        UserLogin = x.UserLogin
+                        UserLogin = x.UserLogin,
+                        Name = x.Name
                     }).ToList();
                     return data;
                 }
@@ -235,11 +231,9 @@ namespace CMS_Shared.CMSCustomers
                                               .Select(x => new ClientLoginModel
                                               {
                                                   Email = x.Email,
-                                                  DisplayName = x.FirstName + " " + x.LastName,
+                                                  DisplayName = x.Name,
                                                   Password = x.Password,
                                                   IsAdmin = false,
-                                                  FirstName = x.FirstName,
-                                                  LastName = x.LastName,
                                                   Phone = x.Phone,
                                                   Id = x.Id,
                                                   ImageURL = x.ImageURL

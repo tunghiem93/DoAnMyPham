@@ -47,6 +47,8 @@ namespace CMS_Shared.CMSProducts
                                 ImageURL = model.ImageURL,
                                 Alias = model.Alias,
                                 Year = model.Year,
+                                Star = model.StarType,
+                                Quantity = model.Quantity
                             };
                             cxt.CMS_Products.Add(e);
 
@@ -93,6 +95,8 @@ namespace CMS_Shared.CMSProducts
                                 e.ImageURL = model.ImageURL;
                                 e.Alias = model.Alias;
                                 e.Year = model.Year;
+                                e.Star = model.StarType;
+                                e.Quantity = model.Quantity;
                             }
 
                             if (model.ListImageUrl != null && model.ListImageUrl.Any())
@@ -212,7 +216,10 @@ namespace CMS_Shared.CMSProducts
                             ImageURL = e.p.ImageURL,
                             Alias = e.p.Alias,
                             Year = e.p.Year,
-                            CategoryType = e.CategoryType
+                            CategoryType = e.CategoryType,
+                            StarType = e.p.Star,
+                            Quantity = e.p.Quantity,
+                            QuantitySale = e.p.QuantitySale
                         };
 
                         var _images = cxt.CMS_Images.Select(x => new
@@ -282,7 +289,11 @@ namespace CMS_Shared.CMSProducts
                             ImageURL = x.p.ImageURL,
                             CategoryName = string.IsNullOrEmpty(x.CategoryName) ? "" : x.CategoryName,
                             CategoryType = x.CategoryType,
-                            AliasCate = x.CategoryAlias
+                            AliasCate = x.CategoryAlias,
+                            StarType = x.p.Star,
+                            Quantity = x.p.Quantity,
+                            QuantitySale = x.p.QuantitySale
+
                         }).ToList();
                     var _images = cxt.CMS_Images.Select(x => new
                     {

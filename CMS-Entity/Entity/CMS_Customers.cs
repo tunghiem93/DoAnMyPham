@@ -9,13 +9,11 @@ namespace CMS_Entity.Entity
     public class CMS_Customers : CMS_EntityBase
     {
         public string Id { get; set; }
+        public string Name { get; set; }
         public string FbID { get; set; }
         public string GoogleID { get; set; }
         public string CompanyName { get; set; }
         public string Alias { get; set; }
-        public string CustomerName { get { return this.FirstName + " " + this.LastName; } }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }

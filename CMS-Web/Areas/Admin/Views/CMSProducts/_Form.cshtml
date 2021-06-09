@@ -107,7 +107,7 @@
             <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight">Category</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 @Html.DropDownListFor(model => model.CategoryId,
-                    new SelectList(ViewBag.Category, "Value", "Text", Model.CategoryId),"Please choose Category",
+                    new SelectList(ViewBag.Category, "Value", "Text", Model.CategoryId), "Please choose Category",
                     new
                     {
                         @class = "form-control select2_multiple",
@@ -146,13 +146,13 @@
                     })
                 @Html.ValidationMessageFor(model => model.LocationId, null, new { @class = "label label-danger" })
             </div>
-        </div>*@  
+        </div>*@
 
         <div class="form-group">
             <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight">Status</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 @Html.DropDownListFor(model => model.TypeState,
-                    new SelectList(ViewBag.State, "Value", "Text", Model.TypeState),"Please choose Status",
+                    new SelectList(ViewBag.State, "Value", "Text", Model.TypeState), "Please choose Status",
                     new
                     {
                         @class = "form-control select2_multiple",
@@ -172,6 +172,14 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Quantity</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "form-control", @placeholder = "Quantity", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Quantity, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Price</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 @Html.TextBoxFor(model => model.ProductPrice, new { @class = "form-control keyMoney", @placeholder = "Price Product", @autocomplete = "off" })
@@ -184,6 +192,21 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 @Html.TextBoxFor(model => model.ProductExtraPrice, new { @class = "form-control keyMoney", @placeholder = "Price Sale", @autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.ProductExtraPrice, null, new { @class = "label label-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 col-sm-2 col-xs-12 lineHeight fontLighter">Star</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @Html.DropDownListFor(model => model.StarType,
+                    new SelectList(ViewBag.Star, "Value", "Text", Model.StarType), null,
+                    new
+                    {
+                        @class = "form-control",
+                        @id = "StarDdl",
+                        @style = "width:100%;"
+                    })
+                @Html.ValidationMessageFor(model => model.StarType, null, new { @class = "label label-danger" })
             </div>
         </div>
 
@@ -280,6 +303,10 @@
         });
         $("#StyleDdl").select2({
             placeholder: "Please choose kiểu mẫu",
+            //allowClear: true
+        });
+        $("#StarDdl").select2({
+            placeholder: "Please choose Star",
             //allowClear: true
         });
     });

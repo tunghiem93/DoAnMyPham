@@ -104,6 +104,18 @@ namespace CMS_Web.Areas.Admin.Controllers
             return _lstSize;
         }
 
+        public List<SelectListItem> getListStar()
+        {
+            var _lstStar = new List<SelectListItem>() {
+                new SelectListItem() { Text = "1 Star", Value = Commons.EStarType.Star1.ToString("d") },
+                new SelectListItem() { Text = "2 Star", Value = Commons.EStarType.Star2.ToString("d") },
+                new SelectListItem() { Text = "3 Star", Value = Commons.EStarType.Star3.ToString("d") },
+                new SelectListItem() { Text = "4 Star", Value = Commons.EStarType.Star4.ToString("d") },
+                new SelectListItem() { Text = "5 Star", Value = Commons.EStarType.Star5.ToString("d") },
+            };
+            return _lstStar;
+        }
+
         public List<SelectListItem> getListState()
         {
             var _lstSize = new List<SelectListItem>() {

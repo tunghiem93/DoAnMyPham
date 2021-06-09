@@ -23,6 +23,7 @@
                             <th class="text-center">
                                 Mã Khuyến Mãi
                             </th>
+                            <th class="text-center"> Giá trị </th>
                             <th class="text-center"> Status </th>
                             <th class="text-center"> Action </th>
                         </tr>
@@ -35,6 +36,9 @@
                                 <tr class="odd gradeX">
                                     <td class="text-center">
                                         @item.PromotionCode
+                                    </td>
+                                    <td class="text-center">
+                                        @item.Value.ToString("0") %
                                     </td>
                                     <td class="text-center">
                                         <span class="label label-sm label-success"> @item.sStatus </span>

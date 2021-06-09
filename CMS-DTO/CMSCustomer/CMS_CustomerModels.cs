@@ -13,7 +13,7 @@ namespace CMS_DTO.CMSCustomer
     {
         public string ID { get; set; }
         //[Required(ErrorMessage = "Làm ơn nhập tên đầy đủ!")]
-        public string Name { get { return (this.FirstName + " " + this.LastName); } }
+        public string Name { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập họ!")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Vui lòng nhập tên!")]

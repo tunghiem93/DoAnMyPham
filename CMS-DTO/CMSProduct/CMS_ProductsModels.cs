@@ -68,7 +68,9 @@ namespace CMS_DTO.CMSProduct
         public List<ImageProduct> ListImg { get; set; }
         public string RawImageUrl { get; set; }
         public string sPrice { get; set; }
-
+        public int StarType { get; set; }
+        public int Quantity { get; set; }
+        public int QuantitySale { get; set; }
         public CMS_ProductsModels()
         {
             Year = DateTime.Now.Year;
