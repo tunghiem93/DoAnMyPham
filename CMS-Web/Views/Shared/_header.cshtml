@@ -5,7 +5,7 @@
     <div class="logo"><a href="@Url.Action("Index","Home")">BEAUSTORY</a></div>
     <div class="header_search">
         <form method="get" action="/Home/SearchKey">
-            <input type="text" value="key">
+            <input type="text" name="key" autocomplete="off" autofocus="" placeholder="search...">
             <a href="timkiemnangcao.html">
                 <button type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </a>

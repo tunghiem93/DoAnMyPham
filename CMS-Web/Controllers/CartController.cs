@@ -113,7 +113,7 @@ namespace CMS_Web.Controllers
                     model.OrderDate = DateTime.Now;
                     model.OrderNo = CommonHelper.RandomNumberOrder();
                     string body = MailHelper.CreateBodyMail(model);
-                    var result =  MailHelper.SendMailOrder("[V/v đơn hàng " + model.OrderNo + "]", body, CusInfo.Email);
+                    var result = true;// MailHelper.SendMailOrder("[V/v đơn hàng " + model.OrderNo + "]", body, CusInfo.Email);
                     if (model.ListItem != null && model.ListItem.Any())
                     {
                         model.ListItem.ForEach(f =>
@@ -129,32 +129,35 @@ namespace CMS_Web.Controllers
                         currentUserCookie.Expires = DateTime.Now.AddDays(-10);
                         currentUserCookie.Value = null;
                         HttpContext.Response.SetCookie(currentUserCookie);
-                        return RedirectToAction("Index", "Home");
+                        return Json(new { status = true, message = "Đơn hàng của bạn đang được quản trị xét duyệt!" });
                     }
                     else
                     {
-                        model.IsError = true;
+                        return Json(new { status = false, message = "Quá trình thanh toán không thành công!" });
                     }
                 }
                 else
                 {
-                    model.IsError = true;
+                    return Json(new { status = false, message = "Giỏ hàng của bạn hiện đang không có sản phẩm!" });
                 }
             }
             catch (Exception ex)
             {
-                NSLog.Logger.Error("CheckOut", ex);
+                return Json(new { status = false, message = "Quá trình thanh toán không thành công!" });
             }
-            return View(model);
         }
 
         public async Task<ActionResult> CheckDiscount(string Code)
         {
             var data = await _fapro.CheckDiscount(Code);
             if (data != null && !string.IsNullOrEmpty(data.Id))
+            {   
                 return Json(new { status = true, data= data.Value, message = "Mã khuyễn mãi của bạn đã được áp dụng thành công!" });
+            }
             else
-                return Json(new { status = false, message = "Mã khuyễn mãi của bạn không tồn tại!" });            
+            {   
+                return Json(new { status = false, message = "Mã khuyễn mãi của bạn không tồn tại!" });
+            }
         }
     }
 }

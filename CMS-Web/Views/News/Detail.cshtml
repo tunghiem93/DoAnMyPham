@@ -5,6 +5,12 @@
 
 @model  CMS_DTO.CMSNews.CMS_NewsViewModel
 @using CMS_Shared;
+
+<ul class="nhom_menu_01">
+    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+    <li><a href="@Url.Action("Index","Advice")">Danh sách bài viết</a></li>
+    <li>Chi tiết bài viết</li>
+</ul>
 <div>
     <div class="page-banner">
         <nav aria-label="breadcrumb" role="navigation">
@@ -41,24 +47,24 @@
             <div class="col-md-3 wow slideInRight">
                 @if (Model.ListNewsNew != null && Model.ListNewsNew.Any())
                 {
-                <div class="latestnews">
-                    <h3>News list</h3>
-                    @foreach (var item in Model.ListNewsNew)
-                    {
-                        <div class="clearfix mb-3">
-                            <div class="wrlnl">
-                                <a href="@Url.Action("Detail","News", new {q = item.Alias })"><img src="@item.ImageURL" alt="@item.Title" width="250" height="130" /></a>
+                    <div class="latestnews">
+                        <h3>News list</h3>
+                        @foreach (var item in Model.ListNewsNew)
+                        {
+                            <div class="clearfix mb-3">
+                                <div class="wrlnl">
+                                    <a href="@Url.Action("Detail","News", new {q = item.Alias })"><img src="@item.ImageURL" alt="@item.Title" width="250" height="130" /></a>
+                                </div>
+                                <div class="wrlnr">
+                                    <h4>
+                                        <a href="@Url.Action("Detail","News", new {q = item.Alias })">
+                                            @item.Title
+                                        </a>
+                                    </h4>
+                                </div>
                             </div>
-                            <div class="wrlnr">
-                                <h4>
-                                    <a href="@Url.Action("Detail","News", new {q = item.Alias })">
-                                        @item.Title
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
                 }
             </div>
         </div>

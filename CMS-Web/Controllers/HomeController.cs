@@ -174,22 +174,11 @@ namespace CMS_Web.Controllers
         
         public ActionResult SearchKey(string key = "")
         {
+            ViewBag.Key = key;
             var model = new ProductViewModels();
-
             try
             {
-                //Category
                 model.ListCate = _facCate.GetList().OrderBy(x => x.CategoryName).ToList();
-                //if (!string.IsNullOrEmpty(Key))
-                //{
-                //    var dataCurrentCate = model.ListCate.FirstOrDefault(x => x.Alias.Equals(q));
-                //    if (dataCurrentCate != null)
-                //    {
-                //        model.CurrentCateAlias = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.Alias;
-                //        model.CurrentCategoryName = string.IsNullOrEmpty(q) ? "" : dataCurrentCate.CategoryName;
-                //    }
-                //}
-
                 model.ListProduct = _fac.GetList().Where(x => CommonHelper.RemoveUnicode(x.ProductName.ToLower()).Contains(CommonHelper.RemoveUnicode(key.ToLower()))).OrderByDescending(x => x.CreatedDate).ToList();
                 var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                 if (model.ListProduct != null && model.ListProduct.Any())

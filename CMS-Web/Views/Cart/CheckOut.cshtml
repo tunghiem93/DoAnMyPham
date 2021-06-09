@@ -14,7 +14,7 @@
 <ul class="nhom_menu_01">
     <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
     <li><a href="@Url.Action("Index","Shop")">Danh sách sản phẩm</a></li>
-    <li><a href="@Url.Action("Index","Advice")">Lời khuyên</a></li>
+    <li><a href="@Url.Action("CheckOut","Cart")">Thanh toán</a></li>
 </ul>
 <div class="row">
     <div class="col-xs-12 col-md-8">
@@ -156,12 +156,9 @@
                 data: { CustomerId: _cusId, TotalPrice: _totalPrice, PromotionCode: _promoCode, Address: _addressother, Note: _note },
                 success: function (data) {
                     if (data.status == false) {
-                        $('.error-discount').text(data.message);
-                        $('.error-discount').css("display", "block");
+                        confirm(data.message);
                     } else {
-                        _total = (_total - (_total * data.data) / 100);
-                        $('.error-discount').css("display", "none");
-                        $('.totalCheckOut').text(_total).trigger('change');
+                        confirm(data.message);
                     }
                 },
                 complete: function () {
