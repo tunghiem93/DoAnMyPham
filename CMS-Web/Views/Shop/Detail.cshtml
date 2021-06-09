@@ -6,6 +6,11 @@
 @model CMS_DTO.CMSProduct.ProductViewModels
 <script src="~/Content/jquery.ez-plus.js"></script>
 <script src="~/Content/web.js"></script>
+
+<ul class="nhom_menu_01">
+    <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+    <li>Chi tiết sản phẩm</li>
+</ul>
 <main class="nhom_container" ng-controller="CartCtrl">
     <h1>@Model.ProductModel.ProductName</h1>
     <div class="nhom_product">
